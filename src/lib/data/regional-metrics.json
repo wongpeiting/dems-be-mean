@@ -1,0 +1,29 @@
+[
+    { "region": "North", "year": 2019, "revenue": 82,  "users": 3100, "satisfaction": 74 },
+    { "region": "North", "year": 2020, "revenue": 88,  "users": 3400, "satisfaction": 75 },
+    { "region": "North", "year": 2021, "revenue": 95,  "users": 3900, "satisfaction": 77 },
+    { "region": "North", "year": 2022, "revenue": 101, "users": 4300, "satisfaction": 79 },
+    { "region": "North", "year": 2023, "revenue": 118, "users": 5200, "satisfaction": 83 },
+    { "region": "North", "year": 2024, "revenue": 126, "users": 5600, "satisfaction": 85 },
+  
+    { "region": "South", "year": 2019, "revenue": 64,  "users": 2600, "satisfaction": 70 },
+    { "region": "South", "year": 2020, "revenue": 69,  "users": 2800, "satisfaction": 71 },
+    { "region": "South", "year": 2021, "revenue": 75,  "users": 3000, "satisfaction": 73 },
+    { "region": "South", "year": 2022, "revenue": 79,  "users": 3100, "satisfaction": 58 },
+    { "region": "South", "year": 2023, "revenue": 83,  "users": 3250, "satisfaction": 62 },
+    { "region": "South", "year": 2024, "revenue": 90,  "users": 3500, "satisfaction": 68 },
+  
+    { "region": "East", "year": 2019, "revenue": 71,  "users": 2900, "satisfaction": 76 },
+    { "region": "East", "year": 2020, "revenue": 74,  "users": 3050, "satisfaction": 77 },
+    { "region": "East", "year": 2021, "revenue": 78,  "users": 3200, "satisfaction": 78 },
+    { "region": "East", "year": 2022, "revenue": 83,  "users": 3400, "satisfaction": 78 },
+    { "region": "East", "year": 2023, "revenue": 87,  "users": 3550, "satisfaction": 80 },
+    { "region": "East", "year": 2024, "revenue": 92,  "users": 3700, "satisfaction": 81 },
+  
+    { "region": "West", "year": 2019, "revenue": 90,  "users": 3500, "satisfaction": 72 },
+    { "region": "West", "year": 2020, "revenue": 99,  "users": 3900, "satisfaction": 73 },
+    { "region": "West", "year": 2021, "revenue": 112, "users": 4500, "satisfaction": 74 },
+    { "region": "West", "year": 2022, "revenue": 130, "users": 5300, "satisfaction": 76 },
+    { "region": "West", "year": 2023, "revenue": 149, "users": 6100, "satisfaction": 78 },
+    { "region": "West", "year": 2024, "revenue": 171, "users": 7000, "satisfaction": 80 }
+  ]
