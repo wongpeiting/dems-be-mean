@@ -368,7 +368,7 @@ if __name__ == "__main__":
 - Create: `pipeline/build_balloons.py`, `pipeline/tests/test_balloons.py`
 
 **Interfaces:**
-- Consumes: Stage-1 descriptions (cast/is_main), `function_{account}.jsonl` (registers), `pipeline/faces_raw/{slug}.jpg` (PT drops headshots; script cuts background with rembg → `static/faces/{slug}.png`).
+- Consumes: Stage-1 descriptions (cast/is_main), `function_{account}.jsonl` (registers), YouGov headshots at `/Users/wongpeiting/Desktop/CU/python-work/pol-face/watchlist/{slug}/01.jpg` (background cut with rembg → `static/faces/{slug}.png`; rights check before publish, see Task 14).
 - Produces: `src/lib/data/balloons.json` per contract. **Core drop-in-later mechanism:** counts come from Stage-1 (complete today); `ownRegister/oppRegister` come from stage-2 treatments and are `null` where absent; `stage2` field says `"partial"` until >90% of posts have stage-2 rows.
 
 - [ ] **Step 1: Write failing test**
@@ -403,18 +403,25 @@ def test_stage2_registers_enrich():
 
 - [ ] **Step 3: Implement `pipeline/build_balloons.py`**
 
-First add to `config.py` (own-vs-opp needs the subject's party — a poster-side count alone can't say who is hyping and who is mocking):
+First add to `config.py` (own-vs-opp needs the subject's party — a poster-side count alone can't say who is hyping and who is mocking). Party AND faces both come from the pol-face YouGov roster (385 people, kebab-case slugs matching our `slugify`, one headshot at `watchlist/{slug}/01.jpg`):
 
 ```python
-# Subject party for top cast; extend from pipeline/out/unknown_party.txt as needed.
-PARTY = {
-    "Donald Trump": "rep", "JD Vance": "rep", "Elon Musk": "rep",
-    "Karoline Leavitt": "rep", "Pete Hegseth": "rep", "Marco Rubio": "rep",
-    "Kamala Harris": "dem", "Barack Obama": "dem", "Joe Biden": "dem",
-    "Hakeem Jeffries": "dem", "Chuck Schumer": "dem", "Gavin Newsom": "dem",
-    "Alexandria Ocasio-Cortez": "dem", "Zohran Mamdani": "dem", "Michelle Obama": "dem",
-}
+import csv as _csv
+WATCHLIST = Path("/Users/wongpeiting/Desktop/CU/python-work/pol-face/watchlist")
+
+def _load_party():
+    """Subject party from pol-face YouGov roster.csv (name,slug,party R/D) + extras."""
+    party = {}
+    with open(WATCHLIST / "roster.csv", newline="") as f:
+        for r in _csv.DictReader(f):
+            party[r["name"]] = "rep" if r["party"] == "R" else "dem"
+    party.update({"Elon Musk": "rep", "Karoline Leavitt": "rep"})  # extend via unknown_party.txt
+    return party
+
+PARTY = _load_party()
 ```
+
+(Adjust `test_config.py` accordingly: add `from pipeline.config import PARTY; assert PARTY["Donald Trump"] == "rep"` — it reads the real roster, which is fine for this repo-local integration test.)
 
 Then `pipeline/build_balloons.py`:
 
@@ -502,12 +509,17 @@ def aggregate(posts, stage2):
             "_unknown": dict(sorted(unknown.items(), key=lambda kv: -kv[1])[:40])}
 
 def cut_faces(people):
-    """pipeline/faces_raw/{slug}.jpg -> static/faces/{slug}.png via rembg; warn if missing."""
+    """pol-face watchlist/{slug}/01.jpg -> static/faces/{slug}.png via rembg.
+
+    RIGHTS NOTE: YouGov portraits were fetched as internal face-ID references.
+    Before publish, confirm rights or swap sources (official congressional /
+    White House portraits are public domain) — flagged in Task 14 methodology.
+    """
     from rembg import remove
-    raw = PROJECT / "pipeline" / "faces_raw"
+    from .config import WATCHLIST
     out = OUT_STATIC / "faces"; out.mkdir(parents=True, exist_ok=True)
     for p in people:
-        src = raw / f"{p['slug']}.jpg"
+        src = WATCHLIST / p["slug"] / "01.jpg"
         if src.exists():
             (out / f"{p['slug']}.png").write_bytes(remove(src.read_bytes()))
         else:
@@ -1237,6 +1249,8 @@ export function inflationAt(weekly, t) {
 - [ ] **Step 2: Copy pass by PT** — every draft copy slot is marked `<!-- COPY: PT -->`; PT rewrites in-place. Bracketed pending stats resolve after tomorrow's pipeline re-run (`python -m pipeline.build_balloons && python -m pipeline.build_interior && python -m pipeline.build_toplines`).
 
 - [ ] **Step 3: Run all tests** — `npm test && pipeline/.venv/bin/pytest pipeline/tests -v` — all green.
+
+- [ ] **Step 3.5: Face rights check** — YouGov portraits currently on the balloons were fetched as internal face-ID references; confirm republication rights or swap to public-domain official portraits (congressional/White House) by replacing files in `static/faces/` — same filenames, no code change. Record the outcome in the methodology note.
 
 - [ ] **Step 4: Device QA on a real iPhone** (`npm run dev -- --host`, phone on same wifi): quiz tap targets ≥44px, videos autoplay muted (iOS requires `playsinline muted` — verify), hero scrub smooth, interior pinch, feed snap, localStorage persistence across reload, offline crowd fallback (turn off wifi mid-quiz: seeded stats show, no errors).
 
