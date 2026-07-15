@@ -4,12 +4,12 @@
 
 <article>
 	<header>
-		<h1>The attention river</h1>
+		<h1>The attention cloud</h1>
 		<p class="dek">
-			Every stream is one account's attention on one person — its width the number of videos that
-			quarter, its colour how they're portrayed, from <span class="cool">worship</span> to
-			<span class="hot">attack</span>. Scroll down to travel from 2022 to today, and watch new
-			streams join as each account comes online.
+			Every dot is one moment a politician was cast in a video. Left to right is how they were
+			treated — from <span class="cool">worshipped by their own side</span> to
+			<span class="hot">attacked by opponents</span>. Colour is which account did the posting.
+			Scroll down to travel from 2022 to today, and watch the White House and Republicans pile in.
 		</p>
 	</header>
 

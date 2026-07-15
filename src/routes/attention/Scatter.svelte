@@ -7,7 +7,10 @@
 	import meta from '$lib/data/attention.json';
 
 	const HEIGHT = 3800;
-	const colorFor = scaleLinear().domain([-3, -1, 0, 1, 3]).range(['#2f6690', '#7ba6c9', '#c7c3b8', '#e08a5b', '#cf3b34']).clamp(true);
+	// colour = which account posted (position already carries register)
+	const ACCT_COLOR = { democrats: '#3a76c2', whitehouse: '#e0a13c', republicans: '#c0392b' };
+	const ACCT_LABEL = { democrats: '@democrats', whitehouse: '@whitehouse', republicans: '@republicans' };
+	const legend = ['democrats', 'whitehouse', 'republicans'];
 
 	// time → y
 	const ms = (d) => Date.UTC(+d.slice(0, 4), +d.slice(4, 6) - 1, +d.slice(6, 8));
@@ -30,7 +33,7 @@
 		return points.map((p, i) => ({
 			x: xScale(p.r + jitter(i)),
 			y: yScale(ms(p.d)),
-			c: colorFor(p.r)
+			c: ACCT_COLOR[p.a]
 		}));
 	});
 
@@ -53,6 +56,14 @@
 			<text class="axlbl" x={width * 0.08} y="34" text-anchor="start">◄ platformed by their own side</text>
 			<text class="axlbl" x={width * 0.92} y="34" text-anchor="end">attacked by opponents ►</text>
 			<line class="axis" x1={xScale(0)} x2={xScale(0)} y1="46" y2={HEIGHT - 20} />
+
+			<!-- account colour legend -->
+			<g transform="translate({width / 2 - 170}, 12)">
+				{#each legend as id, i (id)}
+					<circle cx={i * 130} cy="0" r="5" fill={ACCT_COLOR[id]} />
+					<text class="leg" x={i * 130 + 10} y="4">{ACCT_LABEL[id]}</text>
+				{/each}
+			</g>
 
 			<!-- year gridlines -->
 			{#each years as t (t.y)}
@@ -91,6 +102,10 @@
 	}
 	.axlbl {
 		fill: #8a8578;
+		font: 600 12px system-ui, sans-serif;
+	}
+	.leg {
+		fill: #444;
 		font: 600 12px system-ui, sans-serif;
 	}
 	.tick {
