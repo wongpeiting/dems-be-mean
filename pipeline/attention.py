@@ -143,6 +143,21 @@ def main():
     json.dump({"people": people, "accounts": accounts, "months": months, "flows": flows},
               open(OUT, "w"), indent=1)
 
+    # raw points for the scatter: EVERY treatment (no aggregation), compact.
+    # a=account, d=YYYYMMDD date, r=register, s=canonical subject
+    pts = []
+    for r in rows:
+        try:
+            reg = int(r["register"])
+        except (ValueError, KeyError):
+            continue
+        d = str(r["upload_date"])[:8]
+        if len(d) < 8 or r["account"] not in ACCOUNTS:
+            continue
+        pts.append({"a": r["account"], "d": d, "r": reg, "s": canon(r["subject"])})
+    json.dump(pts, open(OUT.parent / "attention_points.json", "w"))
+    print(f"{len(pts)} raw points → attention_points.json")
+
     # report
     print(f"{len(recs)} person/party treatments · {len(people)} pools · {len(months)} months "
           f"({months[0]}→{months[-1]}) · {len(flows)} flow bins")

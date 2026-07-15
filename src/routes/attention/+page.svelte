@@ -1,5 +1,5 @@
 <script>
-	import VerticalFlow from './VerticalFlow.svelte';
+	import Scatter from './Scatter.svelte';
 </script>
 
 <article>
@@ -13,7 +13,7 @@
 		</p>
 	</header>
 
-	<VerticalFlow />
+	<Scatter />
 
 	<footer>
 		<p>Source: Stage-2 classification of @democrats, @whitehouse and @republicans TikTok, 2022–2026.</p>
