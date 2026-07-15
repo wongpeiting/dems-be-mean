@@ -35,7 +35,17 @@
 		.slice(0, N_STREAMS)
 		.sort((a, b) => a.reg - b.reg);
 
-	const quarters = [...new Set(streams.flatMap((s) => Object.keys(s.byQ)))].sort();
+	// only keep quarters fully covered by the data — drop the partial first/last
+	// (data starts 2022-03 and ends mid-2026-07, so 2022-Q1 and 2026-Q3 are stubs)
+	const minM = data.months[0];
+	const maxM = data.months[data.months.length - 1];
+	const quarterComplete = (q) => {
+		const [y, qn] = q.split('-Q').map(Number);
+		const first = `${y}-${String((qn - 1) * 3 + 1).padStart(2, '0')}`;
+		const last = `${y}-${String(qn * 3).padStart(2, '0')}`;
+		return first >= minM && last <= maxM;
+	};
+	const quarters = [...new Set(streams.flatMap((s) => Object.keys(s.byQ)))].sort().filter(quarterComplete);
 	const qIndex = Object.fromEntries(quarters.map((q, i) => [q, i]));
 
 	// series rows (one per quarter) → d3.stack (silhouette = centred streamgraph)
