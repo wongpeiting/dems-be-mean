@@ -2,6 +2,7 @@
 	// Demo background graphic: owns the single <svg> + the shared projection,
 	// and renders the kit layers as direct children (so projection context flows
 	// cleanly, with no snippet boundary between set and get).
+	import { fade } from 'svelte/transition';
 	import GeoLayer from '$lib/scrolly/GeoLayer.svelte';
 	import FlowMap from '$lib/scrolly/FlowMap.svelte';
 	import Annotation from '$lib/scrolly/Annotation.svelte';
@@ -85,47 +86,53 @@
 
 				{#if t < 0.5}
 					<!-- schematic mode: label each bar in place (frac anchors → proves frac mode) -->
-					{#each tributaries as f (f.id)}
-						<Annotation
-							at={{ frac: [f.schematic[0][0], 0.1] }}
-							text="{f.label} {Math.round((f.value / total) * 100)}%"
-							dx={0}
-							dy={0}
-							dot={false}
-							align="middle"
-							color="#1a1a1a"
-							size={labelSize}
-						/>
-					{/each}
+					<g transition:fade={{ duration: 250 }}>
+						{#each tributaries as f (f.id)}
+							<Annotation
+								at={{ frac: [f.schematic[0][0], 0.1] }}
+								text="{f.label} {Math.round((f.value / total) * 100)}%"
+								dx={0}
+								dy={0}
+								dot={false}
+								align="middle"
+								color="#1a1a1a"
+								size={labelSize}
+							/>
+						{/each}
+					</g>
 				{:else}
 					<!-- geographic mode: label each source on the map -->
-					{#each tributaries as f (f.id)}
-						<Annotation
-							at={{ lngLat: f.geo[0] }}
-							text="{f.label} {Math.round((f.value / total) * 100)}%"
-							dx={0}
-							dy={-14}
-							align="middle"
-							color="#1a1a1a"
-							size={labelSize}
-						/>
-					{/each}
+					<g transition:fade={{ duration: 250 }}>
+						{#each tributaries as f (f.id)}
+							<Annotation
+								at={{ lngLat: f.geo[0] }}
+								text="{f.label} {Math.round((f.value / total) * 100)}%"
+								dx={0}
+								dy={-14}
+								align="middle"
+								color="#1a1a1a"
+								size={labelSize}
+							/>
+						{/each}
+					</g>
 				{/if}
 
 				{#if t > 0.7}
 					<!-- the Hormuz homage: a red callout explaining the width encoding.
 					     anchored to the LEFT of the trunk so it never runs off the frame. -->
-					<Annotation
-						at={{ lngLat: flowData.hub.point }}
-						text={'Width of each line is that\nstate’s share of grain exports.'}
-						dx={-16}
-						dy={6}
-						align="end"
-						connector={true}
-						color="#c0392b"
-						dot={true}
-						size={labelSize}
-					/>
+					<g transition:fade={{ duration: 300 }}>
+						<Annotation
+							at={{ lngLat: flowData.hub.point }}
+							text={'Width of each line is that\nstate’s share of grain exports.'}
+							dx={-16}
+							dy={6}
+							align="end"
+							connector={true}
+							color="#c0392b"
+							dot={true}
+							size={labelSize}
+						/>
+					</g>
 				{/if}
 			</svg>
 		{/if}

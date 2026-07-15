@@ -13,7 +13,8 @@
 		dot = true,
 		color = '#141414',
 		align = 'start',
-		size = 13
+		size = 13,
+		opacity = 1
 	} = $props();
 
 	const getProjection = getProjectionContext();
@@ -32,7 +33,7 @@
 
 {#if anchor}
 	{@const [ax, ay] = anchor}
-	<g class="annotation">
+	<g class="annotation" style:opacity>
 		{#if connector}
 			<line x1={ax} y1={ay} x2={ax + dx} y2={ay + dy} stroke={color} stroke-width="1" opacity="0.6" />
 		{/if}
@@ -48,6 +49,9 @@
 {/if}
 
 <style>
+	.annotation {
+		transition: opacity 0.3s ease;
+	}
 	text {
 		font-family: system-ui, sans-serif;
 		font-weight: 600;
