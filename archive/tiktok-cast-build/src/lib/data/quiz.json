@@ -1,0 +1,48 @@
+{
+  "stub": true,
+  "rounds": [
+    {
+      "id": "9000000000000000001",
+      "answer": "dem",
+      "account": "democrats",
+      "caption": "Reminder: they had four years. They wasted them. 🙃 #politics #accountability",
+      "sound": "original sound – democrats",
+      "clip": "clips/9000000000000000001",
+      "poster": "clips/9000000000000000001.jpg"
+    },
+    {
+      "id": "9000000000000000002",
+      "answer": "dem",
+      "account": "democrats",
+      "caption": "We're not done fighting. Not even close. #resist #2026",
+      "sound": "Creep – Radiohead (slowed)",
+      "clip": "clips/9000000000000000002",
+      "poster": "clips/9000000000000000002.jpg"
+    },
+    {
+      "id": "9000000000000000003",
+      "answer": "rep",
+      "account": "whitehouse",
+      "tell": true,
+      "caption": "Day 1. We told you. #MAGA #AmericaFirst",
+      "sound": "God Bless the USA – Lee Greenwood",
+      "clip": "clips/9000000000000000003",
+      "poster": "clips/9000000000000000003.jpg"
+    },
+    {
+      "id": "9000000000000000004",
+      "answer": "rep",
+      "account": "whitehouse",
+      "caption": "The economy is BOOMING. Pass it on. #winning",
+      "sound": "original sound – whitehouse",
+      "clip": "clips/9000000000000000004",
+      "poster": "clips/9000000000000000004.jpg"
+    }
+  ],
+  "seeded": {
+    "9000000000000000001": { "dem": 61, "rep": 39 },
+    "9000000000000000002": { "dem": 45, "rep": 55 },
+    "9000000000000000003": { "dem": 38, "rep": 62 },
+    "9000000000000000004": { "dem": 52, "rep": 48 }
+  }
+}
