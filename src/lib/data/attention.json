@@ -3,8 +3,8 @@
   {
    "id": "Donald Trump",
    "name": "Donald Trump",
-   "register": 0.484,
-   "total": 2040
+   "register": 0.513,
+   "total": 1982
   },
   {
    "id": "Democratic Party",
@@ -13,16 +13,16 @@
    "total": 534
   },
   {
+   "id": "Joe Biden",
+   "name": "Joe Biden",
+   "register": -1.135,
+   "total": 431
+  },
+  {
    "id": "Kamala Harris",
    "name": "Kamala Harris",
    "register": -1.654,
    "total": 431
-  },
-  {
-   "id": "Joe Biden",
-   "name": "Joe Biden",
-   "register": -1.14,
-   "total": 430
   },
   {
    "id": "Republican Party",
@@ -39,8 +39,8 @@
   {
    "id": "Barack Obama",
    "name": "Barack Obama",
-   "register": -1.542,
-   "total": 144
+   "register": -1.517,
+   "total": 145
   },
   {
    "id": "Tim Walz",
@@ -61,6 +61,12 @@
    "total": 84
   },
   {
+   "id": "Trump administration",
+   "name": "Trump administration",
+   "register": -0.013,
+   "total": 80
+  },
+  {
    "id": "Elon Musk",
    "name": "Elon Musk",
    "register": 1.703,
@@ -69,32 +75,26 @@
   {
    "id": "Zohran Mamdani",
    "name": "Zohran Mamdani",
-   "register": -1.558,
-   "total": 52
+   "register": -1.533,
+   "total": 60
+  },
+  {
+   "id": "Robert F. Kennedy Jr.",
+   "name": "Robert F. Kennedy Jr.",
+   "register": 1.614,
+   "total": 44
+  },
+  {
+   "id": "Doug Emhoff",
+   "name": "Doug Emhoff",
+   "register": -1.116,
+   "total": 43
   },
   {
    "id": "Mike Johnson",
    "name": "Mike Johnson",
    "register": 2.093,
    "total": 43
-  },
-  {
-   "id": "Pete Hegseth",
-   "name": "Pete Hegseth",
-   "register": 0.45,
-   "total": 40
-  },
-  {
-   "id": "Marco Rubio",
-   "name": "Marco Rubio",
-   "register": 0.128,
-   "total": 39
-  },
-  {
-   "id": "Kevin McCarthy",
-   "name": "Kevin McCarthy",
-   "register": 2.0,
-   "total": 39
   }
  ],
  "accounts": [
@@ -171,8 +171,15 @@
    "account": "whitehouse",
    "person": "Donald Trump",
    "month": "2025-08",
-   "count": 42,
-   "sumReg": -97
+   "count": 37,
+   "sumReg": -87
+  },
+  {
+   "account": "whitehouse",
+   "person": "Trump administration",
+   "month": "2025-08",
+   "count": 5,
+   "sumReg": -10
   },
   {
    "account": "whitehouse",
@@ -197,17 +204,17 @@
   },
   {
    "account": "whitehouse",
-   "person": "Pete Hegseth",
-   "month": "2025-08",
-   "count": 2,
-   "sumReg": -2
-  },
-  {
-   "account": "whitehouse",
    "person": "Melania Trump",
    "month": "2025-08",
    "count": 3,
    "sumReg": -3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2025-08",
+   "count": 1,
+   "sumReg": -1
   },
   {
    "account": "whitehouse",
@@ -220,8 +227,8 @@
    "account": "whitehouse",
    "person": "Donald Trump",
    "month": "2025-09",
-   "count": 96,
-   "sumReg": -216
+   "count": 92,
+   "sumReg": -208
   },
   {
    "account": "whitehouse",
@@ -239,10 +246,17 @@
   },
   {
    "account": "whitehouse",
-   "person": "Pete Hegseth",
+   "person": "Robert F. Kennedy Jr.",
    "month": "2025-09",
-   "count": 1,
-   "sumReg": -2
+   "count": 3,
+   "sumReg": -5
+  },
+  {
+   "account": "whitehouse",
+   "person": "Trump administration",
+   "month": "2025-09",
+   "count": 4,
+   "sumReg": -8
   },
   {
    "account": "whitehouse",
@@ -257,13 +271,6 @@
    "month": "2025-09",
    "count": 7,
    "sumReg": -11
-  },
-  {
-   "account": "whitehouse",
-   "person": "Marco Rubio",
-   "month": "2025-09",
-   "count": 1,
-   "sumReg": -2
   },
   {
    "account": "whitehouse",
@@ -290,8 +297,8 @@
    "account": "whitehouse",
    "person": "Donald Trump",
    "month": "2025-10",
-   "count": 56,
-   "sumReg": -133
+   "count": 55,
+   "sumReg": -131
   },
   {
    "account": "whitehouse",
@@ -316,10 +323,17 @@
   },
   {
    "account": "whitehouse",
-   "person": "Pete Hegseth",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2025-10",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "whitehouse",
+   "person": "Trump administration",
    "month": "2025-10",
    "count": 2,
-   "sumReg": -6
+   "sumReg": -4
   },
   {
    "account": "whitehouse",
@@ -388,15 +402,22 @@
    "account": "whitehouse",
    "person": "Donald Trump",
    "month": "2025-12",
-   "count": 58,
-   "sumReg": -137
+   "count": 51,
+   "sumReg": -123
+  },
+  {
+   "account": "whitehouse",
+   "person": "Trump administration",
+   "month": "2025-12",
+   "count": 8,
+   "sumReg": -16
   },
   {
    "account": "whitehouse",
    "person": "Joe Biden",
    "month": "2025-12",
-   "count": 4,
-   "sumReg": 8
+   "count": 5,
+   "sumReg": 9
   },
   {
    "account": "whitehouse",
@@ -407,10 +428,10 @@
   },
   {
    "account": "whitehouse",
-   "person": "Marco Rubio",
+   "person": "Robert F. Kennedy Jr.",
    "month": "2025-12",
-   "count": 2,
-   "sumReg": -2
+   "count": 1,
+   "sumReg": -1
   },
   {
    "account": "whitehouse",
@@ -421,17 +442,10 @@
   },
   {
    "account": "whitehouse",
-   "person": "Pete Hegseth",
-   "month": "2025-12",
-   "count": 2,
-   "sumReg": -3
-  },
-  {
-   "account": "whitehouse",
    "person": "Donald Trump",
    "month": "2026-01",
-   "count": 59,
-   "sumReg": -148
+   "count": 54,
+   "sumReg": -138
   },
   {
    "account": "whitehouse",
@@ -449,17 +463,10 @@
   },
   {
    "account": "whitehouse",
-   "person": "Marco Rubio",
+   "person": "Trump administration",
    "month": "2026-01",
-   "count": 2,
-   "sumReg": -2
-  },
-  {
-   "account": "whitehouse",
-   "person": "Pete Hegseth",
-   "month": "2026-01",
-   "count": 1,
-   "sumReg": -1
+   "count": 7,
+   "sumReg": -14
   },
   {
    "account": "whitehouse",
@@ -491,10 +498,17 @@
   },
   {
    "account": "whitehouse",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2026-01",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "whitehouse",
    "person": "Donald Trump",
    "month": "2026-02",
-   "count": 52,
-   "sumReg": -125
+   "count": 50,
+   "sumReg": -121
   },
   {
    "account": "whitehouse",
@@ -540,6 +554,13 @@
   },
   {
    "account": "whitehouse",
+   "person": "Trump administration",
+   "month": "2026-02",
+   "count": 3,
+   "sumReg": -6
+  },
+  {
+   "account": "whitehouse",
    "person": "Tim Walz",
    "month": "2026-02",
    "count": 1,
@@ -554,31 +575,17 @@
   },
   {
    "account": "whitehouse",
-   "person": "Marco Rubio",
-   "month": "2026-02",
-   "count": 1,
-   "sumReg": -1
-  },
-  {
-   "account": "whitehouse",
    "person": "Donald Trump",
    "month": "2026-03",
-   "count": 70,
-   "sumReg": -173
+   "count": 66,
+   "sumReg": -166
   },
   {
    "account": "whitehouse",
-   "person": "Pete Hegseth",
+   "person": "Barack Obama",
    "month": "2026-03",
-   "count": 5,
-   "sumReg": -9
-  },
-  {
-   "account": "whitehouse",
-   "person": "Marco Rubio",
-   "month": "2026-03",
-   "count": 4,
-   "sumReg": -6
+   "count": 1,
+   "sumReg": 2
   },
   {
    "account": "whitehouse",
@@ -603,6 +610,13 @@
   },
   {
    "account": "whitehouse",
+   "person": "Trump administration",
+   "month": "2026-03",
+   "count": 4,
+   "sumReg": -7
+  },
+  {
+   "account": "whitehouse",
    "person": "Joe Biden",
    "month": "2026-03",
    "count": 6,
@@ -619,15 +633,8 @@
    "account": "whitehouse",
    "person": "Donald Trump",
    "month": "2026-04",
-   "count": 64,
-   "sumReg": -157
-  },
-  {
-   "account": "whitehouse",
-   "person": "Marco Rubio",
-   "month": "2026-04",
-   "count": 1,
-   "sumReg": -2
+   "count": 60,
+   "sumReg": -149
   },
   {
    "account": "whitehouse",
@@ -635,6 +642,13 @@
    "month": "2026-04",
    "count": 3,
    "sumReg": -4
+  },
+  {
+   "account": "whitehouse",
+   "person": "Trump administration",
+   "month": "2026-04",
+   "count": 4,
+   "sumReg": -8
   },
   {
    "account": "whitehouse",
@@ -652,13 +666,6 @@
   },
   {
    "account": "whitehouse",
-   "person": "Pete Hegseth",
-   "month": "2026-04",
-   "count": 1,
-   "sumReg": -2
-  },
-  {
-   "account": "whitehouse",
    "person": "Democratic Party",
    "month": "2026-04",
    "count": 2,
@@ -666,10 +673,17 @@
   },
   {
    "account": "whitehouse",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2026-04",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "whitehouse",
    "person": "Donald Trump",
    "month": "2026-05",
-   "count": 51,
-   "sumReg": -124
+   "count": 49,
+   "sumReg": -123
   },
   {
    "account": "whitehouse",
@@ -677,20 +691,6 @@
    "month": "2026-05",
    "count": 5,
    "sumReg": -7
-  },
-  {
-   "account": "whitehouse",
-   "person": "Marco Rubio",
-   "month": "2026-05",
-   "count": 5,
-   "sumReg": -9
-  },
-  {
-   "account": "whitehouse",
-   "person": "Pete Hegseth",
-   "month": "2026-05",
-   "count": 2,
-   "sumReg": -2
   },
   {
    "account": "whitehouse",
@@ -708,6 +708,13 @@
   },
   {
    "account": "whitehouse",
+   "person": "Trump administration",
+   "month": "2026-05",
+   "count": 3,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
    "person": "Joe Biden",
    "month": "2026-05",
    "count": 5,
@@ -722,17 +729,17 @@
   },
   {
    "account": "whitehouse",
-   "person": "Donald Trump",
+   "person": "Trump administration",
    "month": "2026-06",
-   "count": 56,
-   "sumReg": -134
+   "count": 3,
+   "sumReg": -6
   },
   {
    "account": "whitehouse",
-   "person": "Marco Rubio",
+   "person": "Donald Trump",
    "month": "2026-06",
-   "count": 1,
-   "sumReg": -3
+   "count": 53,
+   "sumReg": -128
   },
   {
    "account": "whitehouse",
@@ -834,6 +841,13 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2022-03",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
    "person": "Joe Biden",
    "month": "2022-04",
    "count": 15,
@@ -925,13 +939,6 @@
   },
   {
    "account": "democrats",
-   "person": "Kevin McCarthy",
-   "month": "2022-06",
-   "count": 1,
-   "sumReg": 1
-  },
-  {
-   "account": "democrats",
    "person": "Donald Trump",
    "month": "2022-06",
    "count": 2,
@@ -943,6 +950,13 @@
    "month": "2022-06",
    "count": 3,
    "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2022-06",
+   "count": 1,
+   "sumReg": -1
   },
   {
    "account": "democrats",
@@ -978,6 +992,13 @@
    "month": "2022-08",
    "count": 4,
    "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2022-08",
+   "count": 2,
+   "sumReg": -2
   },
   {
    "account": "democrats",
@@ -1037,6 +1058,13 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2022-09",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
    "person": "Barack Obama",
    "month": "2022-09",
    "count": 3,
@@ -1048,13 +1076,6 @@
    "month": "2022-09",
    "count": 1,
    "sumReg": 1
-  },
-  {
-   "account": "democrats",
-   "person": "Marco Rubio",
-   "month": "2022-09",
-   "count": 2,
-   "sumReg": 4
   },
   {
    "account": "democrats",
@@ -1093,10 +1114,10 @@
   },
   {
    "account": "democrats",
-   "person": "Marco Rubio",
+   "person": "Doug Emhoff",
    "month": "2022-10",
-   "count": 4,
-   "sumReg": 11
+   "count": 2,
+   "sumReg": -2
   },
   {
    "account": "democrats",
@@ -1132,6 +1153,13 @@
    "month": "2022-11",
    "count": 8,
    "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2022-11",
+   "count": 3,
+   "sumReg": -4
   },
   {
    "account": "democrats",
@@ -1191,10 +1219,10 @@
   },
   {
    "account": "democrats",
-   "person": "Kevin McCarthy",
+   "person": "Doug Emhoff",
    "month": "2022-12",
    "count": 1,
-   "sumReg": 2
+   "sumReg": -1
   },
   {
    "account": "democrats",
@@ -1209,13 +1237,6 @@
    "month": "2023-01",
    "count": 6,
    "sumReg": -9
-  },
-  {
-   "account": "democrats",
-   "person": "Kevin McCarthy",
-   "month": "2023-01",
-   "count": 5,
-   "sumReg": 10
   },
   {
    "account": "democrats",
@@ -1240,6 +1261,13 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2023-01",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
    "person": "Donald Trump",
    "month": "2023-02",
    "count": 1,
@@ -1258,13 +1286,6 @@
    "month": "2023-03",
    "count": 4,
    "sumReg": -6
-  },
-  {
-   "account": "democrats",
-   "person": "Kevin McCarthy",
-   "month": "2023-03",
-   "count": 2,
-   "sumReg": 4
   },
   {
    "account": "democrats",
@@ -1331,13 +1352,6 @@
   },
   {
    "account": "democrats",
-   "person": "Kevin McCarthy",
-   "month": "2023-04",
-   "count": 1,
-   "sumReg": 2
-  },
-  {
-   "account": "democrats",
    "person": "Barack Obama",
    "month": "2023-04",
    "count": 1,
@@ -1359,13 +1373,6 @@
   },
   {
    "account": "democrats",
-   "person": "Kevin McCarthy",
-   "month": "2023-05",
-   "count": 1,
-   "sumReg": 2
-  },
-  {
-   "account": "democrats",
    "person": "Republican Party",
    "month": "2023-05",
    "count": 7,
@@ -1377,6 +1384,13 @@
    "month": "2023-05",
    "count": 8,
    "sumReg": -13
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2023-05",
+   "count": 1,
+   "sumReg": -1
   },
   {
    "account": "democrats",
@@ -1419,6 +1433,13 @@
    "month": "2023-06",
    "count": 7,
    "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2023-06",
+   "count": 1,
+   "sumReg": -2
   },
   {
    "account": "democrats",
@@ -1471,6 +1492,13 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2023-08",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
    "person": "Donald Trump",
    "month": "2023-08",
    "count": 4,
@@ -1520,13 +1548,6 @@
   },
   {
    "account": "democrats",
-   "person": "Kevin McCarthy",
-   "month": "2023-09",
-   "count": 7,
-   "sumReg": 14
-  },
-  {
-   "account": "democrats",
    "person": "Democratic Party",
    "month": "2023-09",
    "count": 5,
@@ -1538,13 +1559,6 @@
    "month": "2023-10",
    "count": 7,
    "sumReg": -11
-  },
-  {
-   "account": "democrats",
-   "person": "Kevin McCarthy",
-   "month": "2023-10",
-   "count": 13,
-   "sumReg": 27
   },
   {
    "account": "democrats",
@@ -1580,6 +1594,13 @@
    "month": "2023-10",
    "count": 1,
    "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2023-10",
+   "count": 2,
+   "sumReg": -3
   },
   {
    "account": "democrats",
@@ -1639,10 +1660,10 @@
   },
   {
    "account": "democrats",
-   "person": "Kevin McCarthy",
+   "person": "Doug Emhoff",
    "month": "2023-11",
-   "count": 3,
-   "sumReg": 6
+   "count": 1,
+   "sumReg": -1
   },
   {
    "account": "democrats",
@@ -1681,16 +1702,16 @@
   },
   {
    "account": "democrats",
-   "person": "Kevin McCarthy",
-   "month": "2023-12",
-   "count": 4,
-   "sumReg": 8
-  },
-  {
-   "account": "democrats",
    "person": "Barack Obama",
    "month": "2023-12",
    "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2023-12",
+   "count": 1,
    "sumReg": -2
   },
   {
@@ -1734,6 +1755,13 @@
    "month": "2024-01",
    "count": 1,
    "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2024-01",
+   "count": 2,
+   "sumReg": -2
   },
   {
    "account": "democrats",
@@ -1793,6 +1821,13 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2024-03",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
    "person": "Joe Biden",
    "month": "2024-03",
    "count": 7,
@@ -1842,6 +1877,20 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2024-04",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2024-04",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
    "person": "Kamala Harris",
    "month": "2024-05",
    "count": 3,
@@ -1870,6 +1919,13 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2024-05",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
    "person": "Joe Biden",
    "month": "2024-06",
    "count": 6,
@@ -1895,6 +1951,13 @@
    "month": "2024-06",
    "count": 1,
    "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2024-06",
+   "count": 1,
+   "sumReg": 3
   },
   {
    "account": "democrats",
@@ -1989,6 +2052,13 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2024-08",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
    "person": "JD Vance",
    "month": "2024-08",
    "count": 5,
@@ -2012,8 +2082,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2024-09",
-   "count": 24,
-   "sumReg": 44
+   "count": 23,
+   "sumReg": 43
   },
   {
    "account": "democrats",
@@ -2042,6 +2112,20 @@
    "month": "2024-09",
    "count": 32,
    "sumReg": -54
+  },
+  {
+   "account": "democrats",
+   "person": "Trump administration",
+   "month": "2024-09",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2024-09",
+   "count": 1,
+   "sumReg": -1
   },
   {
    "account": "democrats",
@@ -2084,6 +2168,13 @@
    "month": "2024-10",
    "count": 119,
    "sumReg": -207
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2024-10",
+   "count": 7,
+   "sumReg": -7
   },
   {
    "account": "democrats",
@@ -2185,6 +2276,13 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2024-11",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
    "person": "Melania Trump",
    "month": "2024-11",
    "count": 1,
@@ -2248,13 +2346,6 @@
   },
   {
    "account": "democrats",
-   "person": "Kevin McCarthy",
-   "month": "2025-01",
-   "count": 1,
-   "sumReg": 2
-  },
-  {
-   "account": "democrats",
    "person": "Mike Johnson",
    "month": "2025-01",
    "count": 1,
@@ -2283,17 +2374,17 @@
   },
   {
    "account": "democrats",
-   "person": "Pete Hegseth",
-   "month": "2025-01",
-   "count": 4,
-   "sumReg": 8
-  },
-  {
-   "account": "democrats",
    "person": "Joe Biden",
    "month": "2025-01",
    "count": 6,
    "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2025-01",
+   "count": 2,
+   "sumReg": -3
   },
   {
    "account": "democrats",
@@ -2308,6 +2399,13 @@
    "month": "2025-01",
    "count": 1,
    "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2025-01",
+   "count": 4,
+   "sumReg": 9
   },
   {
    "account": "democrats",
@@ -2360,6 +2458,13 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2025-02",
+   "count": 3,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
    "person": "Barack Obama",
    "month": "2025-02",
    "count": 2,
@@ -2381,10 +2486,17 @@
   },
   {
    "account": "democrats",
+   "person": "Doug Emhoff",
+   "month": "2025-03",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
    "person": "Donald Trump",
    "month": "2025-03",
-   "count": 21,
-   "sumReg": 38
+   "count": 19,
+   "sumReg": 35
   },
   {
    "account": "democrats",
@@ -2399,6 +2511,13 @@
    "month": "2025-03",
    "count": 8,
    "sumReg": 13
+  },
+  {
+   "account": "democrats",
+   "person": "Trump administration",
+   "month": "2025-03",
+   "count": 3,
+   "sumReg": 5
   },
   {
    "account": "democrats",
@@ -2430,13 +2549,6 @@
   },
   {
    "account": "democrats",
-   "person": "Pete Hegseth",
-   "month": "2025-03",
-   "count": 1,
-   "sumReg": 2
-  },
-  {
-   "account": "democrats",
    "person": "Tim Walz",
    "month": "2025-03",
    "count": 1,
@@ -2453,8 +2565,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2025-04",
-   "count": 21,
-   "sumReg": 49
+   "count": 19,
+   "sumReg": 45
   },
   {
    "account": "democrats",
@@ -2462,6 +2574,13 @@
    "month": "2025-04",
    "count": 5,
    "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Trump administration",
+   "month": "2025-04",
+   "count": 2,
+   "sumReg": 4
   },
   {
    "account": "democrats",
@@ -2507,13 +2626,6 @@
   },
   {
    "account": "democrats",
-   "person": "Pete Hegseth",
-   "month": "2025-04",
-   "count": 2,
-   "sumReg": 5
-  },
-  {
-   "account": "democrats",
    "person": "Elon Musk",
    "month": "2025-05",
    "count": 9,
@@ -2523,8 +2635,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2025-05",
-   "count": 25,
-   "sumReg": 50
+   "count": 24,
+   "sumReg": 48
   },
   {
    "account": "democrats",
@@ -2549,10 +2661,17 @@
   },
   {
    "account": "democrats",
-   "person": "Pete Hegseth",
+   "person": "Trump administration",
    "month": "2025-05",
    "count": 1,
    "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2025-05",
+   "count": 3,
+   "sumReg": 7
   },
   {
    "account": "democrats",
@@ -2591,6 +2710,13 @@
   },
   {
    "account": "democrats",
+   "person": "Trump administration",
+   "month": "2025-06",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
    "person": "Mike Johnson",
    "month": "2025-06",
    "count": 1,
@@ -2612,6 +2738,13 @@
   },
   {
    "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2025-06",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
    "person": "Zohran Mamdani",
    "month": "2025-06",
    "count": 1,
@@ -2621,8 +2754,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2025-07",
-   "count": 80,
-   "sumReg": 188
+   "count": 77,
+   "sumReg": 181
   },
   {
    "account": "democrats",
@@ -2668,6 +2801,20 @@
   },
   {
    "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2025-07",
+   "count": 3,
+   "sumReg": 5
+  },
+  {
+   "account": "democrats",
+   "person": "Trump administration",
+   "month": "2025-07",
+   "count": 4,
+   "sumReg": 10
+  },
+  {
+   "account": "democrats",
    "person": "Jeffrey Epstein",
    "month": "2025-07",
    "count": 20,
@@ -2684,8 +2831,15 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2025-08",
-   "count": 63,
-   "sumReg": 133
+   "count": 62,
+   "sumReg": 130
+  },
+  {
+   "account": "democrats",
+   "person": "Trump administration",
+   "month": "2025-08",
+   "count": 2,
+   "sumReg": 4
   },
   {
    "account": "democrats",
@@ -2717,6 +2871,13 @@
   },
   {
    "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2025-08",
+   "count": 1,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
    "person": "JD Vance",
    "month": "2025-08",
    "count": 16,
@@ -2740,8 +2901,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2025-09",
-   "count": 52,
-   "sumReg": 111
+   "count": 51,
+   "sumReg": 110
   },
   {
    "account": "democrats",
@@ -2756,6 +2917,13 @@
    "month": "2025-09",
    "count": 11,
    "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2025-09",
+   "count": 4,
+   "sumReg": 10
   },
   {
    "account": "democrats",
@@ -2801,17 +2969,17 @@
   },
   {
    "account": "democrats",
+   "person": "Trump administration",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
    "person": "Elon Musk",
    "month": "2025-09",
    "count": 1,
    "sumReg": 3
-  },
-  {
-   "account": "democrats",
-   "person": "Pete Hegseth",
-   "month": "2025-09",
-   "count": 1,
-   "sumReg": 2
   },
   {
    "account": "democrats",
@@ -2838,8 +3006,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2025-10",
-   "count": 70,
-   "sumReg": 156
+   "count": 68,
+   "sumReg": 151
   },
   {
    "account": "democrats",
@@ -2854,6 +3022,13 @@
    "month": "2025-10",
    "count": 13,
    "sumReg": 32
+  },
+  {
+   "account": "democrats",
+   "person": "Trump administration",
+   "month": "2025-10",
+   "count": 4,
+   "sumReg": 8
   },
   {
    "account": "democrats",
@@ -2894,8 +3069,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2025-11",
-   "count": 64,
-   "sumReg": 144
+   "count": 63,
+   "sumReg": 143
   },
   {
    "account": "democrats",
@@ -2936,8 +3111,8 @@
    "account": "democrats",
    "person": "Zohran Mamdani",
    "month": "2025-11",
-   "count": 17,
-   "sumReg": -29
+   "count": 18,
+   "sumReg": -31
   },
   {
    "account": "democrats",
@@ -2962,17 +3137,17 @@
   },
   {
    "account": "democrats",
-   "person": "Pete Hegseth",
+   "person": "Trump administration",
    "month": "2025-11",
-   "count": 1,
-   "sumReg": 2
+   "count": 2,
+   "sumReg": 4
   },
   {
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2025-12",
-   "count": 49,
-   "sumReg": 113
+   "count": 48,
+   "sumReg": 110
   },
   {
    "account": "democrats",
@@ -2987,6 +3162,13 @@
    "month": "2025-12",
    "count": 4,
    "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2025-12",
+   "count": 2,
+   "sumReg": 4
   },
   {
    "account": "democrats",
@@ -3025,13 +3207,6 @@
   },
   {
    "account": "democrats",
-   "person": "Pete Hegseth",
-   "month": "2025-12",
-   "count": 1,
-   "sumReg": 2
-  },
-  {
-   "account": "democrats",
    "person": "Zohran Mamdani",
    "month": "2025-12",
    "count": 3,
@@ -3046,6 +3221,13 @@
   },
   {
    "account": "democrats",
+   "person": "Trump administration",
+   "month": "2025-12",
+   "count": 2,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
    "person": "Zohran Mamdani",
    "month": "2026-01",
    "count": 5,
@@ -3055,8 +3237,15 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2026-01",
-   "count": 49,
-   "sumReg": 122
+   "count": 48,
+   "sumReg": 121
+  },
+  {
+   "account": "democrats",
+   "person": "Trump administration",
+   "month": "2026-01",
+   "count": 3,
+   "sumReg": 7
   },
   {
    "account": "democrats",
@@ -3071,13 +3260,6 @@
    "month": "2026-01",
    "count": 6,
    "sumReg": 13
-  },
-  {
-   "account": "democrats",
-   "person": "Marco Rubio",
-   "month": "2026-01",
-   "count": 4,
-   "sumReg": 7
   },
   {
    "account": "democrats",
@@ -3099,6 +3281,13 @@
    "month": "2026-01",
    "count": 9,
    "sumReg": 19
+  },
+  {
+   "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2026-01",
+   "count": 1,
+   "sumReg": 2
   },
   {
    "account": "democrats",
@@ -3137,17 +3326,10 @@
   },
   {
    "account": "democrats",
-   "person": "Marco Rubio",
-   "month": "2026-02",
-   "count": 4,
-   "sumReg": 9
-  },
-  {
-   "account": "democrats",
    "person": "Donald Trump",
    "month": "2026-02",
-   "count": 57,
-   "sumReg": 125
+   "count": 56,
+   "sumReg": 122
   },
   {
    "account": "democrats",
@@ -3167,7 +3349,7 @@
    "account": "democrats",
    "person": "Zohran Mamdani",
    "month": "2026-02",
-   "count": 4,
+   "count": 6,
    "sumReg": 2
   },
   {
@@ -3186,6 +3368,13 @@
   },
   {
    "account": "democrats",
+   "person": "Trump administration",
+   "month": "2026-02",
+   "count": 2,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
    "person": "Melania Trump",
    "month": "2026-02",
    "count": 1,
@@ -3193,10 +3382,10 @@
   },
   {
    "account": "democrats",
-   "person": "Pete Hegseth",
+   "person": "Robert F. Kennedy Jr.",
    "month": "2026-02",
-   "count": 3,
-   "sumReg": 8
+   "count": 5,
+   "sumReg": 13
   },
   {
    "account": "democrats",
@@ -3216,15 +3405,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2026-03",
-   "count": 82,
-   "sumReg": 194
-  },
-  {
-   "account": "democrats",
-   "person": "Pete Hegseth",
-   "month": "2026-03",
-   "count": 4,
-   "sumReg": 7
+   "count": 81,
+   "sumReg": 191
   },
   {
    "account": "democrats",
@@ -3270,13 +3452,6 @@
   },
   {
    "account": "democrats",
-   "person": "Marco Rubio",
-   "month": "2026-03",
-   "count": 3,
-   "sumReg": 6
-  },
-  {
-   "account": "democrats",
    "person": "Barack Obama",
    "month": "2026-03",
    "count": 6,
@@ -3286,8 +3461,22 @@
    "account": "democrats",
    "person": "Zohran Mamdani",
    "month": "2026-03",
+   "count": 4,
+   "sumReg": -8
+  },
+  {
+   "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2026-03",
    "count": 3,
-   "sumReg": -6
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
+   "person": "Trump administration",
+   "month": "2026-03",
+   "count": 2,
+   "sumReg": 6
   },
   {
    "account": "democrats",
@@ -3300,8 +3489,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2026-04",
-   "count": 68,
-   "sumReg": 148
+   "count": 67,
+   "sumReg": 147
   },
   {
    "account": "democrats",
@@ -3319,17 +3508,24 @@
   },
   {
    "account": "democrats",
-   "person": "Marco Rubio",
+   "person": "Robert F. Kennedy Jr.",
    "month": "2026-04",
-   "count": 1,
-   "sumReg": 2
+   "count": 2,
+   "sumReg": 4
   },
   {
    "account": "democrats",
    "person": "Zohran Mamdani",
    "month": "2026-04",
-   "count": 4,
-   "sumReg": -7
+   "count": 5,
+   "sumReg": -8
+  },
+  {
+   "account": "democrats",
+   "person": "Trump administration",
+   "month": "2026-04",
+   "count": 2,
+   "sumReg": 3
   },
   {
    "account": "democrats",
@@ -3368,13 +3564,6 @@
   },
   {
    "account": "democrats",
-   "person": "Pete Hegseth",
-   "month": "2026-04",
-   "count": 2,
-   "sumReg": 4
-  },
-  {
-   "account": "democrats",
    "person": "Barack Obama",
    "month": "2026-05",
    "count": 1,
@@ -3391,8 +3580,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2026-05",
-   "count": 66,
-   "sumReg": 160
+   "count": 65,
+   "sumReg": 159
   },
   {
    "account": "democrats",
@@ -3419,15 +3608,8 @@
    "account": "democrats",
    "person": "Zohran Mamdani",
    "month": "2026-05",
-   "count": 3,
-   "sumReg": -4
-  },
-  {
-   "account": "democrats",
-   "person": "Pete Hegseth",
-   "month": "2026-05",
-   "count": 1,
-   "sumReg": 2
+   "count": 5,
+   "sumReg": -8
   },
   {
    "account": "democrats",
@@ -3438,10 +3620,24 @@
   },
   {
    "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2026-05",
+   "count": 3,
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
    "person": "Elon Musk",
    "month": "2026-05",
    "count": 2,
    "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "Trump administration",
+   "month": "2026-05",
+   "count": 3,
+   "sumReg": 7
   },
   {
    "account": "democrats",
@@ -3454,8 +3650,8 @@
    "account": "democrats",
    "person": "Donald Trump",
    "month": "2026-06",
-   "count": 75,
-   "sumReg": 183
+   "count": 74,
+   "sumReg": 181
   },
   {
    "account": "democrats",
@@ -3515,17 +3711,24 @@
   },
   {
    "account": "democrats",
+   "person": "Trump administration",
+   "month": "2026-06",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2026-06",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
    "person": "Elon Musk",
    "month": "2026-06",
    "count": 2,
    "sumReg": 5
-  },
-  {
-   "account": "democrats",
-   "person": "Pete Hegseth",
-   "month": "2026-06",
-   "count": 1,
-   "sumReg": 2
   },
   {
    "account": "democrats",
@@ -3559,8 +3762,8 @@
    "account": "democrats",
    "person": "Zohran Mamdani",
    "month": "2026-07",
-   "count": 1,
-   "sumReg": -3
+   "count": 2,
+   "sumReg": -5
   },
   {
    "account": "democrats",
@@ -3584,6 +3787,13 @@
    "sumReg": -1
   },
   {
+   "account": "democrats",
+   "person": "Robert F. Kennedy Jr.",
+   "month": "2026-07",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
    "account": "republicans",
    "person": "Donald Trump",
    "month": "2026-02",
@@ -3603,13 +3813,6 @@
    "month": "2026-02",
    "count": 9,
    "sumReg": 24
-  },
-  {
-   "account": "republicans",
-   "person": "Marco Rubio",
-   "month": "2026-02",
-   "count": 1,
-   "sumReg": -1
   },
   {
    "account": "republicans",
@@ -3645,13 +3848,6 @@
    "month": "2026-03",
    "count": 11,
    "sumReg": -20
-  },
-  {
-   "account": "republicans",
-   "person": "Pete Hegseth",
-   "month": "2026-03",
-   "count": 1,
-   "sumReg": -1
   },
   {
    "account": "republicans",
@@ -3718,13 +3914,6 @@
   },
   {
    "account": "republicans",
-   "person": "Marco Rubio",
-   "month": "2026-05",
-   "count": 2,
-   "sumReg": -4
-  },
-  {
-   "account": "republicans",
    "person": "Kamala Harris",
    "month": "2026-05",
    "count": 1,
@@ -3767,13 +3956,6 @@
   },
   {
    "account": "republicans",
-   "person": "Pete Hegseth",
-   "month": "2026-05",
-   "count": 1,
-   "sumReg": 0
-  },
-  {
-   "account": "republicans",
    "person": "Joe Biden",
    "month": "2026-06",
    "count": 4,
@@ -3785,13 +3967,6 @@
    "month": "2026-06",
    "count": 21,
    "sumReg": -53
-  },
-  {
-   "account": "republicans",
-   "person": "Marco Rubio",
-   "month": "2026-06",
-   "count": 1,
-   "sumReg": -2
   },
   {
    "account": "republicans",

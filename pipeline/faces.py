@@ -2,8 +2,10 @@
 roster headshot. Saves 96px JPGs to static/faces/ and a subject→file manifest.
 The scatter clips them to circles in canvas at draw time.
 """
+import csv
 import json
 import re
+import unicodedata
 from pathlib import Path
 from PIL import Image
 
@@ -12,7 +14,24 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "static" / "faces"
 DATA = ROOT / "src" / "lib" / "data"
 
-slugify = lambda n: re.sub(r"[^a-z0-9]+", "-", n.lower()).strip("-")
+
+def slugify(n):
+    n = unicodedata.normalize("NFKD", n).encode("ascii", "ignore").decode()  # strip accents
+    return re.sub(r"[^a-z0-9]+", "-", n.lower()).strip("-")
+
+# roster stores some people under a formal name; map our canonical → roster slug
+ROSTER_OVERRIDE = {"Chuck Schumer": "charles-schumer"}
+# roster name (lowercased) → slug, so "JB Pritzker" etc. resolve even if the
+# folder slug differs from a naive slugify
+_roster = {r["name"].strip().lower(): r["slug"] for r in csv.DictReader(open(WL / "roster.csv"))}
+
+
+def resolve_slug(name):
+    """canonical subject name → a watchlist slug that has a headshot, or None."""
+    for cand in (ROSTER_OVERRIDE.get(name), slugify(name), _roster.get(name.strip().lower())):
+        if cand and (WL / cand / "01.jpg").exists():
+            return cand
+    return None
 
 
 def main():
@@ -25,10 +44,10 @@ def main():
     for p in pts:
         per_subj[p["s"]] = per_subj.get(p["s"], 0) + 1
     for name in subjects:
-        slug = slugify(name)
-        src = WL / slug / "01.jpg"
-        if not src.exists():
+        slug = resolve_slug(name)
+        if not slug:
             continue
+        src = WL / slug / "01.jpg"
         im = Image.open(src).convert("RGB")
         s = min(im.size)
         im = im.crop(((im.width - s) // 2, (im.height - s) // 2, (im.width + s) // 2, (im.height + s) // 2)).resize((96, 96))

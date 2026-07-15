@@ -20,25 +20,10 @@ OUT = Path(__file__).resolve().parents[1] / "src" / "lib" / "data" / "attention.
 ACCOUNTS = ["democrats", "whitehouse", "republicans"]
 TOP_N = 16
 
-# --- canonicalisation: merge the name fragments the LLM produced -------------
-ALIASES = {
-    "donald j. trump": "Donald Trump",
-    "president donald trump": "Donald Trump",
-    "president trump": "Donald Trump",
-    "trump": "Donald Trump",
-    "the trump administration": "Donald Trump",
-    "jd vance": "JD Vance",
-    "j.d. vance": "JD Vance",
-    "vice president jd vance": "JD Vance",
-    "kamala harris": "Kamala Harris",
-    "vice president kamala harris": "Kamala Harris",
-    "joe biden": "Joe Biden",
-    "president joe biden": "Joe Biden",
-    "president biden": "Joe Biden",
-    "barack obama": "Barack Obama",
-    "robert f. kennedy, jr.": "Robert F. Kennedy Jr.",
-    "robert f. kennedy jr.": "Robert F. Kennedy Jr.",
-}
+# --- canonicalisation: PT's authoritative subject-alias merge (built upstream)
+# maps an exact variant subject string → its canonical form. PT owns these.
+ALIAS_FILE = SRC.parent.parent / "analysis" / "subject_aliases.json"
+ALIASES = json.load(open(ALIAS_FILE)).get("aliases", {})
 
 # people-of-interest whitelist (canonical) + the two parties as collective targets
 PARTIES = {"Democratic Party", "Republican Party"}
@@ -49,14 +34,7 @@ EXCLUDE = {"America", "The White House", "Congress", "The Supreme Court",
 
 def canon(name):
     n = name.strip()
-    key = n.lower()
-    if key in ALIASES:
-        return ALIASES[key]
-    # normalise "the X party" / casing → "X Party"
-    m = re.match(r"^(the\s+)?(democratic|republican)\s+party$", key)
-    if m:
-        return f"{m.group(2).capitalize()} Party"
-    return n
+    return ALIASES.get(n, n)
 
 
 def is_person_or_party(name):
