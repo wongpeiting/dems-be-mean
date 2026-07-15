@@ -1,0 +1,3853 @@
+{
+ "people": [
+  {
+   "id": "Donald Trump",
+   "name": "Donald Trump",
+   "register": 0.484,
+   "total": 2040
+  },
+  {
+   "id": "Democratic Party",
+   "name": "Democratic Party",
+   "register": -0.528,
+   "total": 534
+  },
+  {
+   "id": "Kamala Harris",
+   "name": "Kamala Harris",
+   "register": -1.654,
+   "total": 431
+  },
+  {
+   "id": "Joe Biden",
+   "name": "Joe Biden",
+   "register": -1.14,
+   "total": 430
+  },
+  {
+   "id": "Republican Party",
+   "name": "Republican Party",
+   "register": 1.685,
+   "total": 324
+  },
+  {
+   "id": "JD Vance",
+   "name": "JD Vance",
+   "register": 0.78,
+   "total": 150
+  },
+  {
+   "id": "Barack Obama",
+   "name": "Barack Obama",
+   "register": -1.542,
+   "total": 144
+  },
+  {
+   "id": "Tim Walz",
+   "name": "Tim Walz",
+   "register": -1.282,
+   "total": 117
+  },
+  {
+   "id": "Jeffrey Epstein",
+   "name": "Jeffrey Epstein",
+   "register": 1.663,
+   "total": 89
+  },
+  {
+   "id": "Melania Trump",
+   "name": "Melania Trump",
+   "register": -0.917,
+   "total": 84
+  },
+  {
+   "id": "Elon Musk",
+   "name": "Elon Musk",
+   "register": 1.703,
+   "total": 74
+  },
+  {
+   "id": "Zohran Mamdani",
+   "name": "Zohran Mamdani",
+   "register": -1.558,
+   "total": 52
+  },
+  {
+   "id": "Mike Johnson",
+   "name": "Mike Johnson",
+   "register": 2.093,
+   "total": 43
+  },
+  {
+   "id": "Pete Hegseth",
+   "name": "Pete Hegseth",
+   "register": 0.45,
+   "total": 40
+  },
+  {
+   "id": "Marco Rubio",
+   "name": "Marco Rubio",
+   "register": 0.128,
+   "total": 39
+  },
+  {
+   "id": "Kevin McCarthy",
+   "name": "Kevin McCarthy",
+   "register": 2.0,
+   "total": 39
+  }
+ ],
+ "accounts": [
+  {
+   "id": "democrats",
+   "firstMonth": "2022-03"
+  },
+  {
+   "id": "whitehouse",
+   "firstMonth": "2025-08"
+  },
+  {
+   "id": "republicans",
+   "firstMonth": "2026-02"
+  }
+ ],
+ "months": [
+  "2022-03",
+  "2022-04",
+  "2022-05",
+  "2022-06",
+  "2022-07",
+  "2022-08",
+  "2022-09",
+  "2022-10",
+  "2022-11",
+  "2022-12",
+  "2023-01",
+  "2023-02",
+  "2023-03",
+  "2023-04",
+  "2023-05",
+  "2023-06",
+  "2023-07",
+  "2023-08",
+  "2023-09",
+  "2023-10",
+  "2023-11",
+  "2023-12",
+  "2024-01",
+  "2024-02",
+  "2024-03",
+  "2024-04",
+  "2024-05",
+  "2024-06",
+  "2024-07",
+  "2024-08",
+  "2024-09",
+  "2024-10",
+  "2024-11",
+  "2024-12",
+  "2025-01",
+  "2025-02",
+  "2025-03",
+  "2025-04",
+  "2025-05",
+  "2025-06",
+  "2025-07",
+  "2025-08",
+  "2025-09",
+  "2025-10",
+  "2025-11",
+  "2025-12",
+  "2026-01",
+  "2026-02",
+  "2026-03",
+  "2026-04",
+  "2026-05",
+  "2026-06",
+  "2026-07"
+ ],
+ "flows": [
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2025-08",
+   "count": 42,
+   "sumReg": -97
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2025-08",
+   "count": 2,
+   "sumReg": 3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Kamala Harris",
+   "month": "2025-08",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2025-08",
+   "count": 6,
+   "sumReg": -11
+  },
+  {
+   "account": "whitehouse",
+   "person": "Pete Hegseth",
+   "month": "2025-08",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2025-08",
+   "count": 3,
+   "sumReg": -3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2025-08",
+   "count": 3,
+   "sumReg": 8
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2025-09",
+   "count": 96,
+   "sumReg": -216
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2025-09",
+   "count": 4,
+   "sumReg": 6
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2025-09",
+   "count": 11,
+   "sumReg": -18
+  },
+  {
+   "account": "whitehouse",
+   "person": "Pete Hegseth",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2025-09",
+   "count": 5,
+   "sumReg": 15
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2025-09",
+   "count": 7,
+   "sumReg": -11
+  },
+  {
+   "account": "whitehouse",
+   "person": "Marco Rubio",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Elon Musk",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2025-10",
+   "count": 27,
+   "sumReg": 70
+  },
+  {
+   "account": "whitehouse",
+   "person": "Republican Party",
+   "month": "2025-10",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2025-10",
+   "count": 56,
+   "sumReg": -133
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2025-10",
+   "count": 4,
+   "sumReg": -7
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2025-10",
+   "count": 4,
+   "sumReg": -5
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2025-10",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "whitehouse",
+   "person": "Pete Hegseth",
+   "month": "2025-10",
+   "count": 2,
+   "sumReg": -6
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2025-11",
+   "count": 53,
+   "sumReg": -123
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2025-11",
+   "count": 14,
+   "sumReg": -19
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2025-11",
+   "count": 3,
+   "sumReg": -5
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2025-11",
+   "count": 7,
+   "sumReg": 18
+  },
+  {
+   "account": "whitehouse",
+   "person": "Kamala Harris",
+   "month": "2025-11",
+   "count": 2,
+   "sumReg": 2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2025-11",
+   "count": 6,
+   "sumReg": 10
+  },
+  {
+   "account": "whitehouse",
+   "person": "Republican Party",
+   "month": "2025-11",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Zohran Mamdani",
+   "month": "2025-11",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2025-12",
+   "count": 9,
+   "sumReg": -14
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2025-12",
+   "count": 58,
+   "sumReg": -137
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2025-12",
+   "count": 4,
+   "sumReg": 8
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2025-12",
+   "count": 3,
+   "sumReg": 6
+  },
+  {
+   "account": "whitehouse",
+   "person": "Marco Rubio",
+   "month": "2025-12",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2025-12",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Pete Hegseth",
+   "month": "2025-12",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2026-01",
+   "count": 59,
+   "sumReg": -148
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2026-01",
+   "count": 5,
+   "sumReg": -9
+  },
+  {
+   "account": "whitehouse",
+   "person": "Republican Party",
+   "month": "2026-01",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Marco Rubio",
+   "month": "2026-01",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Pete Hegseth",
+   "month": "2026-01",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2026-01",
+   "count": 4,
+   "sumReg": -7
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2026-01",
+   "count": 6,
+   "sumReg": 13
+  },
+  {
+   "account": "whitehouse",
+   "person": "Tim Walz",
+   "month": "2026-01",
+   "count": 3,
+   "sumReg": 9
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2026-01",
+   "count": 1,
+   "sumReg": 3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2026-02",
+   "count": 52,
+   "sumReg": -125
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2026-02",
+   "count": 9,
+   "sumReg": 21
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2026-02",
+   "count": 12,
+   "sumReg": 26
+  },
+  {
+   "account": "whitehouse",
+   "person": "Kamala Harris",
+   "month": "2026-02",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2026-02",
+   "count": 6,
+   "sumReg": -10
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2026-02",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Barack Obama",
+   "month": "2026-02",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Tim Walz",
+   "month": "2026-02",
+   "count": 1,
+   "sumReg": 3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Republican Party",
+   "month": "2026-02",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "whitehouse",
+   "person": "Marco Rubio",
+   "month": "2026-02",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2026-03",
+   "count": 70,
+   "sumReg": -173
+  },
+  {
+   "account": "whitehouse",
+   "person": "Pete Hegseth",
+   "month": "2026-03",
+   "count": 5,
+   "sumReg": -9
+  },
+  {
+   "account": "whitehouse",
+   "person": "Marco Rubio",
+   "month": "2026-03",
+   "count": 4,
+   "sumReg": -6
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2026-03",
+   "count": 3,
+   "sumReg": -7
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2026-03",
+   "count": 7,
+   "sumReg": 20
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2026-03",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2026-03",
+   "count": 6,
+   "sumReg": 3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Republican Party",
+   "month": "2026-03",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2026-04",
+   "count": 64,
+   "sumReg": -157
+  },
+  {
+   "account": "whitehouse",
+   "person": "Marco Rubio",
+   "month": "2026-04",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2026-04",
+   "count": 3,
+   "sumReg": -4
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2026-04",
+   "count": 8,
+   "sumReg": -16
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2026-04",
+   "count": 5,
+   "sumReg": 8
+  },
+  {
+   "account": "whitehouse",
+   "person": "Pete Hegseth",
+   "month": "2026-04",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2026-04",
+   "count": 2,
+   "sumReg": 6
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2026-05",
+   "count": 51,
+   "sumReg": -124
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2026-05",
+   "count": 5,
+   "sumReg": -7
+  },
+  {
+   "account": "whitehouse",
+   "person": "Marco Rubio",
+   "month": "2026-05",
+   "count": 5,
+   "sumReg": -9
+  },
+  {
+   "account": "whitehouse",
+   "person": "Pete Hegseth",
+   "month": "2026-05",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2026-05",
+   "count": 6,
+   "sumReg": 16
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2026-05",
+   "count": 4,
+   "sumReg": -6
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2026-05",
+   "count": 5,
+   "sumReg": 9
+  },
+  {
+   "account": "whitehouse",
+   "person": "Kamala Harris",
+   "month": "2026-05",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2026-06",
+   "count": 56,
+   "sumReg": -134
+  },
+  {
+   "account": "whitehouse",
+   "person": "Marco Rubio",
+   "month": "2026-06",
+   "count": 1,
+   "sumReg": -3
+  },
+  {
+   "account": "whitehouse",
+   "person": "Melania Trump",
+   "month": "2026-06",
+   "count": 3,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2026-06",
+   "count": 4,
+   "sumReg": 9
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2026-06",
+   "count": 4,
+   "sumReg": -8
+  },
+  {
+   "account": "whitehouse",
+   "person": "Joe Biden",
+   "month": "2026-06",
+   "count": 2,
+   "sumReg": 2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Republican Party",
+   "month": "2026-06",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "whitehouse",
+   "person": "Donald Trump",
+   "month": "2026-07",
+   "count": 21,
+   "sumReg": -56
+  },
+  {
+   "account": "whitehouse",
+   "person": "JD Vance",
+   "month": "2026-07",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "whitehouse",
+   "person": "Democratic Party",
+   "month": "2026-07",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2022-03",
+   "count": 3,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2022-03",
+   "count": 10,
+   "sumReg": -17
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2022-03",
+   "count": 5,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2022-03",
+   "count": 1,
+   "sumReg": 0
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2022-03",
+   "count": 2,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2022-03",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2022-04",
+   "count": 15,
+   "sumReg": -26
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2022-04",
+   "count": 7,
+   "sumReg": -13
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2022-04",
+   "count": 3,
+   "sumReg": -4
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2022-04",
+   "count": 3,
+   "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2022-04",
+   "count": 3,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2022-04",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2022-05",
+   "count": 12,
+   "sumReg": 22
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2022-05",
+   "count": 7,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2022-05",
+   "count": 3,
+   "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2022-05",
+   "count": 4,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2022-06",
+   "count": 11,
+   "sumReg": 18
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2022-06",
+   "count": 5,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2022-06",
+   "count": 8,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2022-06",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2022-06",
+   "count": 2,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2022-06",
+   "count": 3,
+   "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2022-07",
+   "count": 5,
+   "sumReg": -8
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2022-07",
+   "count": 8,
+   "sumReg": -11
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2022-07",
+   "count": 6,
+   "sumReg": -11
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2022-07",
+   "count": 6,
+   "sumReg": 13
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2022-08",
+   "count": 4,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2022-08",
+   "count": 20,
+   "sumReg": -30
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2022-08",
+   "count": 15,
+   "sumReg": 24
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2022-08",
+   "count": 21,
+   "sumReg": -37
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2022-08",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2022-09",
+   "count": 8,
+   "sumReg": 10
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2022-09",
+   "count": 11,
+   "sumReg": -16
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2022-09",
+   "count": 10,
+   "sumReg": -17
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2022-09",
+   "count": 7,
+   "sumReg": -11
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2022-09",
+   "count": 3,
+   "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2022-09",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Marco Rubio",
+   "month": "2022-09",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2022-10",
+   "count": 10,
+   "sumReg": -12
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2022-10",
+   "count": 6,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2022-10",
+   "count": 6,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2022-10",
+   "count": 4,
+   "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2022-10",
+   "count": 3,
+   "sumReg": 5
+  },
+  {
+   "account": "democrats",
+   "person": "Marco Rubio",
+   "month": "2022-10",
+   "count": 4,
+   "sumReg": 11
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2022-10",
+   "count": 3,
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2022-11",
+   "count": 32,
+   "sumReg": -51
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2022-11",
+   "count": 19,
+   "sumReg": -27
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2022-11",
+   "count": 7,
+   "sumReg": -11
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2022-11",
+   "count": 8,
+   "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2022-11",
+   "count": 8,
+   "sumReg": 14
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2022-11",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2022-11",
+   "count": 2,
+   "sumReg": 5
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2022-12",
+   "count": 7,
+   "sumReg": -11
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2022-12",
+   "count": 3,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2022-12",
+   "count": 7,
+   "sumReg": -11
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2022-12",
+   "count": 4,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2022-12",
+   "count": 3,
+   "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2022-12",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-01",
+   "count": 7,
+   "sumReg": 16
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2023-01",
+   "count": 6,
+   "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2023-01",
+   "count": 5,
+   "sumReg": 10
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2023-01",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-01",
+   "count": 2,
+   "sumReg": -4
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-01",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2023-02",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-02",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-03",
+   "count": 4,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2023-03",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-03",
+   "count": 2,
+   "sumReg": -4
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-03",
+   "count": 2,
+   "sumReg": 5
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2023-03",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2023-03",
+   "count": 4,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-04",
+   "count": 4,
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2023-04",
+   "count": 6,
+   "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-04",
+   "count": 16,
+   "sumReg": -28
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2023-04",
+   "count": 3,
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-04",
+   "count": 9,
+   "sumReg": -17
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2023-04",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2023-04",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-05",
+   "count": 15,
+   "sumReg": -27
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2023-05",
+   "count": 5,
+   "sumReg": 11
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2023-05",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-05",
+   "count": 7,
+   "sumReg": 14
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-05",
+   "count": 8,
+   "sumReg": -13
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2023-05",
+   "count": 3,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-06",
+   "count": 15,
+   "sumReg": -26
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2023-06",
+   "count": 5,
+   "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2023-06",
+   "count": 7,
+   "sumReg": 13
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-06",
+   "count": 4,
+   "sumReg": 9
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-06",
+   "count": 7,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2023-07",
+   "count": 4,
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-07",
+   "count": 19,
+   "sumReg": -33
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-07",
+   "count": 5,
+   "sumReg": 10
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2023-07",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-07",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-08",
+   "count": 10,
+   "sumReg": -20
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-08",
+   "count": 6,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2023-08",
+   "count": 4,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-08",
+   "count": 5,
+   "sumReg": 11
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2023-08",
+   "count": 4,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-09",
+   "count": 8,
+   "sumReg": 15
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-09",
+   "count": 22,
+   "sumReg": -39
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2023-09",
+   "count": 11,
+   "sumReg": 23
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-09",
+   "count": 7,
+   "sumReg": -13
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2023-09",
+   "count": 7,
+   "sumReg": 14
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2023-09",
+   "count": 5,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-10",
+   "count": 7,
+   "sumReg": -11
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2023-10",
+   "count": 13,
+   "sumReg": 27
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-10",
+   "count": 11,
+   "sumReg": 19
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-10",
+   "count": 21,
+   "sumReg": -33
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2023-10",
+   "count": 15,
+   "sumReg": 29
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2023-10",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2023-10",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2023-10",
+   "count": 8,
+   "sumReg": 20
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2023-11",
+   "count": 5,
+   "sumReg": 11
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-11",
+   "count": 9,
+   "sumReg": 17
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2023-11",
+   "count": 9,
+   "sumReg": 14
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-11",
+   "count": 11,
+   "sumReg": -18
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-11",
+   "count": 5,
+   "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2023-11",
+   "count": 5,
+   "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2023-11",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2023-11",
+   "count": 3,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2023-12",
+   "count": 11,
+   "sumReg": 23
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2023-12",
+   "count": 8,
+   "sumReg": -12
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2023-12",
+   "count": 6,
+   "sumReg": -11
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2023-12",
+   "count": 4,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2023-12",
+   "count": 8,
+   "sumReg": 9
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2023-12",
+   "count": 4,
+   "sumReg": 8
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2023-12",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-01",
+   "count": 17,
+   "sumReg": -29
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2024-01",
+   "count": 9,
+   "sumReg": -13
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-01",
+   "count": 15,
+   "sumReg": 36
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2024-01",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2024-01",
+   "count": 3,
+   "sumReg": -4
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2024-01",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2024-01",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-02",
+   "count": 8,
+   "sumReg": -14
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-02",
+   "count": 5,
+   "sumReg": 10
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2024-02",
+   "count": 4,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2024-02",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2024-02",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-03",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2024-03",
+   "count": 3,
+   "sumReg": -4
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-03",
+   "count": 7,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2024-03",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2024-04",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-04",
+   "count": 12,
+   "sumReg": -22
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2024-04",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-04",
+   "count": 7,
+   "sumReg": 14
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2024-04",
+   "count": 6,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2024-05",
+   "count": 3,
+   "sumReg": -4
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-05",
+   "count": 9,
+   "sumReg": 23
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-05",
+   "count": 12,
+   "sumReg": -20
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2024-05",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-06",
+   "count": 6,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2024-06",
+   "count": 5,
+   "sumReg": -8
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-06",
+   "count": 5,
+   "sumReg": 10
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2024-06",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2024-06",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-07",
+   "count": 5,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-07",
+   "count": 4,
+   "sumReg": 8
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2024-07",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2024-07",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2024-07",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2024-07",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2024-08",
+   "count": 31,
+   "sumReg": -56
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2024-08",
+   "count": 2,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-08",
+   "count": 11,
+   "sumReg": 26
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-08",
+   "count": 10,
+   "sumReg": -17
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2024-08",
+   "count": 22,
+   "sumReg": -31
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2024-08",
+   "count": 17,
+   "sumReg": -28
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2024-08",
+   "count": 5,
+   "sumReg": 10
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2024-08",
+   "count": 4,
+   "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2024-09",
+   "count": 8,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-09",
+   "count": 24,
+   "sumReg": 44
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2024-09",
+   "count": 14,
+   "sumReg": -24
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2024-09",
+   "count": 7,
+   "sumReg": 9
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-09",
+   "count": 3,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2024-09",
+   "count": 32,
+   "sumReg": -54
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2024-09",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2024-09",
+   "count": 3,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-10",
+   "count": 109,
+   "sumReg": 258
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2024-10",
+   "count": 15,
+   "sumReg": 26
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2024-10",
+   "count": 34,
+   "sumReg": -52
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2024-10",
+   "count": 119,
+   "sumReg": -207
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2024-10",
+   "count": 15,
+   "sumReg": -20
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2024-10",
+   "count": 7,
+   "sumReg": 15
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-10",
+   "count": 5,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2024-10",
+   "count": 18,
+   "sumReg": -37
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2024-10",
+   "count": 1,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2024-11",
+   "count": 3,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2024-11",
+   "count": 84,
+   "sumReg": -150
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-11",
+   "count": 18,
+   "sumReg": 32
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2024-11",
+   "count": 9,
+   "sumReg": -17
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2024-11",
+   "count": 36,
+   "sumReg": -47
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-11",
+   "count": 4,
+   "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2024-11",
+   "count": 5,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2024-11",
+   "count": 2,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2024-11",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2024-11",
+   "count": 1,
+   "sumReg": 0
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2024-12",
+   "count": 17,
+   "sumReg": 34
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2024-12",
+   "count": 1,
+   "sumReg": 0
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2024-12",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2024-12",
+   "count": 7,
+   "sumReg": 13
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2024-12",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2024-12",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2024-12",
+   "count": 3,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-01",
+   "count": 4,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
+   "person": "Kevin McCarthy",
+   "month": "2025-01",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2025-01",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2025-01",
+   "count": 4,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-01",
+   "count": 37,
+   "sumReg": 77
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2025-01",
+   "count": 8,
+   "sumReg": 16
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2025-01",
+   "count": 4,
+   "sumReg": 8
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2025-01",
+   "count": 6,
+   "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2025-01",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2025-01",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-02",
+   "count": 38,
+   "sumReg": 70
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2025-02",
+   "count": 9,
+   "sumReg": -16
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-02",
+   "count": 6,
+   "sumReg": 12
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2025-02",
+   "count": 15,
+   "sumReg": 25
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2025-02",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2025-02",
+   "count": 4,
+   "sumReg": 8
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2025-02",
+   "count": 4,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2025-02",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2025-02",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2025-03",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-03",
+   "count": 21,
+   "sumReg": 38
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2025-03",
+   "count": 6,
+   "sumReg": 11
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2025-03",
+   "count": 8,
+   "sumReg": 13
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-03",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2025-03",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2025-03",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2025-03",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2025-03",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2025-03",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2025-04",
+   "count": 8,
+   "sumReg": 20
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-04",
+   "count": 21,
+   "sumReg": 49
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2025-04",
+   "count": 5,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2025-04",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2025-04",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2025-04",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2025-04",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-04",
+   "count": 1,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2025-04",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2025-04",
+   "count": 2,
+   "sumReg": 5
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2025-05",
+   "count": 9,
+   "sumReg": 17
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-05",
+   "count": 25,
+   "sumReg": 50
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2025-05",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2025-05",
+   "count": 4,
+   "sumReg": 8
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-05",
+   "count": 4,
+   "sumReg": 9
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2025-05",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2025-05",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-06",
+   "count": 28,
+   "sumReg": 57
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2025-06",
+   "count": 6,
+   "sumReg": 5
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2025-06",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-06",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2025-06",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2025-06",
+   "count": 4,
+   "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2025-06",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2025-06",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-07",
+   "count": 80,
+   "sumReg": 188
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2025-07",
+   "count": 3,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-07",
+   "count": 20,
+   "sumReg": 41
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2025-07",
+   "count": 4,
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2025-07",
+   "count": 12,
+   "sumReg": -17
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2025-07",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2025-07",
+   "count": 5,
+   "sumReg": -8
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2025-07",
+   "count": 20,
+   "sumReg": 35
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2025-07",
+   "count": 2,
+   "sumReg": 5
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-08",
+   "count": 63,
+   "sumReg": 133
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-08",
+   "count": 15,
+   "sumReg": 31
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2025-08",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2025-08",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2025-08",
+   "count": 8,
+   "sumReg": -11
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2025-08",
+   "count": 16,
+   "sumReg": 36
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2025-08",
+   "count": 1,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2025-08",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-09",
+   "count": 52,
+   "sumReg": 111
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-09",
+   "count": 11,
+   "sumReg": 25
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2025-09",
+   "count": 11,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2025-09",
+   "count": 3,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Tim Walz",
+   "month": "2025-09",
+   "count": 3,
+   "sumReg": -4
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2025-09",
+   "count": 6,
+   "sumReg": 9
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2025-09",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-10",
+   "count": 22,
+   "sumReg": 52
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-10",
+   "count": 70,
+   "sumReg": 156
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2025-10",
+   "count": 6,
+   "sumReg": -8
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2025-10",
+   "count": 13,
+   "sumReg": 32
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2025-10",
+   "count": 6,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2025-10",
+   "count": 5,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2025-10",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2025-10",
+   "count": 1,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2025-10",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-11",
+   "count": 64,
+   "sumReg": 144
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-11",
+   "count": 10,
+   "sumReg": 17
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2025-11",
+   "count": 14,
+   "sumReg": -22
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2025-11",
+   "count": 30,
+   "sumReg": -51
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2025-11",
+   "count": 3,
+   "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2025-11",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2025-11",
+   "count": 17,
+   "sumReg": -29
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2025-11",
+   "count": 3,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2025-11",
+   "count": 4,
+   "sumReg": -5
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2025-11",
+   "count": 7,
+   "sumReg": 13
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2025-11",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2025-12",
+   "count": 49,
+   "sumReg": 113
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2025-12",
+   "count": 14,
+   "sumReg": -22
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2025-12",
+   "count": 4,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2025-12",
+   "count": 4,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2025-12",
+   "count": 3,
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2025-12",
+   "count": 2,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2025-12",
+   "count": 4,
+   "sumReg": 8
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2025-12",
+   "count": 4,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2025-12",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2025-12",
+   "count": 3,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2025-12",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2026-01",
+   "count": 5,
+   "sumReg": -12
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2026-01",
+   "count": 49,
+   "sumReg": 122
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2026-01",
+   "count": 7,
+   "sumReg": -16
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2026-01",
+   "count": 6,
+   "sumReg": 13
+  },
+  {
+   "account": "democrats",
+   "person": "Marco Rubio",
+   "month": "2026-01",
+   "count": 4,
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2026-01",
+   "count": 7,
+   "sumReg": -12
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2026-01",
+   "count": 4,
+   "sumReg": 10
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2026-01",
+   "count": 9,
+   "sumReg": 19
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2026-01",
+   "count": 1,
+   "sumReg": 1
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2026-01",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2026-01",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2026-01",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2026-02",
+   "count": 6,
+   "sumReg": 15
+  },
+  {
+   "account": "democrats",
+   "person": "Marco Rubio",
+   "month": "2026-02",
+   "count": 4,
+   "sumReg": 9
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2026-02",
+   "count": 57,
+   "sumReg": 125
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2026-02",
+   "count": 10,
+   "sumReg": -17
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2026-02",
+   "count": 9,
+   "sumReg": 17
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2026-02",
+   "count": 4,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2026-02",
+   "count": 7,
+   "sumReg": 15
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2026-02",
+   "count": 3,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2026-02",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2026-02",
+   "count": 3,
+   "sumReg": 8
+  },
+  {
+   "account": "democrats",
+   "person": "Mike Johnson",
+   "month": "2026-02",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2026-02",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2026-03",
+   "count": 82,
+   "sumReg": 194
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2026-03",
+   "count": 4,
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2026-03",
+   "count": 4,
+   "sumReg": 9
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2026-03",
+   "count": 8,
+   "sumReg": 21
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2026-03",
+   "count": 15,
+   "sumReg": -25
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2026-03",
+   "count": 10,
+   "sumReg": 20
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2026-03",
+   "count": 2,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2026-03",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Marco Rubio",
+   "month": "2026-03",
+   "count": 3,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2026-03",
+   "count": 6,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2026-03",
+   "count": 3,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2026-03",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2026-04",
+   "count": 68,
+   "sumReg": 148
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2026-04",
+   "count": 13,
+   "sumReg": -18
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2026-04",
+   "count": 8,
+   "sumReg": 9
+  },
+  {
+   "account": "democrats",
+   "person": "Marco Rubio",
+   "month": "2026-04",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2026-04",
+   "count": 4,
+   "sumReg": -7
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2026-04",
+   "count": 4,
+   "sumReg": 9
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2026-04",
+   "count": 3,
+   "sumReg": 5
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2026-04",
+   "count": 3,
+   "sumReg": 5
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2026-04",
+   "count": 4,
+   "sumReg": -6
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2026-04",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2026-04",
+   "count": 2,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2026-05",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2026-05",
+   "count": 3,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2026-05",
+   "count": 66,
+   "sumReg": 160
+  },
+  {
+   "account": "democrats",
+   "person": "Melania Trump",
+   "month": "2026-05",
+   "count": 2,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2026-05",
+   "count": 15,
+   "sumReg": -19
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2026-05",
+   "count": 6,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2026-05",
+   "count": 3,
+   "sumReg": -4
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2026-05",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2026-05",
+   "count": 6,
+   "sumReg": 12
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2026-05",
+   "count": 2,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2026-05",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2026-06",
+   "count": 75,
+   "sumReg": 183
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2026-06",
+   "count": 23,
+   "sumReg": -34
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2026-06",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2026-06",
+   "count": 6,
+   "sumReg": -10
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2026-06",
+   "count": 4,
+   "sumReg": 7
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2026-06",
+   "count": 10,
+   "sumReg": -18
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2026-06",
+   "count": 3,
+   "sumReg": -4
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2026-06",
+   "count": 2,
+   "sumReg": 3
+  },
+  {
+   "account": "democrats",
+   "person": "Jeffrey Epstein",
+   "month": "2026-06",
+   "count": 6,
+   "sumReg": 4
+  },
+  {
+   "account": "democrats",
+   "person": "Elon Musk",
+   "month": "2026-06",
+   "count": 2,
+   "sumReg": 5
+  },
+  {
+   "account": "democrats",
+   "person": "Pete Hegseth",
+   "month": "2026-06",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Democratic Party",
+   "month": "2026-07",
+   "count": 6,
+   "sumReg": -9
+  },
+  {
+   "account": "democrats",
+   "person": "JD Vance",
+   "month": "2026-07",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "democrats",
+   "person": "Donald Trump",
+   "month": "2026-07",
+   "count": 21,
+   "sumReg": 49
+  },
+  {
+   "account": "democrats",
+   "person": "Republican Party",
+   "month": "2026-07",
+   "count": 3,
+   "sumReg": 6
+  },
+  {
+   "account": "democrats",
+   "person": "Zohran Mamdani",
+   "month": "2026-07",
+   "count": 1,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
+   "person": "Barack Obama",
+   "month": "2026-07",
+   "count": 3,
+   "sumReg": -4
+  },
+  {
+   "account": "democrats",
+   "person": "Joe Biden",
+   "month": "2026-07",
+   "count": 2,
+   "sumReg": -3
+  },
+  {
+   "account": "democrats",
+   "person": "Kamala Harris",
+   "month": "2026-07",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "republicans",
+   "person": "Donald Trump",
+   "month": "2026-02",
+   "count": 14,
+   "sumReg": -33
+  },
+  {
+   "account": "republicans",
+   "person": "JD Vance",
+   "month": "2026-02",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "republicans",
+   "person": "Democratic Party",
+   "month": "2026-02",
+   "count": 9,
+   "sumReg": 24
+  },
+  {
+   "account": "republicans",
+   "person": "Marco Rubio",
+   "month": "2026-02",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "republicans",
+   "person": "Republican Party",
+   "month": "2026-02",
+   "count": 3,
+   "sumReg": -3
+  },
+  {
+   "account": "republicans",
+   "person": "Barack Obama",
+   "month": "2026-02",
+   "count": 1,
+   "sumReg": 0
+  },
+  {
+   "account": "republicans",
+   "person": "Joe Biden",
+   "month": "2026-02",
+   "count": 2,
+   "sumReg": 1
+  },
+  {
+   "account": "republicans",
+   "person": "Jeffrey Epstein",
+   "month": "2026-02",
+   "count": 2,
+   "sumReg": 6
+  },
+  {
+   "account": "republicans",
+   "person": "Donald Trump",
+   "month": "2026-03",
+   "count": 11,
+   "sumReg": -20
+  },
+  {
+   "account": "republicans",
+   "person": "Pete Hegseth",
+   "month": "2026-03",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "republicans",
+   "person": "Democratic Party",
+   "month": "2026-03",
+   "count": 11,
+   "sumReg": 23
+  },
+  {
+   "account": "republicans",
+   "person": "Barack Obama",
+   "month": "2026-03",
+   "count": 1,
+   "sumReg": 0
+  },
+  {
+   "account": "republicans",
+   "person": "Republican Party",
+   "month": "2026-03",
+   "count": 2,
+   "sumReg": -2
+  },
+  {
+   "account": "republicans",
+   "person": "Donald Trump",
+   "month": "2026-04",
+   "count": 12,
+   "sumReg": -25
+  },
+  {
+   "account": "republicans",
+   "person": "Democratic Party",
+   "month": "2026-04",
+   "count": 8,
+   "sumReg": 19
+  },
+  {
+   "account": "republicans",
+   "person": "Joe Biden",
+   "month": "2026-04",
+   "count": 2,
+   "sumReg": 3
+  },
+  {
+   "account": "republicans",
+   "person": "Republican Party",
+   "month": "2026-04",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "republicans",
+   "person": "Donald Trump",
+   "month": "2026-05",
+   "count": 26,
+   "sumReg": -53
+  },
+  {
+   "account": "republicans",
+   "person": "Barack Obama",
+   "month": "2026-05",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "republicans",
+   "person": "Marco Rubio",
+   "month": "2026-05",
+   "count": 2,
+   "sumReg": -4
+  },
+  {
+   "account": "republicans",
+   "person": "Kamala Harris",
+   "month": "2026-05",
+   "count": 1,
+   "sumReg": 2
+  },
+  {
+   "account": "republicans",
+   "person": "Democratic Party",
+   "month": "2026-05",
+   "count": 13,
+   "sumReg": 32
+  },
+  {
+   "account": "republicans",
+   "person": "Republican Party",
+   "month": "2026-05",
+   "count": 3,
+   "sumReg": -5
+  },
+  {
+   "account": "republicans",
+   "person": "Tim Walz",
+   "month": "2026-05",
+   "count": 2,
+   "sumReg": 5
+  },
+  {
+   "account": "republicans",
+   "person": "Melania Trump",
+   "month": "2026-05",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "republicans",
+   "person": "Jeffrey Epstein",
+   "month": "2026-05",
+   "count": 1,
+   "sumReg": 3
+  },
+  {
+   "account": "republicans",
+   "person": "Pete Hegseth",
+   "month": "2026-05",
+   "count": 1,
+   "sumReg": 0
+  },
+  {
+   "account": "republicans",
+   "person": "Joe Biden",
+   "month": "2026-06",
+   "count": 4,
+   "sumReg": 10
+  },
+  {
+   "account": "republicans",
+   "person": "Donald Trump",
+   "month": "2026-06",
+   "count": 21,
+   "sumReg": -53
+  },
+  {
+   "account": "republicans",
+   "person": "Marco Rubio",
+   "month": "2026-06",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "republicans",
+   "person": "Democratic Party",
+   "month": "2026-06",
+   "count": 10,
+   "sumReg": 23
+  },
+  {
+   "account": "republicans",
+   "person": "Republican Party",
+   "month": "2026-06",
+   "count": 5,
+   "sumReg": -8
+  },
+  {
+   "account": "republicans",
+   "person": "Melania Trump",
+   "month": "2026-06",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "republicans",
+   "person": "JD Vance",
+   "month": "2026-06",
+   "count": 1,
+   "sumReg": -2
+  },
+  {
+   "account": "republicans",
+   "person": "Mike Johnson",
+   "month": "2026-06",
+   "count": 1,
+   "sumReg": -1
+  },
+  {
+   "account": "republicans",
+   "person": "Democratic Party",
+   "month": "2026-07",
+   "count": 1,
+   "sumReg": 3
+  },
+  {
+   "account": "republicans",
+   "person": "Donald Trump",
+   "month": "2026-07",
+   "count": 9,
+   "sumReg": -19
+  },
+  {
+   "account": "republicans",
+   "person": "Republican Party",
+   "month": "2026-07",
+   "count": 1,
+   "sumReg": 0
+  }
+ ]
+}
