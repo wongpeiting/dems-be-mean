@@ -1,41 +1,33 @@
 <script>
-	// Demo background graphic: owns the single <svg> + the shared projection,
-	// and renders the kit layers as direct children (so projection context flows
-	// cleanly, with no snippet boundary between set and get).
+	// Generic story graphic: everything comes from `config` (story.json) and the
+	// loaded `basemap`. Nothing about any specific story lives here.
 	import { fade } from 'svelte/transition';
 	import GeoLayer from '$lib/scrolly/GeoLayer.svelte';
 	import FlowMap from '$lib/scrolly/FlowMap.svelte';
 	import Annotation from '$lib/scrolly/Annotation.svelte';
 	import { buildProjection, setProjectionContext } from '$lib/scrolly/projection.js';
 	import { buildFlows } from '$lib/scrolly/flows.js';
-	import states from '$lib/data/us-states.json';
 
-	let { index = 0, progress = 0 } = $props();
+	let { config, basemap, progress = 0 } = $props();
 
-	// contiguous US only — drop AK/HI/PR so the map isn't zoomed out to nothing
-	const OFFSHORE = new Set(['Alaska', 'Hawaii', 'Puerto Rico']);
-	const features = states.features.filter((f) => !OFFSHORE.has(f.properties.NAME));
-	const basemap = { type: 'FeatureCollection', features };
+	const colors = config.colors ?? {};
 
-	// The friendly, non-coder data contract — this is all an author writes.
-	const story = {
-		basemap: 'us-states',
-		unit: 'million tonnes',
-		hub: { label: 'Gulf export', region: 'Louisiana' },
-		flows: [
-			{ label: 'Iowa', region: 'Iowa', value: 45 },
-			{ label: 'Illinois', region: 'Illinois', value: 30 },
-			{ label: 'Nebraska', region: 'Nebraska', value: 25 }
-		]
-	};
-	const flowData = buildFlows(story, basemap);
+	// optionally drop regions from the drawn map (e.g. offshore territories)
+	const exclude = new Set(config.excludeRegions ?? []);
+	const features = basemap.features.filter((f) => {
+		const name = f.properties?.NAME ?? f.properties?.name;
+		return !exclude.has(name);
+	});
+	const drawn = { type: 'FeatureCollection', features };
+
+	const flowData = buildFlows(config, drawn);
 	const total = flowData.widthDomain[1];
 	const tributaries = flowData.flows.filter((f) => f.kind === 'tributary');
 
-	// zoom the map to the corridor the story actually uses, so it frames the
-	// action (and spreads the labels) instead of showing the whole country tiny
-	const focusNames = new Set([...story.flows.map((f) => f.region), story.hub.region]);
-	const focus = { type: 'FeatureCollection', features: features.filter((f) => focusNames.has(f.properties.NAME)) };
+	// zoom the map to just the places the story uses, so it frames the action
+	const focusNames = new Set([...config.flows.map((f) => f.region), config.hub.region].filter(Boolean));
+	const focus = { type: 'FeatureCollection', features: features.filter((f) => focusNames.has(f.properties?.NAME ?? f.properties?.name)) };
+	const fitTo = focus.features.length ? focus : drawn;
 
 	let width = $state(0);
 	let height = $state(0);
@@ -45,93 +37,56 @@
 
 	const projection = $derived(
 		width > 0 && height > 0
-			? buildProjection(basemap, [width, height], {
-					fitTo: focus,
+			? buildProjection(drawn, [width, height], {
+					fitTo,
 					padding: [Math.round(height * 0.16), Math.round(width * 0.14), Math.round(height * 0.16), Math.round(width * 0.14)]
 				})
 			: null
 	);
 	setProjectionContext(() => projection);
 
-	// Morph pacing: hold the schematic for the first fifth, morph to geography
-	// over the next two-fifths, hold the map after. One number, edited here.
+	// Morph pacing: hold schematic, morph, hold map. Overridable from config.
+	const pace = config.morph ?? { start: 0.2, span: 0.4 };
 	const clamp01 = (v) => Math.max(0, Math.min(1, v));
-	const t = $derived(clamp01((progress - 0.2) / 0.4));
+	const t = $derived(clamp01((progress - pace.start) / pace.span));
 	const mapOpacity = $derived(0.08 + 0.92 * t);
 </script>
 
-<div class="stage">
+<div class="stage" style:background={colors.background ?? '#ffffff'}>
 	<div class="frame" bind:clientWidth={width} bind:clientHeight={height}>
 		{#if projection}
 			<svg viewBox="0 0 {width} {height}" role="presentation">
-				<GeoLayer {features} opacity={mapOpacity} />
+				<GeoLayer {features} fill={colors.mapFill ?? '#e7e7ee'} stroke={colors.mapStroke ?? '#fff'} opacity={mapOpacity} />
 				<FlowMap
 					flows={flowData.flows}
 					widthDomain={flowData.widthDomain}
 					widthRange={[Math.max(3, width * 0.006), Math.max(20, width * 0.05)]}
 					{t}
-					trunkColor="#c0392b"
+					color={colors.line ?? '#141414'}
+					trunkColor={colors.trunk ?? colors.line ?? '#141414'}
 				/>
 
-				<!-- persistent headline (frac anchor, top-left) -->
-				<Annotation
-					at={{ frac: [0.02, 0.05] }}
-					text="Where the grain goes"
-					dx={0}
-					dy={0}
-					dot={false}
-					color="#1a1a1a"
-					size={isNarrow ? 16 : 20}
-				/>
+				{#if config.title}
+					<Annotation at={{ frac: [0.02, 0.05] }} text={config.title} dx={0} dy={0} dot={false} color={colors.text ?? '#1a1a1a'} size={isNarrow ? 16 : 20} />
+				{/if}
 
 				{#if t < 0.5}
-					<!-- schematic mode: label each bar in place (frac anchors → proves frac mode) -->
 					<g transition:fade={{ duration: 250 }}>
 						{#each tributaries as f (f.id)}
-							<Annotation
-								at={{ frac: [f.schematic[0][0], 0.1] }}
-								text="{f.label} {Math.round((f.value / total) * 100)}%"
-								dx={0}
-								dy={0}
-								dot={false}
-								align="middle"
-								color="#1a1a1a"
-								size={labelSize}
-							/>
+							<Annotation at={{ frac: [f.schematic[0][0], 0.1] }} text="{f.label} {Math.round((f.value / total) * 100)}%" dx={0} dy={0} dot={false} align="middle" color={colors.text ?? '#1a1a1a'} size={labelSize} />
 						{/each}
 					</g>
 				{:else}
-					<!-- geographic mode: label each source on the map -->
 					<g transition:fade={{ duration: 250 }}>
 						{#each tributaries as f (f.id)}
-							<Annotation
-								at={{ lngLat: f.geo[0] }}
-								text="{f.label} {Math.round((f.value / total) * 100)}%"
-								dx={0}
-								dy={-14}
-								align="middle"
-								color="#1a1a1a"
-								size={labelSize}
-							/>
+							<Annotation at={{ lngLat: f.geo[0] }} text="{f.label} {Math.round((f.value / total) * 100)}%" dx={0} dy={-14} align="middle" color={colors.text ?? '#1a1a1a'} size={labelSize} />
 						{/each}
 					</g>
 				{/if}
 
-				{#if t > 0.7}
-					<!-- the Hormuz homage: a red callout explaining the width encoding.
-					     anchored to the LEFT of the trunk so it never runs off the frame. -->
+				{#if t > 0.7 && config.callout}
 					<g transition:fade={{ duration: 300 }}>
-						<Annotation
-							at={{ lngLat: flowData.hub.point }}
-							text={'Width of each line is that\nstate’s share of grain exports.'}
-							dx={-16}
-							dy={6}
-							align="end"
-							connector={true}
-							color="#c0392b"
-							dot={true}
-							size={labelSize}
-						/>
+						<Annotation at={{ lngLat: flowData.hub.point }} text={config.callout} dx={-16} dy={6} align="end" connector={true} color={colors.callout ?? '#c0392b'} dot={true} size={labelSize} />
 					</g>
 				{/if}
 			</svg>
@@ -146,7 +101,6 @@
 		box-sizing: border-box;
 		display: flex;
 		padding: 1.5rem;
-		background: #fbfbfd;
 	}
 	.frame {
 		flex: 1;

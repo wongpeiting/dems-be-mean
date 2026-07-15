@@ -1,37 +1,40 @@
 <script>
 	import Scroller from '$lib/components/Scroller.svelte';
 	import Stage from './Stage.svelte';
+	import { loadBasemap } from '$lib/scrolly/basemaps.js';
+	import config from './story.json';
 
 	let index = $state(0);
 	let progress = $state(0);
 	let count = $state(0);
+
+	// load the map named in the config (built-in, or a file dropped in static/basemaps/)
+	let basemap = $state(null);
+	let error = $state(null);
+	$effect(() => {
+		loadBasemap(config.basemap)
+			.then((b) => (basemap = b))
+			.catch((e) => (error = e.message));
+	});
 </script>
 
-<section class="story">
-	<Scroller top={0} bottom={1} bind:index bind:progress bind:count>
-		{#snippet background()}
-			<Stage {index} {progress} />
-		{/snippet}
+{#if error}
+	<p class="error">{error}</p>
+{:else if basemap}
+	<section class="story">
+		<Scroller top={0} bottom={1} bind:index bind:progress bind:count>
+			{#snippet background()}
+				<Stage {config} {basemap} {progress} />
+			{/snippet}
 
-		{#snippet foreground()}
-			<div class="step">
-				<p>Three states grow most of the grain that leaves through the Gulf. Here they are as a
-					simple chart — each bar as wide as that state’s share.</p>
-			</div>
-			<div class="step">
-				<p>Now watch where that grain actually comes from. The bars lift off and settle onto the
-					map, at each state’s place.</p>
-			</div>
-			<div class="step">
-				<p>The routes converge and pour south, merging into a single trunk bound for the export
-					terminals on the Gulf coast.</p>
-			</div>
-			<div class="step">
-				<p>The width never lies: the trunk is exactly as thick as the three tributaries combined.</p>
-			</div>
-		{/snippet}
-	</Scroller>
-</section>
+			{#snippet foreground()}
+				{#each config.steps as step (step)}
+					<div class="step"><p>{step}</p></div>
+				{/each}
+			{/snippet}
+		</Scroller>
+	</section>
+{/if}
 
 <style>
 	.story {
@@ -58,6 +61,16 @@
 		line-height: 1.5;
 		color: #1c1c22;
 		box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+	}
+	.error {
+		max-width: 34rem;
+		margin: 4rem auto;
+		padding: 1rem 1.25rem;
+		font-family: system-ui, sans-serif;
+		color: #b91c1c;
+		background: #fef2f2;
+		border: 1px solid #fecaca;
+		border-radius: 8px;
 	}
 	@media (max-width: 640px) {
 		.step {

@@ -7,7 +7,54 @@ Modelled on NYT's "The Choking of Hormuz."
 
 Everything is plain SVG (no Mapbox / WebGL), so it's light and crisp on phones.
 
-## You only write data. The kit draws it.
+## Quick start: you edit one file
+
+The whole piece is driven by **`src/routes/kit-demo/story.json`** — data, colours,
+step captions, the callout, all in one place. To make your own story you copy the
+`kit-demo` folder, edit that JSON, and never touch a Svelte file. Then:
+
+```
+npm run dev      # preview live in the browser as you edit
+npm run build    # produces a static site (the build/ folder) to host anywhere
+```
+
+`story.json` looks like this — every field is plain text or a number:
+
+```jsonc
+{
+  "title": "Where the grain goes",
+  "basemap": "us-states",
+  "unit": "million tonnes",
+  "colors": { "line": "#141414", "trunk": "#c0392b", "callout": "#c0392b",
+              "text": "#1a1a1a", "mapFill": "#e7e7ee", "background": "#fbfbfd" },
+  "hub":   { "label": "Gulf export", "region": "Louisiana" },
+  "flows": [
+    { "label": "Iowa",     "region": "Iowa",     "value": 45 },
+    { "label": "Illinois", "region": "Illinois", "value": 30 },
+    { "label": "Nebraska", "region": "Nebraska", "value": 25 }
+  ],
+  "callout": "Width of each line is that\nstate’s share.",
+  "steps": [ "First caption…", "Second…", "Third…", "Fourth…" ]
+}
+```
+
+Change a colour → edit `colors`. Reword a step → edit `steps`. Change the data →
+edit `flows`. No code.
+
+## Loading your data
+
+A flow map has **two** kinds of data, and they load differently:
+
+- **Your numbers** live *inline* in `story.json` under `flows` — a flow map is
+  usually a handful of sources, so you just type them in. (If you ever have a big
+  table instead, ask for the CSV option — it's a small addition.)
+- **The map** (`basemap`) is either a **built-in** name (`"us-states"`) or a file
+  you **drop into `static/basemaps/`** and name in the config. See
+  `static/basemaps/README.md` for where to get free GeoJSON maps (Natural Earth,
+  geoBoundaries, geojson.io) and the one rule: each feature needs a
+  `properties.NAME` your `region:` values can match.
+
+## Under the hood: you only write data. The kit draws it.
 
 You do **not** write any coordinates or code for the shapes. You describe your
 story as a small object and hand it to `buildFlows`. Here is the whole contract:
