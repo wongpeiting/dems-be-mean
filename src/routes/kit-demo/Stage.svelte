@@ -4,6 +4,7 @@
 	// cleanly, with no snippet boundary between set and get).
 	import GeoLayer from '$lib/scrolly/GeoLayer.svelte';
 	import FlowMap from '$lib/scrolly/FlowMap.svelte';
+	import Annotation from '$lib/scrolly/Annotation.svelte';
 	import { buildProjection, setProjectionContext } from '$lib/scrolly/projection.js';
 	import { buildFlows } from '$lib/scrolly/flows.js';
 	import states from '$lib/data/us-states.json';
@@ -27,6 +28,8 @@
 		]
 	};
 	const flowData = buildFlows(story, basemap);
+	const total = flowData.widthDomain[1];
+	const tributaries = flowData.flows.filter((f) => f.kind === 'tributary');
 
 	let width = $state(0);
 	let height = $state(0);
@@ -50,6 +53,28 @@
 					widthRange={[Math.max(3, width * 0.006), Math.max(20, width * 0.05)]}
 					t={1}
 					trunkColor="#c0392b"
+				/>
+
+				<!-- % label at each source -->
+				{#each tributaries as f (f.id)}
+					<Annotation
+						at={{ lngLat: f.geo[0] }}
+						text="{f.label} {Math.round((f.value / total) * 100)}%"
+						dx={10}
+						dy={-12}
+						color="#1a1a1a"
+					/>
+				{/each}
+
+				<!-- the Hormuz homage: a red callout explaining the width encoding -->
+				<Annotation
+					at={{ lngLat: flowData.hub.point }}
+					text={'Width of each line is that\nstate’s share of grain exports.'}
+					dx={18}
+					dy={8}
+					connector={true}
+					color="#c0392b"
+					dot={true}
 				/>
 			</svg>
 		{/if}
