@@ -31,12 +31,23 @@
 	const total = flowData.widthDomain[1];
 	const tributaries = flowData.flows.filter((f) => f.kind === 'tributary');
 
+	// zoom the map to the corridor the story actually uses, so it frames the
+	// action (and spreads the labels) instead of showing the whole country tiny
+	const focusNames = new Set([...story.flows.map((f) => f.region), story.hub.region]);
+	const focus = { type: 'FeatureCollection', features: features.filter((f) => focusNames.has(f.properties.NAME)) };
+
 	let width = $state(0);
 	let height = $state(0);
 
+	const isNarrow = $derived(width > 0 && width < 640);
+	const labelSize = $derived(isNarrow ? 11 : 13);
+
 	const projection = $derived(
 		width > 0 && height > 0
-			? buildProjection(basemap, [width, height], { padding: [24, 24, 24, 24] })
+			? buildProjection(basemap, [width, height], {
+					fitTo: focus,
+					padding: [Math.round(height * 0.16), Math.round(width * 0.14), Math.round(height * 0.16), Math.round(width * 0.14)]
+				})
 			: null
 	);
 	setProjectionContext(() => projection);
@@ -63,13 +74,13 @@
 
 				<!-- persistent headline (frac anchor, top-left) -->
 				<Annotation
-					at={{ frac: [0.02, 0.06] }}
+					at={{ frac: [0.02, 0.05] }}
 					text="Where the grain goes"
 					dx={0}
 					dy={0}
 					dot={false}
 					color="#1a1a1a"
-					size={20}
+					size={isNarrow ? 16 : 20}
 				/>
 
 				{#if t < 0.5}
@@ -83,6 +94,7 @@
 							dot={false}
 							align="middle"
 							color="#1a1a1a"
+							size={labelSize}
 						/>
 					{/each}
 				{:else}
@@ -91,23 +103,28 @@
 						<Annotation
 							at={{ lngLat: f.geo[0] }}
 							text="{f.label} {Math.round((f.value / total) * 100)}%"
-							dx={10}
-							dy={-12}
+							dx={0}
+							dy={-14}
+							align="middle"
 							color="#1a1a1a"
+							size={labelSize}
 						/>
 					{/each}
 				{/if}
 
 				{#if t > 0.7}
-					<!-- the Hormuz homage: a red callout explaining the width encoding -->
+					<!-- the Hormuz homage: a red callout explaining the width encoding.
+					     anchored to the LEFT of the trunk so it never runs off the frame. -->
 					<Annotation
 						at={{ lngLat: flowData.hub.point }}
 						text={'Width of each line is that\nstate’s share of grain exports.'}
-						dx={18}
-						dy={8}
+						dx={-16}
+						dy={6}
+						align="end"
 						connector={true}
 						color="#c0392b"
 						dot={true}
+						size={labelSize}
 					/>
 				{/if}
 			</svg>

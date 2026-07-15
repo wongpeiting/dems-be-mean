@@ -13,16 +13,19 @@ const MAKERS = { mercator: geoMercator, equalEarth: geoEqualEarth };
  * @param {object} [opts]
  * @param {'mercator'|'equalEarth'} [opts.type='mercator']
  * @param {[number,number,number,number]} [opts.padding]  [top,right,bottom,left] px inset
+ * @param {object} [opts.fitTo]  fit/zoom to THIS geojson instead of the drawn one
+ *   (e.g. zoom to just the states in the story so the map frames the action)
  * @returns {{project:(lngLat:[number,number])=>[number,number], path:(f:object)=>string, projection:import('d3-geo').GeoProjection, width:number, height:number}}
  */
 export function buildProjection(geojson, [width, height], opts = {}) {
-	const { type = 'mercator', padding } = opts;
+	const { type = 'mercator', padding, fitTo } = opts;
 	const projection = (MAKERS[type] ?? geoMercator)();
+	const target = fitTo ?? geojson;
 	if (padding) {
 		const [t, r, b, l] = padding;
-		projection.fitExtent([[l, t], [width - r, height - b]], geojson);
+		projection.fitExtent([[l, t], [width - r, height - b]], target);
 	} else {
-		projection.fitSize([width, height], geojson);
+		projection.fitSize([width, height], target);
 	}
 	const pathGen = geoPath(projection);
 	return {
