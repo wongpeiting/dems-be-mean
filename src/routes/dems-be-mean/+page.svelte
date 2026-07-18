@@ -1128,6 +1128,7 @@
 		line-height: 1.3;
 		color: #a8478c; /* deeper gauge magenta */
 		margin: 0 0 1.4em;
+		text-align: left;
 	}
 	.ask-form {
 		margin: 0 auto;
@@ -1398,8 +1399,10 @@
 	/* the story is only mounted once the reader answers or skips (see {#if gateOpen}),
 	   so its scroll-driven graphics measure their size while visible, not while hidden */
 	.ask-skip {
-		display: inline-block;
+		display: block;
+		width: fit-content;
 		margin-top: 1.1em;
+		margin-left: auto; /* header hugs left, this link hugs right — on desktop and mobile */
 		background: none;
 		border: 0;
 		padding: 0;
@@ -1929,15 +1932,6 @@
 		   (it extends well above the text); 13vh clipped it off the top */
 		.ask {
 			padding-top: 25vh;
-		}
-		/* mobile: header hugs the left, the randomizer link hugs the right */
-		.ask-q {
-			text-align: left;
-		}
-		.ask-skip {
-			display: block;
-			width: fit-content;
-			margin-left: auto;
 		}
 		/* the opening white cards shouldn't sprawl */
 		.open-card {
