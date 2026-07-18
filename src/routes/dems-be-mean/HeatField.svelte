@@ -476,11 +476,27 @@
 		color: rgba(255, 255, 255, 0.85);
 		white-space: nowrap;
 	}
-	/* on mobile the top-left gauges crowd the election label — drop it to the bottom of the line */
+	/* mobile: shrink the HUD (date + gauges) and stack the election label at the bottom */
 	@media (max-width: 640px) {
 		.lossmark .tag {
 			top: auto;
 			bottom: 4vh;
+			font-size: 0.6rem;
+			line-height: 1.25;
+			white-space: normal;
+			max-width: 4em;
+		}
+		.hud .date {
+			font-size: 1.1rem;
+			margin-bottom: 8px;
+		}
+		.gauge {
+			width: min(150px, 38vw);
+			font-size: 0.66rem;
+			margin-bottom: 9px;
+		}
+		.gauge .track {
+			height: 4px;
 		}
 	}
 	.hud {
