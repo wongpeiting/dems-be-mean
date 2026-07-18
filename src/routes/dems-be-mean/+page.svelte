@@ -208,7 +208,7 @@
 	const cards = [
 		{
 			tone: 'post',
-			vh: 135,
+			vh: 200,
 			h: '@democrats’ attacks went personal',
 			p: 'The findings show that as the account adopted the language of the reply guy – such as “btw,” “wtf,” and other casual profanities – it also became more likely to attack appearance and the body instead of policy or conduct.',
 			group: ['fuck', 'shit', 'wtf', 'chud', 'fat', 'ugly', 'bro', 'lol', 'btw'],
@@ -221,7 +221,7 @@
 		},
 		{
 			tone: 'pre',
-			vh: 125,
+			vh: 190,
 			h: 'It did not start here',
 			p: 'Earlier posts attacked politicians for what they did, not what they looked like. They centered on things like <em>Kevin</em> <em>McCarthy</em>’s <em>speakership</em>, <em>extremist</em> Republicans, and voting records, in a tone that was procedural and on message.',
 			group: ['mccarthy', 'speakership', 'speaker', 'voted', 'against', 'extremist', 'maga', 'republicans', 'republican', 'abortion', 'desantis', 'kevin', 'ron', 'brandon', 'lost', 'weird', 'power', 'never'],
@@ -234,7 +234,7 @@
 		},
 		{
 			tone: 'post',
-			vh: 125,
+			vh: 190,
 			h: 'Then, one subject takes over',
 			p: 'In the ramp up to the more profane and personal approach, the Democrats targeted Trump’s links to <em>Jeffrey</em> <em>Epstein</em>. The Epstein <em>files</em> and calls to <em>release</em> them took center stage.',
 			group: ['epstein', 'files', 'jeffrey', 'release'],
@@ -247,7 +247,7 @@
 		},
 		{
 			tone: 'post',
-			vh: 125,
+			vh: 190,
 			h: 'Oligarchy also in the spotlight',
 			p: 'Before the pivot, another strain of attacks centered on Trump’s protection of <em>billionaires</em>, his ties to <em>Elon</em> <em>Musk</em>, and his proposed $300 million <em>ballroom</em>. Slowly the institutional voice started making way for uncensored profanity, including phrases like “f--ka-- ballroom”.',
 			group: ['elon', 'musk', 'billionaires', 'ballroom', 'money', 'vacation'],

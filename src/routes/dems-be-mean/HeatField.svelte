@@ -436,14 +436,16 @@
 	}
 	@media (max-width: 640px) {
 		.explore-hint {
-			top: 24px;
-			left: 20px;
-			max-width: 150px;
-			padding: 9px 12px;
-			font-size: 0.8rem;
+			top: 20px;
+			left: 16px;
+			max-width: 118px;
+			padding: 7px 10px;
+			font-size: 0.72rem;
+			line-height: 1.25;
 		}
 		.explore-hint .hint-scroll {
-			font-size: 0.64rem;
+			margin-top: 2px;
+			font-size: 0.6rem;
 		}
 	}
 	@media (prefers-reduced-motion: reduce) {
@@ -501,18 +503,21 @@
 		}
 		.hud .date {
 			font-size: 1.15rem;
-			margin-bottom: 8px;
+			margin-bottom: 11px;
 		}
 		.hud .gauge {
 			width: auto; /* life bars span the full panel width */
 			font-size: 0.72rem;
-			margin-bottom: 7px;
+			margin-bottom: 10px;
 		}
 		.hud .gauge:last-child {
 			margin-bottom: 0;
 		}
+		.hud .gauge .lab {
+			margin-bottom: 5px;
+		}
 		.gauge .track {
-			height: 5px;
+			height: 6px;
 		}
 	}
 	.hud {
