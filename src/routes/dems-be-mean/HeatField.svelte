@@ -1,4 +1,5 @@
 <script>
+	import { base } from '$app/paths';
 	import { onMount, tick } from 'svelte';
 	import worduse from '$lib/data/worduse.json';
 
@@ -218,7 +219,7 @@
 		>
 			{#if hovered.clip}
 				<!-- svelte-ignore a11y_media_has_caption -->
-				<video src="/clips/{hovered.clip}" loop playsinline use:playWithSound></video>
+				<video src="{base}/clips/{hovered.clip}" loop playsinline use:playWithSound></video>
 			{/if}
 			<div class="cl-count">
 				<b>“{hovered.word}”</b> in {wu ? wu.n : 1}

@@ -1,5 +1,6 @@
 <script>
 	import Scroller from '$lib/components/Scroller.svelte';
+	import { base } from '$app/paths';
 	import HeatField from './HeatField.svelte';
 	import Montage from './Montage.svelte';
 	import CastPack from './CastPack.svelte';
@@ -481,7 +482,7 @@
 			{#snippet background()}
 				<div class="video-wall" aria-hidden="true">
 					{#each Array(WALL_N) as _, i (i)}
-						<video src="/wall_web.mp4" autoplay loop muted playsinline preload="auto" use:reel={i}
+						<video src="{base}/wall_web.mp4" autoplay loop muted playsinline preload="auto" use:reel={i}
 						></video>
 					{/each}
 				</div>
@@ -539,7 +540,7 @@
 	<!-- gut-check, right before the wall: type an insult; did the @democrats already use it? -->
 	<section class="ask">
 		<div class="ask-inner">
-			<img class="laser-eyes" src="/laser-eyes.png" alt="" aria-hidden="true" />
+			<img class="laser-eyes" src="{base}/laser-eyes.png" alt="" aria-hidden="true" />
 			<p class="ask-q">Before we begin,<br />let’s channel our inner middle-schooler.</p>
 			<form class="ask-form" onsubmit={askSubmit}>
 				<input
@@ -580,7 +581,7 @@
 											<span class="ex-line">“{e.l}”</span>
 											<span class="ex-tip">
 												{#if vid}<img
-														src="/kf/{vid}.jpg"
+														src="{base}/kf/{vid}.jpg"
 														alt=""
 														loading="lazy"
 														onerror={(e) => (e.currentTarget.style.display = 'none')}
@@ -694,7 +695,7 @@
 									{#each card.videos as v (v.id)}
 										<div class="tk">
 											<div class="tk-vid">
-												<video src="/rg/{v.id}.mp4" muted loop playsinline autoplay preload="metadata"
+												<video src="{base}/rg/{v.id}.mp4" muted loop playsinline autoplay preload="metadata"
 												></video>
 												<span class="tk-views">▶ {fmtViews(v.views)}</span>
 											</div>
@@ -719,7 +720,7 @@
 
 	<!-- a mirrored laser-eyes flare in the gap, for the lols -->
 	<div class="laser-band" aria-hidden="true">
-		<img src="/laser-eyes.png" alt="" />
+		<img src="{base}/laser-eyes.png" alt="" />
 	</div>
 
 	<!-- the payoff: prose with the Mean-o-meter embedded inline, revealing as it scrolls in -->
@@ -738,7 +739,7 @@
 				three-month trailing basis.
 			</p>
 			<div class="mr-chart" use:revealOnView={() => playReveal((v) => (meanProg = v))}>
-				<MeanSpark w={620} h={344} progress={meanProg} title="" endAvatar="/avatars/democrats.jpg" />
+				<MeanSpark w={620} h={344} progress={meanProg} title="" endAvatar="{base}/avatars/democrats.jpg" />
 			</div>
 		</div>
 
@@ -779,7 +780,7 @@
 								showY={i === 0}
 								xEndpoints={true}
 								allGrid={true}
-								endAvatar="/avatars/{f.key}.jpg"
+								endAvatar="{base}/avatars/{f.key}.jpg"
 								title=""
 							/>
 						</div>
@@ -873,7 +874,7 @@
 			<p class="method">
 				The analysis covers every TikTok post by @democrats through July 9, 2026 (2,786 posts),
 				with @whitehouse (856) and @republicans (189) as comparisons; audio was transcribed with
-				Whisper and on-screen text extracted using OCR.
+				Whisper and on-screen text extracted using OCR. Cast portraits from YouGov Ratings.
 			</p>
 			<p class="method">
 				Gemini 2.5 Pro labelled every video for its function, featured political figures, register
@@ -891,7 +892,7 @@
 
 	<!-- laser eyes one last time, all the way at the bottom (cropped to end just past the streak) -->
 	<div class="endflare" aria-hidden="true">
-		<img src="/laser-eyes-end.png" alt="" />
+		<img src="{base}/laser-eyes-end.png" alt="" />
 	</div>
 	{/if}
 </div>
