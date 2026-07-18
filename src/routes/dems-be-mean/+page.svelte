@@ -1924,7 +1924,7 @@
 		}
 		/* mobile type: dial down the dek, byline and body prose so they don't feel oversized */
 		.dek {
-			font-size: 0.98rem;
+			font-size: 0.85rem;
 		}
 		.lede-byline {
 			font-size: 0.82rem;
