@@ -319,11 +319,13 @@
 	const MON3 = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	const fmtRange = (ms) =>
 		`${MON3[+ms[0].slice(5, 7) - 1]} ${ms[0].slice(0, 4)} – ${MON3[+ms[ms.length - 1].slice(5, 7) - 1]} ${ms[ms.length - 1].slice(0, 4)}`;
-	function facetData(key) {
+	function facetData(key, postLoss) {
 		const arr = payoff.series[key].vals;
 		let lo = 0;
 		while (lo < arr.length && arr[lo] == null) lo++;
-		lo = Math.max(lo, payoff.electionIdx); // narrow every account to post-loss
+		// DESKTOP keeps each account's full lifetime (unchanged); only MOBILE narrows to
+		// post-loss so all three small-multiples fit in one screen.
+		if (postLoss) lo = Math.max(lo, payoff.electionIdx);
 		let hi = arr.length - 1;
 		while (hi >= 0 && arr[hi] == null) hi--;
 		const vals = arr.slice(lo, hi + 1);
@@ -331,11 +333,11 @@
 		const eli = payoff.electionIdx - lo;
 		return { vals, monthsList, electionIdx: eli >= 0 && eli < vals.length ? eli : null };
 	}
-	const facets = [
-		{ key: 'democrats', label: '@democrats', color: '#a8478c', ...facetData('democrats') },
-		{ key: 'whitehouse', label: '@whitehouse', color: '#e8863a', ...facetData('whitehouse') },
-		{ key: 'republicans', label: '@republicans', color: '#ee6677', ...facetData('republicans') }
-	];
+	const facets = $derived([
+		{ key: 'democrats', label: '@democrats', color: '#a8478c', ...facetData('democrats', isMobile) },
+		{ key: 'whitehouse', label: '@whitehouse', color: '#e8863a', ...facetData('whitehouse', isMobile) },
+		{ key: 'republicans', label: '@republicans', color: '#ee6677', ...facetData('republicans', isMobile) }
+	]);
 	// account comparison, narrowed to POST-LOSS so all three share one axis and can be overlaid
 	const cmpLo = payoff.electionIdx;
 	const cmpMonths = payoff.months.slice(cmpLo);
@@ -776,7 +778,9 @@
 		<div class="mr-block">
 			<h3 class="mr-h">It’s uniquely @democrats</h3>
 			<p class="mr-dek">
-				Each account since the 2024 loss, on the same hero-worship to hostile scale.
+				{isMobile
+					? 'Each account since the 2024 loss, on the same hero-worship to hostile scale.'
+					: 'Each account’s register over its own lifetime, on the same hero-worship to hostile scale.'}
 			</p>
 			<div class="facets" use:revealOnView={() => playReveal((v) => (cmpProg = v), { delay: 700, dur: 5000 })}>
 				{#each facets as f, i (f.key)}
@@ -1847,7 +1851,9 @@
 	}
 	.tk-vid {
 		position: relative;
-		aspect-ratio: 9 / 16;
+		/* the source clips are 9:16 with black letterbox baked in; a shorter tile + object-fit:cover
+		   crops the top/bottom black away so the receipts aren't extra-long */
+		aspect-ratio: 3 / 4;
 	}
 	.tk-vid video {
 		width: 100%;
@@ -1900,9 +1906,10 @@
 		.tk-grid {
 			grid-template-columns: repeat(2, 1fr);
 		}
-		/* less top space above the laser-eyes flare in the insult frame */
+		/* keep enough headroom for the laser-eyes flare to show above "Before we begin"
+		   (it extends well above the text); 13vh clipped it off the top */
 		.ask {
-			padding-top: 13vh;
+			padding-top: 25vh;
 		}
 		/* the opening white cards shouldn't sprawl */
 		.open-card {

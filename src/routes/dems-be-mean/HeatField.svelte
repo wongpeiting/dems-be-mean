@@ -404,7 +404,6 @@
 		color: #a8478c;
 		font-weight: 700;
 		pointer-events: none;
-		animation: hint-bob 2.4s ease-in-out infinite;
 	}
 	@keyframes hint-bob {
 		0%,
@@ -486,12 +485,10 @@
 		.lossmark {
 			display: none;
 		}
+		/* keep the word wall at the SAME spot for every phase (reveal, annotate, explore) so it
+		   never jumps — the HUD band lives in the reserved top strip above it */
 		.field {
 			top: 118px;
-		}
-		/* while exploring the HUD is gone, so let the words reclaim the top band */
-		.field.explore {
-			top: 0;
 		}
 		.hud {
 			left: 0;
