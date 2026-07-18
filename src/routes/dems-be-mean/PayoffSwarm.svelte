@@ -91,7 +91,7 @@
 	// ---- PORTRAIT (mobile): transposed — the four crudeness levels are COLUMNS across the top,
 	// view count runs DOWN the y-axis (broken: linear 0–3M, then a compressed log tail).
 	const Wp = 384;
-	const PADTp = 70; // top band: column labels + medians
+	const PADTp = 52; // top band: column labels (medians now sit on their lines in the plot)
 	const PADBp = 24;
 	const LAXp = 42; // left band for the view-count axis
 	const PADRp = 12;
@@ -162,7 +162,7 @@
 			{fmtMed(t.median)}
 		</text>
 		{#if ti === 0}
-			<text class="sw-anno" x={anno.tx} y={anno.ty} text-anchor="start">Median view count</text>
+			<text class="sw-anno" x={anno.tx} y={anno.ty} text-anchor="start">Median views</text>
 			<line class="sw-anno-l" x1={anno.x1} y1={anno.y1} x2={anno.x2} y2={anno.y2} />
 			<polygon class="sw-anno-h" points={arrowPoly(anno.x1, anno.y1, anno.x2, anno.y2)} />
 		{/if}
@@ -181,18 +181,22 @@
 		<line class="sw-grid" x1={LAXp} x2={Wp - PADRp} y1={yPos(tk)} y2={yPos(tk)} />
 		<text class="sw-xlab" x={LAXp - 5} y={yPos(tk) + 3} text-anchor="end">{fmtTick(tk)}</text>
 	{/each}
-	<text class="sw-axcap" x={LAXp - 5} y={PADTp - 8} text-anchor="end">views ↓</text>
+	<text class="sw-axcap" x={LAXp - 5} y={PADTp - 8} text-anchor="end">views</text>
 
 	{#each layoutP as t, ti (t.k)}
-		<text class="sw-label" x={t.cx} y="22" text-anchor="middle">{t.label}</text>
-		<text class="sw-desc" x={t.cx} y="35" text-anchor="middle">{t.desc}</text>
-		<text class="sw-medlab" x={t.cx} y="52" text-anchor="middle">{fmtMed(t.median)}</text>
+		<text class="sw-label" x={t.cx} y="20" text-anchor="middle">{t.label}</text>
+		<text class="sw-desc" x={t.cx} y="32" text-anchor="middle">
+			{#each t.desc.split(', ') as dline, di (di)}
+				<tspan x={t.cx} dy={di === 0 ? 0 : 9.5}>{dline}</tspan>
+			{/each}
+		</text>
 		<g class="sw-dots" class:on={shown} style:transition-delay="{ti * 160}ms">
 			{#each t.pts as p (p.x + '-' + p.y)}
 				<circle cx={p.x} cy={p.y} r={R} fill={TIER_COLORS[ti]} />
 			{/each}
 		</g>
 		<line class="sw-med" x1={t.cx - t.halfW} x2={t.cx + t.halfW} y1={t.medY} y2={t.medY} />
+		<text class="sw-medlab" x={t.cx + t.halfW} y={t.medY + 11} text-anchor="end">{fmtMed(t.median)}</text>
 	{/each}
 </svg>
 {/if}
@@ -214,7 +218,7 @@
 	}
 	.sw-xlab,
 	.sw-axcap {
-		fill: #8a8f96;
+		fill: #ffffff;
 		font-family: var(--sans);
 		font-size: 9px;
 	}

@@ -451,7 +451,7 @@
 			padding: 6px 9px;
 			font-size: 0.72rem;
 			line-height: 1.2;
-			text-align: center;
+			text-align: left;
 			text-wrap: balance; /* even out the line lengths so there's no big ragged gap */
 		}
 		.explore-hint .hint-scroll {

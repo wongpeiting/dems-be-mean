@@ -758,7 +758,7 @@
 					progress={meanProg}
 					title=""
 					endAvatar="{base}/avatars/democrats.jpg"
-					labelPx={isMobile ? 8.5 : 12}
+					labelPx={isMobile ? 11 : 12}
 				/>
 			</div>
 		</div>
@@ -850,6 +850,9 @@
 						</div>
 					</div>
 				{/each}
+				<!-- trailing hold: the last card scrolls off and the full circle pack is revealed
+				     (pack still pinned) before the whole section scrolls away -->
+				<div class="cast-step cast-tail" aria-hidden="true"></div>
 			{/snippet}
 		</Scroller>
 	</section>
@@ -867,10 +870,15 @@
 			every rung.
 		</p>
 
-		<h3 class="cs-h">Crueler posts, bigger numbers</h3>
-		<p class="cs-dek">
-			Each dot is a @democrats post since the 2024 loss, arranged by view count and crudeness level
-		</p>
+		<h3 class="cs-h">Meanness, rewarded</h3>
+		<div class="cs-dek-wrap">
+			<p class="cs-dek">
+				Each dot is a @democrats post since the 2024 loss, by view count and crudeness
+			</p>
+			{#if isMobile}
+				<p class="cs-legend"><span class="cs-legend-line"></span>median</p>
+			{/if}
+		</div>
 		<div class="cs-swarm" use:revealOnView={() => (payoffShown = true)}>
 			<PayoffSwarm shown={payoffShown} portrait={isMobile} />
 		</div>
@@ -1132,7 +1140,7 @@
 		border-bottom: 2px solid var(--line);
 		color: var(--ink);
 		font-family: var(--serif);
-		font-size: clamp(1.4rem, 3.6vw, 2.2rem);
+		font-size: clamp(1.6rem, 4vw, 2.2rem);
 		text-align: center;
 		padding: 0.3em 0.2em;
 		outline: none;
@@ -1731,6 +1739,9 @@
 	.cast-story :global(.background-container) {
 		pointer-events: auto;
 	}
+	.cast-step.cast-tail {
+		height: 100vh; /* pack-only beat before the section scrolls away (beats base + mobile height) */
+	}
 	.cast-step {
 		height: 110vh;
 		display: flex;
@@ -1866,6 +1877,7 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		object-position: top; /* keep the top of the clip; crop the black space off the BOTTOM */
 		display: block;
 	}
 	.tk-views {
@@ -1918,6 +1930,15 @@
 		.ask {
 			padding-top: 25vh;
 		}
+		/* mobile: header hugs the left, the randomizer link hugs the right */
+		.ask-q {
+			text-align: left;
+		}
+		.ask-skip {
+			display: block;
+			width: fit-content;
+			margin-left: auto;
+		}
 		/* the opening white cards shouldn't sprawl */
 		.open-card {
 			max-width: 17em;
@@ -1951,16 +1972,15 @@
 		.tk-meta {
 			padding: 4px 5px 5px;
 		}
-		/* keep ALL body prose at the same small size on mobile (these weren't overridden before,
-		   so they were showing ~1.3rem while .turn-line was 1.1rem) */
-		.mr-text p,
-		.payoff-lede,
-		.payoff-kicker,
-		.after p {
-			font-size: 1.1rem;
-		}
-		.ask-cont {
-			font-size: 1.1rem !important; /* base uses !important, so match it */
+		/* keep ALL body prose at the same small size on mobile. NOTE: several of these base rules
+		   sit AFTER this media query in the file, so a plain selector loses on source order —
+		   the .dbm prefix raises specificity so the mobile size reliably wins. */
+		.dbm .mr-text p,
+		.dbm .payoff-lede,
+		.dbm .payoff-kicker,
+		.dbm .after p,
+		.dbm .ask-cont {
+			font-size: 1.1rem !important;
 		}
 	}
 	/* demonstrates the colour rule: "redder" as a red highlight chip with white text */
@@ -2070,6 +2090,31 @@
 		font-size: 0.92rem;
 		color: #ffffff;
 		margin: 0 0 0.5em;
+	}
+	.cs-dek-wrap {
+		position: relative;
+		margin: 0 0 1.4em;
+	}
+	.cs-dek-wrap .cs-dek {
+		margin: 0;
+	}
+	.cs-legend {
+		position: absolute;
+		right: 0;
+		bottom: 0; /* tuck into the empty space at the end of the dek's last line */
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		margin: 0;
+		font-family: var(--sans);
+		font-size: 0.58rem;
+		color: #ffffff;
+	}
+	.cs-legend-line {
+		display: inline-block;
+		width: 14px;
+		height: 1.5px;
+		background: #ffffff;
 	}
 	.payoff-body {
 		font-family: var(--serif);
