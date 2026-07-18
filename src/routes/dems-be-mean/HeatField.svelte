@@ -464,6 +464,13 @@
 		color: rgba(255, 255, 255, 0.85);
 		white-space: nowrap;
 	}
+	/* on mobile the top-left gauges crowd the election label — drop it to the bottom of the line */
+	@media (max-width: 640px) {
+		.lossmark .tag {
+			top: auto;
+			bottom: 4vh;
+		}
+	}
 	.hud {
 		position: absolute;
 		left: 24px;
