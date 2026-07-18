@@ -867,7 +867,7 @@
 			Each dot is a @democrats post since the 2024 loss, arranged by view count and crudeness level
 		</p>
 		<div class="cs-swarm" use:revealOnView={() => (payoffShown = true)}>
-			<PayoffSwarm shown={payoffShown} />
+			<PayoffSwarm shown={payoffShown} portrait={isMobile} />
 		</div>
 
 		<p class="payoff-kicker">

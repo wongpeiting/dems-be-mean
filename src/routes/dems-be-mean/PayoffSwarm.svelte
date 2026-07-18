@@ -4,7 +4,7 @@
 	// Every @democrats post since the loss as one dot, grouped into four crudeness bands,
 	// placed by view count on a log axis. The cloud shifts right as the posts get crueler;
 	// a line marks each band's median. `shown` fades the dots in on scroll.
-	let { shown = false } = $props();
+	let { shown = false, portrait = false } = $props();
 
 	const W = 680;
 	const PADL = 124; // room for the band labels
@@ -87,8 +87,50 @@
 	const tailTicks = [10000000, 40000000];
 	const fmtTick = (n) => n / 1e6 + 'M';
 	const fmtMed = (n) => (n >= 1e6 ? (n / 1e6).toFixed(1) + 'M' : Math.round(n / 1e3) + 'K');
+
+	// ---- PORTRAIT (mobile): transposed — the four crudeness levels are COLUMNS across the top,
+	// view count runs DOWN the y-axis (broken: linear 0–3M, then a compressed log tail).
+	const Wp = 384;
+	const PADTp = 70; // top band: column labels + medians
+	const PADBp = 24;
+	const LAXp = 42; // left band for the view-count axis
+	const PADRp = 12;
+	const GAPp = 16;
+	const TAILHp = 130;
+	const BANDp = 380; // main (linear) zone height
+	const Hp = PADTp + BANDp + GAPp + TAILHp + PADBp;
+	const YBREAKp = PADTp + BANDp;
+	const yPos = (v) =>
+		v <= CAP
+			? PADTp + (v / CAP) * BANDp
+			: YBREAKp + GAPp + ((Math.log10(v) - l3) / (lmax - l3)) * TAILHp;
+	const bandW = (Wp - LAXp - PADRp) / dots.tiers.length;
+	const layoutP = dots.tiers.map((t, ti) => {
+		const cx = LAXp + ti * bandW + bandW / 2;
+		const halfW = bandW * 0.42;
+		const ys = t.views.map((v, i) => {
+			const jv = ((i * 257 + ti * 89 + 13) % 100) / 100;
+			return yPos(v * (1 + (jv - 0.5) * 0.06));
+		});
+		const rowW = R * 2.05;
+		const order = ys.map((y, i) => ({ y, i })).sort((a, b) => a.y - b.y);
+		const rowCount = new Map();
+		const xoff = new Array(ys.length);
+		for (const o of order) {
+			const c = Math.round(o.y / rowW);
+			const k = rowCount.get(c) || 0;
+			rowCount.set(c, k + 1);
+			xoff[o.i] = (k % 2 === 1 ? 1 : -1) * Math.ceil(k / 2) * rowW;
+		}
+		let maxOff = 1;
+		for (const x of xoff) if (Math.abs(x) > maxOff) maxOff = Math.abs(x);
+		const sc = maxOff > halfW ? halfW / maxOff : 1;
+		const pts = ys.map((y, i) => ({ y, x: cx + xoff[i] * sc }));
+		return { ...t, cx, halfW, medY: yPos(t.median), pts };
+	});
 </script>
 
+{#if !portrait}
 <svg viewBox="0 0 {W} {H}" width={W} height={H} role="presentation">
 	<!-- main zone gridlines (linear 0–3M) -->
 	{#each ticks as tk (tk)}
@@ -126,6 +168,34 @@
 		{/if}
 	{/each}
 </svg>
+{:else}
+<!-- portrait / mobile: crudeness columns across the top, view count down the y-axis -->
+<svg viewBox="0 0 {Wp} {Hp}" width={Wp} height={Hp} role="presentation">
+	{#each ticks as tk (tk)}
+		<line class="sw-grid" x1={LAXp} x2={Wp - PADRp} y1={yPos(tk)} y2={yPos(tk)} />
+		<text class="sw-xlab" x={LAXp - 5} y={yPos(tk) + 3} text-anchor="end">{fmtTick(tk)}</text>
+	{/each}
+	<line class="sw-break" x1={LAXp - 6} y1={YBREAKp + 5} x2={LAXp + 4} y2={YBREAKp + 11} />
+	<line class="sw-break" x1={LAXp - 6} y1={YBREAKp + 10} x2={LAXp + 4} y2={YBREAKp + 16} />
+	{#each tailTicks as tk (tk)}
+		<line class="sw-grid" x1={LAXp} x2={Wp - PADRp} y1={yPos(tk)} y2={yPos(tk)} />
+		<text class="sw-xlab" x={LAXp - 5} y={yPos(tk) + 3} text-anchor="end">{fmtTick(tk)}</text>
+	{/each}
+	<text class="sw-axcap" x={LAXp - 5} y={PADTp - 8} text-anchor="end">views ↓</text>
+
+	{#each layoutP as t, ti (t.k)}
+		<text class="sw-label" x={t.cx} y="22" text-anchor="middle">{t.label}</text>
+		<text class="sw-desc" x={t.cx} y="35" text-anchor="middle">{t.desc}</text>
+		<text class="sw-medlab" x={t.cx} y="52" text-anchor="middle">{fmtMed(t.median)}</text>
+		<g class="sw-dots" class:on={shown} style:transition-delay="{ti * 160}ms">
+			{#each t.pts as p (p.x + '-' + p.y)}
+				<circle cx={p.x} cy={p.y} r={R} fill={TIER_COLORS[ti]} />
+			{/each}
+		</g>
+		<line class="sw-med" x1={t.cx - t.halfW} x2={t.cx + t.halfW} y1={t.medY} y2={t.medY} />
+	{/each}
+</svg>
+{/if}
 
 <style>
 	svg {
