@@ -382,7 +382,7 @@
 
 	// video wall: offset each tile's start by its index so the loop rolls across the wall
 	// like a strip of film frames. Phase offsets persist because every tile shares one loop.
-	const WALL_N = 30;
+	const WALL_N = 48;
 	function reel(node, i) {
 		const apply = () => {
 			const d = node.duration || 11.7;
