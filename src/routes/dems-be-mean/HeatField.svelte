@@ -481,6 +481,9 @@
 		.lossmark .tag {
 			top: auto;
 			bottom: 4vh;
+			left: auto;
+			right: 11px; /* flip to the LEFT of the line */
+			text-align: right; /* hug the line */
 			font-size: 0.6rem;
 			line-height: 1.25;
 			white-space: normal;
@@ -491,7 +494,7 @@
 			margin-bottom: 8px;
 		}
 		.gauge {
-			width: min(150px, 38vw);
+			width: min(110px, 30vw);
 			font-size: 0.66rem;
 			margin-bottom: 9px;
 		}
