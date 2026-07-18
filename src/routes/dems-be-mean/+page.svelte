@@ -16,6 +16,8 @@
 	let index = $state(0);
 	let progress = $state(0);
 	let count = $state(0);
+	let vw = $state(1200); // viewport width → drives mobile chart sizing
+	const isMobile = $derived(vw <= 640);
 
 	// opening: scrolly cards over the tiled video wall
 	let openIndex = $state(0);
@@ -321,6 +323,7 @@
 		const arr = payoff.series[key].vals;
 		let lo = 0;
 		while (lo < arr.length && arr[lo] == null) lo++;
+		lo = Math.max(lo, payoff.electionIdx); // narrow every account to post-loss
 		let hi = arr.length - 1;
 		while (hi >= 0 && arr[hi] == null) hi--;
 		const vals = arr.slice(lo, hi + 1);
@@ -430,7 +433,7 @@
 		{
 			side: 'own',
 			colorBy: 'party',
-			h: 'Attention is diffuse',
+			h: '',
 			p: 'No active Democrat commands a share of appearances close to Trump’s. Beyond the legacy names, attention scatters across a rotating ensemble — <b>Zohran Mamdani</b>, <b>Gavin Newsom</b>, <b>Alexandria Ocasio-Cortez</b> — with no successor at the centre.'
 		},
 		{
@@ -466,6 +469,7 @@
 	const castStep = $derived(castSteps[Math.min(castIndex, castSteps.length - 1)]);
 </script>
 
+<svelte:window bind:innerWidth={vw} />
 <div class="dbm">
 	<!-- ARCHIVED front sequence (opening doomscrolling montage) — set to `true` to restore -->
 	{#if false}
@@ -676,7 +680,11 @@
 				<!-- loss pause: clock holds at the "Trump wins election" line -->
 				<div class="step loss" class:on={lossPausing} style:height="{LOSSPAUSE_VH}vh">
 					<div class="card">
-						<p>Notice how things escalate from here.</p>
+						<p>
+							{isMobile
+								? 'Notice how things escalate from this point after Trump won the 2024 presidential election.'
+								: 'Notice how things escalate from here.'}
+						</p>
 					</div>
 				</div>
 				<!-- reveal 2b: the post-loss escalation fills in -->
@@ -742,7 +750,13 @@
 				three-month trailing basis.
 			</p>
 			<div class="mr-chart" use:revealOnView={() => playReveal((v) => (meanProg = v))}>
-				<MeanSpark w={620} h={344} progress={meanProg} title="" endAvatar="{base}/avatars/democrats.jpg" />
+				<MeanSpark
+					w={isMobile ? 360 : 620}
+					h={isMobile ? 430 : 344}
+					progress={meanProg}
+					title=""
+					endAvatar="{base}/avatars/democrats.jpg"
+				/>
 			</div>
 		</div>
 
@@ -762,32 +776,33 @@
 		<div class="mr-block">
 			<h3 class="mr-h">It’s uniquely @democrats</h3>
 			<p class="mr-dek">
-				All three accounts since the 2024 loss, on the same hero-worship to hostile scale.
+				Each account since the 2024 loss, on the same hero-worship to hostile scale.
 			</p>
-			<div
-				class="facets cmp-block"
-				use:revealOnView={() => playReveal((v) => (cmpProg = v), { delay: 700, dur: 4200 })}
-			>
-				<div class="cmp-legend">
-					{#each cmpSeries as s (s.key)}
-						<span class="cmp-leg"><span class="facet-dot" style:background={s.color}></span>{s.label}</span
-						>
-					{/each}
-				</div>
-				<div class="cmp-overlay">
-					<MeanSpark
-						w={520}
-						h={240}
-						progress={cmpProg}
-						series={cmpSeries}
-						monthsList={cmpMonths}
-						electionIdx={null}
-						showY={true}
-						allGrid={true}
-						xEndpoints={true}
-						title=""
-					/>
-				</div>
+			<div class="facets" use:revealOnView={() => playReveal((v) => (cmpProg = v), { delay: 700, dur: 5000 })}>
+				{#each facets as f, i (f.key)}
+					<div class="facet">
+						<div class="facet-head">
+							<span class="facet-dot" style:background={f.color}></span>
+							<span class="facet-name">{f.label}</span>
+						</div>
+						<div class="mr-chart">
+							<MeanSpark
+								w={isMobile ? 360 : i === 0 ? 232 : 178}
+								h={isMobile ? 150 : 250}
+								progress={cmpProg}
+								vals={f.vals}
+								monthsList={f.monthsList}
+								electionIdx={null}
+								lineColor={f.color}
+								showY={isMobile || i === 0}
+								xEndpoints={true}
+								allGrid={true}
+								endAvatar="{base}/avatars/{f.key}.jpg"
+								title=""
+							/>
+						</div>
+					</div>
+				{/each}
 			</div>
 		</div>
 		<div class="mr-text">
@@ -1668,32 +1683,10 @@
 		gap: 2.4em 14px;
 		align-items: end;
 	}
-	/* account comparison overlaid on one shared post-loss axis (all three in one view) */
-	.cmp-block {
-		display: block;
-	}
-	.cmp-legend {
-		display: flex;
-		gap: 1.2em;
-		flex-wrap: wrap;
-		margin: 0 0 0.7em;
-	}
-	.cmp-leg {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.4em;
-		font-family: var(--sans);
-		font-size: 0.85rem;
-		font-weight: 600;
-		color: var(--ink);
-	}
-	.cmp-overlay :global(svg) {
-		width: 100%;
-		height: auto;
-	}
 	@media (max-width: 820px) {
 		.facets {
 			grid-template-columns: 1fr;
+			gap: 1.4em;
 		}
 	}
 	.facet-head {
@@ -1903,6 +1896,19 @@
 		}
 		.tk-grid {
 			grid-template-columns: repeat(2, 1fr);
+		}
+		/* less top space above the laser-eyes flare in the insult frame */
+		.ask {
+			padding-top: 13vh;
+		}
+		/* the opening white cards shouldn't sprawl */
+		.open-card {
+			max-width: 17em;
+		}
+		/* opening video wall: shorter, more tiles so it reads as a texture, not tall TikToks */
+		.video-wall {
+			grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+			grid-auto-rows: 22vh;
 		}
 	}
 	/* demonstrates the colour rule: "redder" as a red highlight chip with white text */

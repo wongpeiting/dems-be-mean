@@ -478,16 +478,9 @@
 	}
 	/* mobile: shrink the HUD (date + gauges) and stack the election label at the bottom */
 	@media (max-width: 640px) {
-		.lossmark .tag {
-			top: auto;
-			bottom: 4vh;
-			left: auto;
-			right: 11px; /* flip to the LEFT of the line */
-			text-align: right; /* hug the line */
-			font-size: 0.6rem;
-			line-height: 1.25;
-			white-space: normal;
-			max-width: 4em;
+		/* the caption already says "after Trump won the 2024 election" on mobile — drop the line */
+		.lossmark {
+			display: none;
 		}
 		.hud .date {
 			font-size: 1.1rem;

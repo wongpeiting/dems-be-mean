@@ -190,7 +190,7 @@
 		<div class="cast-label">
 			<b>{acctHandles}</b>
 			<span class="win-tag">{isRecent ? 'recent' : 'all-time'}</span>
-			cast of characters
+			cast
 		</div>
 		{#if chartW > 0 && chartH > 0}
 			<svg width={chartW} height={chartH} viewBox="0 0 {chartW} {chartH}" role="presentation">
