@@ -446,10 +446,13 @@
 		.explore-hint {
 			top: 20px;
 			left: 16px;
-			max-width: 118px;
-			padding: 7px 10px;
+			width: fit-content; /* box hugs the text instead of stretching */
+			max-width: 150px;
+			padding: 6px 9px;
 			font-size: 0.72rem;
-			line-height: 1.25;
+			line-height: 1.2;
+			text-align: center;
+			text-wrap: balance; /* even out the line lengths so there's no big ragged gap */
 		}
 		.explore-hint .hint-scroll {
 			margin-top: 2px;
@@ -485,46 +488,6 @@
 		letter-spacing: 0.02em;
 		color: rgba(255, 255, 255, 0.85);
 		white-space: nowrap;
-	}
-	/* mobile: the HUD becomes a "life-bar" panel pinned across the top of the screen, and the
-	   word wall is pushed down below it — so the date/gauges get dedicated space and the
-	   scrolling words never collide with them */
-	@media (max-width: 640px) {
-		/* the caption already says "after Trump won the 2024 election" on mobile — drop the line */
-		.lossmark {
-			display: none;
-		}
-		/* keep the word wall at the SAME spot for every phase (reveal, annotate, explore) so it
-		   never jumps — the HUD band lives in the reserved top strip above it */
-		.field {
-			top: 118px;
-		}
-		.hud {
-			left: 0;
-			right: 0;
-			top: 0;
-			padding: 12px 16px 14px;
-			background: #1a1d21;
-			box-shadow: 0 7px 16px 7px #1a1d21; /* soft feather so words fade in below */
-		}
-		.hud .date {
-			font-size: 1.15rem;
-			margin-bottom: 11px;
-		}
-		.hud .gauge {
-			width: auto; /* life bars span the full panel width */
-			font-size: 0.72rem;
-			margin-bottom: 10px;
-		}
-		.hud .gauge:last-child {
-			margin-bottom: 0;
-		}
-		.hud .gauge .lab {
-			margin-bottom: 5px;
-		}
-		.gauge .track {
-			height: 6px;
-		}
 	}
 	.hud {
 		position: absolute;
@@ -581,6 +544,44 @@
 	}
 	.g-trump .fill {
 		background: #a8478c;
+	}
+	/* mobile: the HUD becomes a COMPACT "life-bar" panel pinned across the top; the word wall sits
+	   below it, fixed in place for every phase so it never jumps. Placed AFTER the base rules so
+	   these mobile values win (same specificity → later source wins). */
+	@media (max-width: 640px) {
+		/* the caption already says "after Trump won the 2024 election" on mobile — drop the line */
+		.lossmark {
+			display: none;
+		}
+		.field {
+			top: 94px;
+		}
+		.hud {
+			left: 0;
+			right: 0;
+			top: 0;
+			padding: 9px 14px 11px;
+			background: #1a1d21;
+			box-shadow: 0 6px 14px 6px #1a1d21; /* soft feather so words fade in below */
+		}
+		.hud .date {
+			font-size: 1rem;
+			margin-bottom: 8px;
+		}
+		.hud .gauge {
+			width: auto; /* life bars span the full panel width */
+			font-size: 0.66rem;
+			margin-bottom: 7px;
+		}
+		.hud .gauge:last-child {
+			margin-bottom: 0;
+		}
+		.hud .gauge .lab {
+			margin-bottom: 3px;
+		}
+		.hud .gauge .track {
+			height: 4px;
+		}
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.w {

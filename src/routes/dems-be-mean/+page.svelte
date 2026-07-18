@@ -1938,8 +1938,29 @@
 		.turn-quote {
 			font-size: 1.25rem;
 		}
+		/* scale the scroll boxes (annotate + cast cards) down on mobile */
+		.card {
+			padding: 13px 15px;
+		}
+		.card h3 {
+			font-size: 1.15rem;
+		}
 		.card p {
-			font-size: 0.94rem;
+			font-size: 0.88rem;
+		}
+		.tk-meta {
+			padding: 4px 5px 5px;
+		}
+		/* keep ALL body prose at the same small size on mobile (these weren't overridden before,
+		   so they were showing ~1.3rem while .turn-line was 1.1rem) */
+		.mr-text p,
+		.payoff-lede,
+		.payoff-kicker,
+		.after p {
+			font-size: 1.1rem;
+		}
+		.ask-cont {
+			font-size: 1.1rem !important; /* base uses !important, so match it */
 		}
 	}
 	/* demonstrates the colour rule: "redder" as a red highlight chip with white text */
