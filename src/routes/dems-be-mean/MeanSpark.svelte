@@ -22,7 +22,8 @@
 		showY = true,
 		xEndpoints = false,
 		allGrid = false,
-		endAvatar = null
+		endAvatar = null,
+		series = null // [{ vals, color }] → overlay multiple lines on one shared axis
 	} = $props();
 	const W = w;
 	const H = h;
@@ -81,6 +82,29 @@
 	);
 	const end = $derived(lead);
 
+	// overlay mode: build a revealed line path for each series on the shared axis, skipping
+	// leading nulls (so @whitehouse/@republicans lines only appear once the playhead reaches
+	// their first active month).
+	const seriesLines = $derived.by(() => {
+		if (!series) return null;
+		return series.map((s) => {
+			const v = s.vals;
+			const pts = [];
+			for (let i = 0; i <= iE; i++) if (v[i] != null) pts.push(`${X(i).toFixed(1)},${Y(v[i]).toFixed(1)}`);
+			let endPt = null;
+			const v0 = v[iE];
+			if (v0 != null) {
+				const j = Math.min(iE + 1, N - 1);
+				const v1 = v[j];
+				endPt = { x: X(iE) + (X(j) - X(iE)) * tE, y: Y(v1 == null ? v0 : v0 + (v1 - v0) * tE) };
+			}
+			const d = pts.length
+				? 'M' + pts.join(' L ') + (endPt ? ` L${endPt.x.toFixed(1)},${endPt.y.toFixed(1)}` : '')
+				: '';
+			return { d, color: s.color, end: endPt };
+		});
+	});
+
 	// x-axis: for a long span, year labels every 2 years; for a short one, the start & end month
 	const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	const fmtMon = (m) => `${MON[+m.slice(5, 7) - 1]} ${m.slice(0, 4)}`;
@@ -123,23 +147,32 @@
 			<text class="el-lab" x={elX - 5} y={PAD + 9} text-anchor="end">Trump wins election</text>
 		{/if}
 
-		<path class="area" d={area} fill="url(#{gid})" />
-		<path class="line" d={line} stroke="url(#{gid})" />
-		{#if end}
-			{#if endAvatar}
-				<clipPath id={clipId}><circle cx={end.x} cy={end.y} r="11.5" /></clipPath>
-				<circle cx={end.x} cy={end.y} r="13" fill="#16181c" stroke={lineColor ?? '#a8478c'} stroke-width="2" />
-				<image
-					href={endAvatar}
-					x={end.x - 11.5}
-					y={end.y - 11.5}
-					width="23"
-					height="23"
-					clip-path="url(#{clipId})"
-					preserveAspectRatio="xMidYMid slice"
-				/>
-			{:else}
-				<circle class="end-dot" cx={end.x} cy={end.y} r="3.2" fill={lineColor ?? '#a8478c'} />
+		{#if series}
+			{#each seriesLines as sl, i (i)}
+				<path class="line" d={sl.d} stroke={sl.color} />
+				{#if sl.end}
+					<circle class="end-dot" cx={sl.end.x} cy={sl.end.y} r="3" fill={sl.color} />
+				{/if}
+			{/each}
+		{:else}
+			<path class="area" d={area} fill="url(#{gid})" />
+			<path class="line" d={line} stroke="url(#{gid})" />
+			{#if end}
+				{#if endAvatar}
+					<clipPath id={clipId}><circle cx={end.x} cy={end.y} r="11.5" /></clipPath>
+					<circle cx={end.x} cy={end.y} r="13" fill="#16181c" stroke={lineColor ?? '#a8478c'} stroke-width="2" />
+					<image
+						href={endAvatar}
+						x={end.x - 11.5}
+						y={end.y - 11.5}
+						width="23"
+						height="23"
+						clip-path="url(#{clipId})"
+						preserveAspectRatio="xMidYMid slice"
+					/>
+				{:else}
+					<circle class="end-dot" cx={end.x} cy={end.y} r="3.2" fill={lineColor ?? '#a8478c'} />
+				{/if}
 			{/if}
 		{/if}
 

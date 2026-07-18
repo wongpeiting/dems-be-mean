@@ -333,6 +333,14 @@
 		{ key: 'whitehouse', label: '@whitehouse', color: '#e8863a', ...facetData('whitehouse') },
 		{ key: 'republicans', label: '@republicans', color: '#ee6677', ...facetData('republicans') }
 	];
+	// account comparison, narrowed to POST-LOSS so all three share one axis and can be overlaid
+	const cmpLo = payoff.electionIdx;
+	const cmpMonths = payoff.months.slice(cmpLo);
+	const cmpSeries = [
+		{ key: 'democrats', label: '@democrats', color: '#a8478c', vals: payoff.series.democrats.vals.slice(cmpLo) },
+		{ key: 'whitehouse', label: '@whitehouse', color: '#e8863a', vals: payoff.series.whitehouse.vals.slice(cmpLo) },
+		{ key: 'republicans', label: '@republicans', color: '#ee6677', vals: payoff.series.republicans.vals.slice(cmpLo) }
+	];
 	// tween progress 0→1 over `dur`, after `delay`, easing out; skips animation for reduced motion
 	function playReveal(setter, { delay = 700, dur = 4800 } = {}) {
 		if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
@@ -718,11 +726,6 @@
 		</Scroller>
 	</section>
 
-	<!-- a mirrored laser-eyes flare in the gap, for the lols -->
-	<div class="laser-band" aria-hidden="true">
-		<img src="{base}/laser-eyes.png" alt="" />
-	</div>
-
 	<!-- the payoff: prose with the Mean-o-meter embedded inline, revealing as it scrolls in -->
 	<section class="mean-reveal">
 		<div class="mr-text">
@@ -759,33 +762,32 @@
 		<div class="mr-block">
 			<h3 class="mr-h">It’s uniquely @democrats</h3>
 			<p class="mr-dek">
-				Each account’s register over its own lifetime, on the same hero-worship to hostile scale.
+				All three accounts since the 2024 loss, on the same hero-worship to hostile scale.
 			</p>
-			<div class="facets" use:revealOnView={() => playReveal((v) => (cmpProg = v), { delay: 700, dur: 5600 })}>
-				{#each facets as f, i (f.key)}
-					<div class="facet">
-						<div class="facet-head">
-							<span class="facet-dot" style:background={f.color}></span>
-							<span class="facet-name">{f.label}</span>
-						</div>
-						<div class="mr-chart">
-							<MeanSpark
-								w={i === 0 ? 232 : 178}
-								h={250}
-								progress={cmpProg}
-								vals={f.vals}
-								monthsList={f.monthsList}
-								electionIdx={null}
-								lineColor={f.color}
-								showY={i === 0}
-								xEndpoints={true}
-								allGrid={true}
-								endAvatar="{base}/avatars/{f.key}.jpg"
-								title=""
-							/>
-						</div>
-					</div>
-				{/each}
+			<div
+				class="facets cmp-block"
+				use:revealOnView={() => playReveal((v) => (cmpProg = v), { delay: 700, dur: 4200 })}
+			>
+				<div class="cmp-legend">
+					{#each cmpSeries as s (s.key)}
+						<span class="cmp-leg"><span class="facet-dot" style:background={s.color}></span>{s.label}</span
+						>
+					{/each}
+				</div>
+				<div class="cmp-overlay">
+					<MeanSpark
+						w={520}
+						h={240}
+						progress={cmpProg}
+						series={cmpSeries}
+						monthsList={cmpMonths}
+						electionIdx={null}
+						showY={true}
+						allGrid={true}
+						xEndpoints={true}
+						title=""
+					/>
+				</div>
 			</div>
 		</div>
 		<div class="mr-text">
@@ -1665,6 +1667,29 @@
 		grid-template-columns: 1.3fr 1fr 1fr;
 		gap: 2.4em 14px;
 		align-items: end;
+	}
+	/* account comparison overlaid on one shared post-loss axis (all three in one view) */
+	.cmp-block {
+		display: block;
+	}
+	.cmp-legend {
+		display: flex;
+		gap: 1.2em;
+		flex-wrap: wrap;
+		margin: 0 0 0.7em;
+	}
+	.cmp-leg {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4em;
+		font-family: var(--sans);
+		font-size: 0.85rem;
+		font-weight: 600;
+		color: var(--ink);
+	}
+	.cmp-overlay :global(svg) {
+		width: 100%;
+		height: auto;
 	}
 	@media (max-width: 820px) {
 		.facets {
