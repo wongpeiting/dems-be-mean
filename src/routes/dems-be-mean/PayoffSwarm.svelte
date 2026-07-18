@@ -11,7 +11,7 @@
 	const PADR = 20;
 	const TOP = 48; // top lane parks the "Median view count" label in open space above band 1
 	const XAX = 30; // bottom band for the view-count axis
-	const BAND = 66;
+	const BAND = 92;
 	const R = 1.7;
 	const H = TOP + dots.tiers.length * BAND + XAX;
 
@@ -219,7 +219,7 @@
 		font-size: 9px;
 	}
 	.sw-label {
-		fill: #f2f2f3;
+		fill: #ffffff;
 		font-family: var(--sans);
 		font-weight: 700;
 		font-size: 13px;

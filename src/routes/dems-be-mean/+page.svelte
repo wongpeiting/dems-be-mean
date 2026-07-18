@@ -555,7 +555,7 @@
 	<section class="ask">
 		<div class="ask-inner">
 			<img class="laser-eyes" src="{base}/laser-eyes.png" alt="" aria-hidden="true" />
-			<p class="ask-q">Before we begin,<br />let’s channel our inner middle-schooler.</p>
+			<p class="ask-q">Before we begin,<br />let’s channel our<br />inner middle-schooler.</p>
 			<form class="ask-form" onsubmit={askSubmit}>
 				<input
 					bind:value={typed}
@@ -649,7 +649,7 @@
 						rhetorical habits that became markedly more common after Democrats embraced a more
 						combative online strategy.
 					</p>
-					<p class="ask-cont">The results reveal the subtle shift.</p>
+					<p class="ask-cont">The results reveal the shift.</p>
 				</div>
 			{/if}
 		</div>
@@ -758,6 +758,7 @@
 					progress={meanProg}
 					title=""
 					endAvatar="{base}/avatars/democrats.jpg"
+					labelPx={isMobile ? 8.5 : 12}
 				/>
 			</div>
 		</div>
@@ -861,7 +862,7 @@
 			530,000, a tenfold increase.
 		</p>
 		<p class="payoff-lede">
-			But the increase wasn’t uniform. Within the post-election feed, the cruder the post, the larger
+			Within the post-election feed, the cruder the post, the larger
 			its audience. Rank posts from institutional to crass, and the median number of views climbs at
 			every rung.
 		</p>
@@ -1115,7 +1116,7 @@
 	.ask-q {
 		font-family: var(--serif);
 		font-weight: 700;
-		font-size: clamp(1.2rem, 2.6vw, 1.7rem);
+		font-size: clamp(1.75rem, 3.8vw, 2.5rem);
 		line-height: 1.3;
 		color: #a8478c; /* deeper gauge magenta */
 		margin: 0 0 1.4em;
@@ -1634,7 +1635,7 @@
 	.mean-reveal {
 		max-width: none;
 		background: var(--bg);
-		padding: 8vh 0 10vh;
+		padding: 1vh 0 10vh;
 	}
 	.mr-text {
 		max-width: 620px;
@@ -1669,7 +1670,7 @@
 	}
 	.mr-dek {
 		font-family: var(--sans);
-		font-size: 0.92rem;
+		font-size: 1.05rem;
 		line-height: 1.45;
 		color: var(--muted);
 		margin: 0 0 1.4em;
@@ -1716,7 +1717,11 @@
 	}
 	.cast-story {
 		max-width: none;
-		--chart-left: 42%;
+		/* desktop: circle pack on the LEFT, scroll cards ride up the RIGHT lane.
+		   both nudged right (bigger left inset, smaller right inset) so the whole thing sits
+		   more centred rather than hugging the left edge */
+		--chart-left: 6vw;
+		--chart-right: 40%;
 	}
 	.cast-story :global(.foreground) {
 		pointer-events: none;
@@ -1730,10 +1735,10 @@
 		height: 110vh;
 		display: flex;
 		align-items: center;
-		/* park the card at the right end of the left lane so it hugs the circles */
-		justify-content: flex-end;
-		padding-left: 3vw;
-		padding-right: calc(100% - var(--chart-left) + 1.5vw);
+		/* park the card at the left end of the RIGHT lane so it hugs the circles (pack on the left) */
+		justify-content: flex-start;
+		padding-left: calc(100% - var(--chart-right) + 1.5vw);
+		padding-right: 3vw;
 		pointer-events: none;
 	}
 	.cast-step .card {
@@ -1745,7 +1750,9 @@
 	   clears the top of the screen (revealing the pack) before the next step arrives */
 	@media (max-width: 820px) {
 		.cast-story {
+			/* mobile: pack fills the width again (card centres over it) */
 			--chart-left: 4vw;
+			--chart-right: 2vw;
 		}
 		.cast-step {
 			height: 175vh;
@@ -1915,14 +1922,9 @@
 		.open-card {
 			max-width: 17em;
 		}
-		/* opening video wall: shorter, more tiles so it reads as a texture, not tall TikToks */
-		.video-wall {
-			grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-			grid-auto-rows: 22vh;
-		}
 		/* mobile type: dial down the dek, byline and body prose so they don't feel oversized */
 		.dek {
-			font-size: 1.08rem;
+			font-size: 0.98rem;
 		}
 		.lede-byline {
 			font-size: 0.82rem;
@@ -2046,7 +2048,7 @@
 		font-family: var(--sans);
 		font-size: 0.92rem;
 		color: #ffffff;
-		margin: 0 0 1.6em;
+		margin: 0 0 0.5em;
 	}
 	.payoff-body {
 		font-family: var(--serif);

@@ -281,7 +281,7 @@
 		position: absolute;
 		/* --chart-left lets the host push the circle graphic to one side so scroll cards
 		   riding up the other side never sit on top of the faces */
-		inset: 3vh 2vw 3vh var(--chart-left, 2vw);
+		inset: 3vh var(--chart-right, 2vw) 3vh var(--chart-left, 2vw);
 	}
 	.cast-label {
 		position: absolute;

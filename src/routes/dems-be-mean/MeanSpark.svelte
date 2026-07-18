@@ -23,6 +23,7 @@
 		xEndpoints = false,
 		allGrid = false,
 		endAvatar = null,
+		labelPx = 8.5, // font size (SVG units) for the register + year axis labels
 		series = null // [{ vals, color }] → overlay multiple lines on one shared axis
 	} = $props();
 	const W = w;
@@ -136,7 +137,7 @@
 				<line class="grid" class:zero={t.v === 0} x1={PAD + LMARG} x2={W - PAD} y1={Y(t.v)} y2={Y(t.v)} />
 			{/if}
 			{#if showY}
-				<text class="reg-lab" x={PAD + LMARG - 7} y={Y(t.v) + 3} text-anchor="end">
+				<text class="reg-lab" x={PAD + LMARG - 7} y={Y(t.v) + 3} text-anchor="end" style:font-size="{labelPx}px">
 					<tspan class="reg-num">{t.v > 0 ? '+' + t.v : t.v}</tspan>&#8194;{t.name}
 				</text>
 			{/if}
@@ -177,7 +178,7 @@
 		{/if}
 
 		{#each xticks as t (t.label)}
-			<text class="x-lab" x={t.x} y={H - 3} text-anchor={t.anchor}>{t.label}</text>
+			<text class="x-lab" x={t.x} y={H - 3} text-anchor={t.anchor} style:font-size="{labelPx}px">{t.label}</text>
 		{/each}
 	</svg>
 </div>
@@ -203,14 +204,14 @@
 		stroke: #565b63;
 	}
 	.reg-lab {
-		fill: #ffffff;
+		fill: #8a8f96;
 		font-family: var(--sans);
 		font-size: 8.5px;
 		font-weight: 700;
 		dominant-baseline: middle;
 	}
 	.reg-lab .reg-num {
-		fill: #ffffff;
+		fill: #8a8f96;
 		font-weight: 700;
 	}
 	.el {

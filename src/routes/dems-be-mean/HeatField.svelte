@@ -219,7 +219,16 @@
 		>
 			{#if hovered.clip}
 				<!-- svelte-ignore a11y_media_has_caption -->
-				<video src="{base}/clips/{hovered.clip}" loop playsinline use:playWithSound></video>
+				<!-- muted+autoplay guarantees the clip renders; playWithSound then upgrades to sound -->
+				<video
+					src="{base}/clips/{hovered.clip}"
+					muted
+					autoplay
+					loop
+					playsinline
+					preload="auto"
+					use:playWithSound
+				></video>
 			{/if}
 			<div class="cl-count">
 				<b>“{hovered.word}”</b> in {wu ? wu.n : 1}
@@ -254,7 +263,7 @@
 	<div class="hud" class:annotating>
 		<div class="date">{fmtMonth(curMonthKey)}</div>
 		<div class="gauge g-mean">
-			<div class="lab"><span>Share of posts that attack</span><span class="val">{pct(attackS[mIdx])}%</span></div>
+			<div class="lab"><span>Share of attack posts</span><span class="val">{pct(attackS[mIdx])}%</span></div>
 			<div class="track"><div class="fill" style:width="{pct(attackS[mIdx])}%"></div></div>
 		</div>
 		<div class="gauge g-trump">
@@ -534,37 +543,37 @@
 	.hud .date {
 		font-family: var(--serif);
 		font-weight: 700;
-		font-size: 1.5rem;
+		font-size: 2.1rem;
 		letter-spacing: 0;
 		text-transform: none;
 		color: var(--ink);
-		margin-bottom: 14px;
+		margin-bottom: 18px;
 	}
 	.gauge {
-		margin: 0 0 12px;
-		width: min(230px, 42vw);
+		margin: 0 0 18px;
+		width: min(340px, 46vw);
 		text-transform: none;
 		letter-spacing: 0.01em;
-		font-size: 0.8rem;
+		font-size: 1.05rem;
 	}
 	.gauge .lab {
 		display: flex;
 		justify-content: space-between;
-		margin-bottom: 4px;
+		margin-bottom: 6px;
 	}
 	.gauge .lab .val {
 		color: var(--ink);
 		font-weight: 700;
 	}
 	.gauge .track {
-		height: 6px;
-		border-radius: 3px;
+		height: 9px;
+		border-radius: 5px;
 		background: #2a2e34;
 		overflow: hidden;
 	}
 	.gauge .fill {
 		height: 100%;
-		border-radius: 3px;
+		border-radius: 5px;
 		transition: width 0.12s linear;
 	}
 	.g-mean .fill {
