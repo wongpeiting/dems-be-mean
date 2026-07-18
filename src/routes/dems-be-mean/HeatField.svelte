@@ -434,6 +434,18 @@
 			display: inline;
 		}
 	}
+	@media (max-width: 640px) {
+		.explore-hint {
+			top: 24px;
+			left: 20px;
+			max-width: 150px;
+			padding: 9px 12px;
+			font-size: 0.8rem;
+		}
+		.explore-hint .hint-scroll {
+			font-size: 0.64rem;
+		}
+	}
 	@media (prefers-reduced-motion: reduce) {
 		.explore-hint {
 			animation: none;
