@@ -682,7 +682,7 @@
 					<div class="card">
 						<p>
 							{isMobile
-								? 'Notice how things escalate from this point after Trump won the 2024 presidential election.'
+								? "Notice how things escalate from Nov 2024 with Trump's electoral win."
 								: 'Notice how things escalate from here.'}
 						</p>
 					</div>
@@ -1737,14 +1737,17 @@
 		max-width: 380px;
 		pointer-events: auto; /* let the reader select/copy the card text */
 	}
-	/* narrow screens: stack — centre the circles again and the cards over them */
+	/* narrow screens: stack — circles centred, card sits low and gets extra scroll room so it
+	   clears the top of the screen (revealing the pack) before the next step arrives */
 	@media (max-width: 820px) {
 		.cast-story {
 			--chart-left: 4vw;
 		}
 		.cast-step {
+			height: 175vh;
 			justify-content: center;
-			padding: 0 4vw;
+			align-items: flex-end;
+			padding: 0 4vw 8vh;
 		}
 		.cast-step .card {
 			margin: 0 auto;
@@ -1909,6 +1912,25 @@
 		.video-wall {
 			grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
 			grid-auto-rows: 22vh;
+		}
+		/* mobile type: dial down the dek, byline and body prose so they don't feel oversized */
+		.dek {
+			font-size: 1.08rem;
+		}
+		.lede-byline {
+			font-size: 0.82rem;
+		}
+		.turn-line {
+			font-size: 1.1rem;
+		}
+		.turn-line.small {
+			font-size: 1.02rem;
+		}
+		.turn-quote {
+			font-size: 1.25rem;
+		}
+		.card p {
+			font-size: 0.94rem;
 		}
 	}
 	/* demonstrates the colour rule: "redder" as a red highlight chip with white text */

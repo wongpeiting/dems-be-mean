@@ -476,23 +476,43 @@
 		color: rgba(255, 255, 255, 0.85);
 		white-space: nowrap;
 	}
-	/* mobile: shrink the HUD (date + gauges) and stack the election label at the bottom */
+	/* mobile: the HUD becomes a "life-bar" panel pinned across the top of the screen, and the
+	   word wall is pushed down below it — so the date/gauges get dedicated space and the
+	   scrolling words never collide with them */
 	@media (max-width: 640px) {
 		/* the caption already says "after Trump won the 2024 election" on mobile — drop the line */
 		.lossmark {
 			display: none;
 		}
+		.field {
+			top: 118px;
+		}
+		/* while exploring the HUD is gone, so let the words reclaim the top band */
+		.field.explore {
+			top: 0;
+		}
+		.hud {
+			left: 0;
+			right: 0;
+			top: 0;
+			padding: 12px 16px 14px;
+			background: #1a1d21;
+			box-shadow: 0 7px 16px 7px #1a1d21; /* soft feather so words fade in below */
+		}
 		.hud .date {
-			font-size: 1.1rem;
+			font-size: 1.15rem;
 			margin-bottom: 8px;
 		}
-		.gauge {
-			width: min(110px, 30vw);
-			font-size: 0.66rem;
-			margin-bottom: 9px;
+		.hud .gauge {
+			width: auto; /* life bars span the full panel width */
+			font-size: 0.72rem;
+			margin-bottom: 7px;
+		}
+		.hud .gauge:last-child {
+			margin-bottom: 0;
 		}
 		.gauge .track {
-			height: 4px;
+			height: 5px;
 		}
 	}
 	.hud {
