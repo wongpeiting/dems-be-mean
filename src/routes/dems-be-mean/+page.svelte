@@ -471,6 +471,21 @@
 	const castStep = $derived(castSteps[Math.min(castIndex, castSteps.length - 1)]);
 </script>
 
+<svelte:head>
+	<title>Dems Be Mean</title>
+	<meta
+		name="description"
+		content="A TikTok deep-dive: how @democrats got measurably meaner after the 2024 loss."
+	/>
+	<meta property="og:title" content="Dems Be Mean" />
+	<meta
+		property="og:description"
+		content="A TikTok deep-dive: how @democrats got measurably meaner after the 2024 loss."
+	/>
+	<meta property="og:image" content="{base}/favicon.png" />
+	<meta name="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <svelte:window bind:innerWidth={vw} />
 <div class="dbm">
 	<!-- ARCHIVED front sequence (opening doomscrolling montage) — set to `true` to restore -->
@@ -1972,7 +1987,6 @@
 		.dbm .mr-text p,
 		.dbm .payoff-lede,
 		.dbm .payoff-kicker,
-		.dbm .after p,
 		.dbm .ask-cont {
 			font-size: 1.1rem !important;
 		}
