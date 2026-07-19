@@ -5,6 +5,7 @@
 
 <script>
 	import payoff from '$lib/data/payoff.json';
+	import { scaleLinear, scalePoint, line as d3line, area as d3area } from 'd3';
 
 	// a register-over-time chart on the 7-point scale (−3 hero-worship .. +3 hostile/taunting).
 	// Data-driven: pass `vals` + `monthsList` for any account over its own timeline. `lineColor`
@@ -26,23 +27,33 @@
 		labelPx = 8.5, // font size (SVG units) for the register + year axis labels
 		series = null // [{ vals, color }] → overlay multiple lines on one shared axis
 	} = $props();
-	const W = w;
-	const H = h;
 	const PAD = 8;
 	const XAX = 15; // reserved band at the bottom for the time labels
-	const LMARG = showY ? 78 : 10; // left band for the 7 register labels (only when shown)
-	const B = H - PAD - XAX;
-	const friendlyStop = light ? '#c2c6cc' : '#ffffff';
-	const N = monthsList.length;
 	const LO = -3;
 	const HI = 3;
-	const X = (i) => PAD + LMARG + (i / (N - 1)) * (W - 2 * PAD - LMARG);
-	const Y = (v) => PAD + (1 - (v - LO) / (HI - LO)) * (B - PAD);
+	// these depend on reactive props (w/h/monthsList/showY change with isMobile), so per the
+	// reactive-scale rule they are $derived — the scales rebuild if the inputs change.
+	const W = $derived(w);
+	const H = $derived(h);
+	const LMARG = $derived(showY ? 78 : 10); // left band for the 7 register labels (only when shown)
+	const B = $derived(H - PAD - XAX);
+	const friendlyStop = $derived(light ? '#c2c6cc' : '#ffffff');
+	const N = $derived(monthsList.length);
+	// D3 scales: x spaces the months evenly (scalePoint over the month indices), y maps the
+	// −3..+3 register onto pixels (inverted range so +3/hostile sits at the top).
+	const xScale = $derived(
+		scalePoint()
+			.domain([...Array(N).keys()])
+			.range([PAD + LMARG, W - PAD])
+	);
+	const yScale = $derived(scaleLinear().domain([LO, HI]).range([B, PAD]));
+	const X = (i) => xScale(i);
+	const Y = (v) => yScale(v);
 	const _u = _uid++;
 	const gid = `sparkgrad-${_u}`;
 	const clipId = `sparkclip-${_u}`;
-	const hasEl = electionIdx != null && electionIdx >= 0 && electionIdx < N;
-	const elX = hasEl ? X(electionIdx) : 0;
+	const hasEl = $derived(electionIdx != null && electionIdx >= 0 && electionIdx < N);
+	const elX = $derived(hasEl ? X(electionIdx) : 0);
 
 	const REG = [
 		{ v: 3, name: 'hostile' },
@@ -69,18 +80,25 @@
 		const y = Y(v1 == null ? v0 : v0 + (v1 - v0) * tE);
 		return { x, y };
 	});
-	const whole = $derived(
-		vals.slice(0, iE + 1).map((v, i) => `${X(i).toFixed(1)},${Y(v).toFixed(1)}`)
-	);
-	const line = $derived(
-		'M' + whole.join(' L ') + (lead ? ` L${lead.x.toFixed(1)},${lead.y.toFixed(1)}` : '')
-	);
-	const area = $derived(
-		`M${X(0).toFixed(1)},${Y(0).toFixed(1)} L` +
-			whole.join(' L ') +
-			(lead ? ` L${lead.x.toFixed(1)},${lead.y.toFixed(1)}` : '') +
-			` L${(lead ? lead.x : X(iE)).toFixed(1)},${Y(0).toFixed(1)} Z`
-	);
+	// d3 generators build the SVG paths from pre-computed pixel points {px, py}; we pass pixels
+	// (not raw values) because the fractional reveal tip sits *between* two months and so has no
+	// scalePoint domain value of its own.
+	const lineGen = d3line()
+		.x((d) => d.px)
+		.y((d) => d.py);
+	const areaGen = d3area()
+		.x((d) => d.px)
+		.y0(() => Y(0))
+		.y1((d) => d.py);
+	// revealed points up to the playhead, plus the interpolated leading tip
+	const linePts = $derived.by(() => {
+		const pts = [];
+		for (let i = 0; i <= iE; i++) pts.push({ px: X(i), py: Y(vals[i]) });
+		if (lead) pts.push({ px: lead.x, py: lead.y });
+		return pts;
+	});
+	const line = $derived(lineGen(linePts) || '');
+	const area = $derived(areaGen(linePts) || '');
 	const end = $derived(lead);
 
 	// overlay mode: build a revealed line path for each series on the shared axis, skipping
@@ -91,35 +109,37 @@
 		return series.map((s) => {
 			const v = s.vals;
 			const pts = [];
-			for (let i = 0; i <= iE; i++) if (v[i] != null) pts.push(`${X(i).toFixed(1)},${Y(v[i]).toFixed(1)}`);
+			for (let i = 0; i <= iE; i++) if (v[i] != null) pts.push({ px: X(i), py: Y(v[i]) });
 			let endPt = null;
 			const v0 = v[iE];
 			if (v0 != null) {
 				const j = Math.min(iE + 1, N - 1);
 				const v1 = v[j];
 				endPt = { x: X(iE) + (X(j) - X(iE)) * tE, y: Y(v1 == null ? v0 : v0 + (v1 - v0) * tE) };
+				pts.push({ px: endPt.x, py: endPt.y });
 			}
-			const d = pts.length
-				? 'M' + pts.join(' L ') + (endPt ? ` L${endPt.x.toFixed(1)},${endPt.y.toFixed(1)}` : '')
-				: '';
-			return { d, color: s.color, end: endPt };
+			return { d: pts.length ? lineGen(pts) : '', color: s.color, end: endPt };
 		});
 	});
 
 	// x-axis: for a long span, year labels every 2 years; for a short one, the start & end month
 	const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 	const fmtMon = (m) => `${MON[+m.slice(5, 7) - 1]} ${m.slice(0, 4)}`;
-	const xticks = [];
-	if (!xEndpoints && N >= 25) {
-		const yrs = monthsList.map((m) => +m.slice(0, 4));
-		for (let y = yrs[0]; y <= yrs[yrs.length - 1]; y += 2) {
-			const idx = monthsList.indexOf(`${y}-01`);
-			if (idx >= 0) xticks.push({ label: '' + y, x: X(idx), anchor: 'middle' });
+	// reads the (reactive) scale via X(), so it's $derived too
+	const xticks = $derived.by(() => {
+		const ticks = [];
+		if (!xEndpoints && N >= 25) {
+			const yrs = monthsList.map((m) => +m.slice(0, 4));
+			for (let y = yrs[0]; y <= yrs[yrs.length - 1]; y += 2) {
+				const idx = monthsList.indexOf(`${y}-01`);
+				if (idx >= 0) ticks.push({ label: '' + y, x: X(idx), anchor: 'middle' });
+			}
+		} else {
+			ticks.push({ label: fmtMon(monthsList[0]), x: X(0), anchor: 'start' });
+			ticks.push({ label: fmtMon(monthsList[N - 1]), x: X(N - 1), anchor: 'end' });
 		}
-	} else {
-		xticks.push({ label: fmtMon(monthsList[0]), x: X(0), anchor: 'start' });
-		xticks.push({ label: fmtMon(monthsList[N - 1]), x: X(N - 1), anchor: 'end' });
-	}
+		return ticks;
+	});
 </script>
 
 <div class="mean-spark" class:light>
