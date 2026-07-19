@@ -13,9 +13,9 @@ After the 2024 loss, the Democratic National Committee's official TikTok account
 
 ## Data & methodology
 
-The analysis covers every TikTok post by @democrats through July 9, 2026 (2,786 posts), with @whitehouse (856) and @republicans (189) as comparisons. It's not possible without **signals2text**, a tool I'm developing that makes video analysable at scale. 
+The analysis covers every TikTok post by @democrats through July 9, 2026, with @whitehouse and @republicans as comparisons. In total, about 3,800 videos across three accounts were collapsed into a single dataset to understand which words define the account, when its tone turned, who it targets, and whether cruelty is rewarded with views. This is not possible without **signals2text**, a tool I'm developing that makes video analysable at scale. 
 
-I developed signals2text after I found through my prior projects that it's not easy to get LLM to understand TikTok posts due to the many layers of signals, including captions, the text burned onto the screen, the spoken audio, emotional register, music, the visuals, meme formats, pop culture references, and face identification. These different layers tend to get lost in translation if they are not first turned into structured, queryable text, and treated as data that hold equal weight. As such, I created a pipeline that first gets an LLM (Gemini 2.5 Pro, in my case) to describe the intent and visual action in any TikTok post by watching the video along with all of the cleaned and prepared data streams. 
+I developed *signals2text* after I found through my prior projects that it's not easy to get LLM to understand TikTok posts due to the many layers of signals, including captions, the text burned onto the screen, the spoken audio, emotional register, music, the visuals, meme formats, pop culture references, and face identification. These different layers tend to get lost in translation if they are not first turned into structured, queryable text, and treated as data that hold equal weight. As such, I created a pipeline that first gets an LLM (Gemini 2.5 Pro, in my case) to describe the intent and visual action in any TikTok post by watching the video along with all of the cleaned and prepared data streams. 
 
 <img width="1102" height="621" alt="Image" src="https://github.com/user-attachments/assets/9ee59069-674b-463e-ae4e-d524b36779fc" /><img width="1102" height="629" alt="Image" src="https://github.com/user-attachments/assets/83dc9e9f-aa0a-4d6c-8abe-d9b3c0e051cd" />
 
@@ -25,7 +25,7 @@ Only after that is done did I pass the content through an LLM classifier that wo
 
 The ability to read the output of the LLM's Stage 1 descriptions (its interpretation after considering all embedded signals) made it easier for me to trust the LLM model's classification, given the auditability of its understanding versus how a human would interpret the same specimen of a TikTok post.
 
-This project, *Dems Be Mean*, thus exists as early field test of **signals2text**, where about 3,800 videos across three accounts were collapsed into a single dataset a reporter could interrogate — which words define the account, when its tone turned, who it targets, and whether cruelty is rewarded with views. The tool is still early and this is a single corpus, but the goal is a repeatable pipeline: point it at a body of video and get back the signals worth reporting on. The end-to-end pipeline — transcription, OCR, and the LLM classification passes — will be published in a separate repository in time to come.
+The end-to-end pipeline — transcription, OCR, and the LLM classification passes — will be published in a separate repository in time to come.
 
 ## Tech
 
