@@ -3,13 +3,9 @@
 </script>
 
 <main>
-	<h1>Scrollytelling flow-map kit</h1>
-	<p>
-		A small Svelte kit for NYT-style scrollytelling flow maps — a sticky map that reveals as you
-		scroll, with lines whose width is your number. You write data; the kit draws it.
-	</p>
-	<p><a href="{base}/kit-demo">See the demo →</a></p>
-	<p class="src">Docs: <code>src/lib/scrolly/README.md</code></p>
+	<h1>Dems Be Mean</h1>
+	<p>A TikTok deep-dive into how the @democrats account got measurably meaner after the 2024 loss.</p>
+	<p><a href="{base}/dems-be-mean">Read the piece →</a></p>
 </main>
 
 <style>
@@ -28,9 +24,5 @@
 	a {
 		color: #c0392b;
 		font-weight: 600;
-	}
-	.src {
-		color: #6b7280;
-		font-size: 0.9rem;
 	}
 </style>
