@@ -116,10 +116,15 @@
 		// two for genuinely long ones (where "faggot"→"forgot" style collisions can't happen).
 		const cap = w.length <= 4 ? 0 : w.length >= 8 ? 2 : 1;
 		if (cap === 0) return null;
+		// Penalise a first-letter change: people almost never mistype the first letter, and
+		// swapping it usually lands on an unrelated word (facist→fascist is a dropped letter,
+		// but facist→racist is a different word entirely). Adding 1 when the initials differ
+		// lets the true correction win a tie and pushes cross-word collisions past the cap.
+		const score = (k, d) => d + (w[0] !== k[0] ? 1 : 0);
 		let bestK = null,
 			bestD = 99;
 		for (const k of lexKeys) {
-			const d = dist(w, k, cap);
+			const d = score(k, dist(w, k, cap));
 			if (d < bestD || (d === bestD && bestK && worduse[k].t && !worduse[bestK].t)) {
 				bestD = d;
 				bestK = k;
@@ -140,6 +145,24 @@
 		}
 		return [...m.entries()].map(([t, items]) => ({ t, items }));
 	});
+	// We now ship EVERY dunk line per word, so start collapsed and let the reader click
+	// "…and N more" to reveal the rest. LIMIT is a total budget of lines across all groups.
+	const LIMIT = 6;
+	let expanded = $state(false);
+	const shownGroups = $derived.by(() => {
+		if (expanded) return exGroups;
+		let budget = LIMIT;
+		const out = [];
+		for (const g of exGroups) {
+			if (budget <= 0) break;
+			const items = g.items.slice(0, budget);
+			budget -= items.length;
+			out.push({ t: g.t, items });
+		}
+		return out;
+	});
+	const shownCount = $derived(shownGroups.reduce((a, g) => a + g.items.length, 0));
+	const hiddenCount = $derived(result ? (result.n ?? 0) - shownCount : 0);
 	const vidOf = (u) => (u || '').match(/video\/(\d+)/)?.[1];
 	const fmtViews = (n) =>
 		n >= 1e6 ? (n / 1e6).toFixed(1) + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'K' : '' + n;
@@ -162,6 +185,7 @@
 	function askSubmit(e) {
 		e.preventDefault();
 		generated = false;
+		expanded = false; // fresh word starts collapsed
 		if (norm(typed).length >= 2) answered = true;
 	}
 	// "generate one for me": pull a real @democrats insult (a dunk word aimed at someone)
@@ -175,6 +199,7 @@
 			pick = src[(src.indexOf(pick) + 1) % src.length]; // avoid repeating the same one
 		typed = pick;
 		generated = true;
+		expanded = false; // fresh word starts collapsed
 		answered = true;
 	}
 	// how much more (or less) often the Democrats reach for this word than the GOP side,
@@ -596,10 +621,11 @@
 							{#if result.corrected}<p class="mut">(reading that as <em>“{result.word}”</em>)</p>{/if}
 							<p>
 								Yes. The <b>@democrats</b> have used <em>“{result.word}”</em> in <b>{result.n}</b>
-								{result.n === 1 ? 'dunk' : 'dunks'}{#if result.t}, on people like <b>{result.t}</b>{/if}.
+								{result.n === 1 ? 'dunk' : 'dunks'}{#if result.p} across <b>{result.p}</b>
+								{result.p === 1 ? 'post' : 'posts'}{/if}{#if result.t}, on people like <b>{result.t}</b>{/if}.
 							</p>
 						{/if}
-						{#each exGroups as g}
+						{#each shownGroups as g}
 							{#if g.t}<div class="ex-t">Used on {g.t}</div>{/if}
 							<ul class="ex-list">
 								{#each g.items as e (e.l)}
@@ -607,7 +633,7 @@
 									{@const pm = vid ? postmeta[vid] : null}
 									<li>
 										<a class="ex-post" href={e.u} target="_blank" rel="noopener noreferrer">
-											<span class="ex-line">“{e.l}”</span>
+											<span class="ex-line">“{e.l}”{#if e.dt}<span class="ex-date">{fmtDate(e.dt)}</span>{/if}</span>
 											<span class="ex-tip">
 												{#if vid}<img
 														src="{base}/kf/{vid}.jpg"
@@ -627,8 +653,14 @@
 								{/each}
 							</ul>
 						{/each}
-						{#if result.n > result.ex.length}
-							<p class="mut">…and {result.n - result.ex.length} more.</p>
+						{#if hiddenCount > 0}
+							<button type="button" class="ex-more" onclick={() => (expanded = true)}>
+								…and {hiddenCount} more — <u>show all</u>
+							</button>
+						{:else if expanded && result.n > LIMIT}
+							<button type="button" class="ex-more" onclick={() => (expanded = false)}>
+								Show fewer
+							</button>
 						{/if}
 						{#if compare}
 							<div class="cmp">
@@ -1204,6 +1236,25 @@
 		max-width: 32em;
 		margin: 0.8em auto 0;
 	}
+	/* click to reveal every remaining dunk line (or collapse back) */
+	.ex-more {
+		display: inline-block;
+		margin: 0.7em auto 0;
+		padding: 0;
+		background: none;
+		border: none;
+		font-family: inherit;
+		font-size: 0.9rem;
+		color: var(--muted);
+		cursor: pointer;
+		transition: color 0.15s ease;
+	}
+	.ex-more:hover {
+		color: var(--ink);
+	}
+	.ex-more u {
+		text-underline-offset: 2px;
+	}
 	/* list of every dunk line that uses the typed word */
 	.ex-list {
 		list-style: none;
@@ -1230,6 +1281,15 @@
 	}
 	.ex-post:hover .ex-line {
 		color: #fff;
+	}
+	/* post date, trailing each dunk line so readers can place it in time */
+	.ex-date {
+		margin-left: 0.5em;
+		font-family: var(--sans);
+		font-style: normal;
+		font-size: 0.72rem;
+		white-space: nowrap;
+		color: var(--muted);
 	}
 	.ex-t {
 		display: block;

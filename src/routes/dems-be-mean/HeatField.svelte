@@ -235,12 +235,14 @@
 				{(wu ? wu.n : 1) === 1 ? 'dunk' : 'dunks'}
 			</div>
 			<ul class="cl-lines">
-				{#each (wu?.ex ?? [{ t: '', l: hovered.line }]) as e (e.l)}
+				<!-- the full-list drill-down lives in the "type an insult" section; here the hover
+				     callout is just a teaser, so cap the lines even though worduse ships them all -->
+				{#each (wu?.ex?.slice(0, 6) ?? [{ t: '', l: hovered.line }]) as e (e.l)}
 					<li>{#if e.t}<span class="cl-t">{e.t}</span>{/if}“{e.l}”</li>
 				{/each}
 			</ul>
-			{#if wu && wu.n > wu.ex.length}
-				<div class="cl-more">…and {wu.n - wu.ex.length} more</div>
+			{#if wu && wu.n > 6}
+				<div class="cl-more">…and {wu.n - 6} more</div>
 			{/if}
 		</div>
 	{/if}
