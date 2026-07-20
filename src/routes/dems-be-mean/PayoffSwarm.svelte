@@ -32,9 +32,45 @@
 			? PADL + (v / CAP) * MAINW
 			: XBREAK + GAP + ((Math.log10(v) - l3) / (lmax - l3)) * TAILW;
 
-	// proper beeswarm: within each band, dots stack symmetrically around the centre line,
-	// column by column, so the shape swells where posts pile up. If a dense column would
-	// overflow the band, all offsets scale down to fit (dots overlap → a darker centre).
+
+	// beeswarm layout via a SYMMETRIC dodge (adapted from Observable's @d3/beeswarm/2). Sort by x,
+	// keep a moving window of already-placed dots, and give each new dot the y-offset closest to
+	// the band centre line that doesn't collide with a neighbour — considering BOTH sides so the
+	// swarm spreads symmetrically instead of piling to one side. Tighter + more organic than a
+	// column grid. `spacing` is the minimum centre-to-centre distance (≈ two dot radii + a hair).
+	function dodge(xs, spacing) {
+		const s2 = spacing ** 2;
+		const eps = 1e-3;
+		const items = xs.map((x, i) => ({ x, i, y: 0, next: null })).sort((a, b) => a.x - b.x);
+		let head = null,
+			tail = null;
+		const hits = (px, py) => {
+			for (let a = head; a; a = a.next)
+				if (s2 - eps > (a.x - px) ** 2 + (a.y - py) ** 2) return true;
+			return false;
+		};
+		for (const b of items) {
+			while (head && head.x < b.x - spacing) head = head.next; // drop dots too far left to collide
+			if (hits(b.x, (b.y = 0))) {
+				let best = Infinity;
+				for (let a = head; a; a = a.next) {
+					const s = s2 - (a.x - b.x) ** 2;
+					if (s <= 0) continue;
+					const dy = Math.sqrt(s);
+					for (const cand of [a.y + dy, a.y - dy])
+						if (Math.abs(cand) < Math.abs(best) && !hits(b.x, cand)) best = cand;
+				}
+				b.y = Number.isFinite(best) ? best : 0;
+			}
+			b.next = null;
+			if (head === null) head = tail = b;
+			else tail = tail.next = b;
+		}
+		const yoff = new Array(xs.length);
+		for (const it of items) yoff[it.i] = it.y;
+		return yoff;
+	}
+
 	const layout = dots.tiers.map((t, ti) => {
 		const cy = TOP + ti * BAND + BAND / 2;
 		const halfH = BAND * 0.46;
@@ -45,16 +81,8 @@
 			const jv = ((i * 257 + ti * 89 + 13) % 100) / 100;
 			return xPos(v * (1 + (jv - 0.5) * 0.06));
 		});
-		const colW = R * 2.05;
-		const order = xs.map((x, i) => ({ x, i })).sort((a, b) => a.x - b.x);
-		const colCount = new Map();
-		const yoff = new Array(xs.length);
-		for (const o of order) {
-			const c = Math.round(o.x / colW);
-			const k = colCount.get(c) || 0;
-			colCount.set(c, k + 1);
-			yoff[o.i] = (k % 2 === 1 ? 1 : -1) * Math.ceil(k / 2) * colW;
-		}
+		const yoff = dodge(xs, R * 2.05);
+		// if the swarm is taller than the band, scale every offset down to fit (denser centre)
 		let maxOff = 1;
 		for (const y of yoff) if (Math.abs(y) > maxOff) maxOff = Math.abs(y);
 		const sc = maxOff > halfH ? halfH / maxOff : 1;
@@ -84,7 +112,10 @@
 	}
 
 	const ticks = [1000000, 2000000, 3000000];
-	const tailTicks = [10000000, 40000000];
+	const tailTicks = [10000000, 40000000]; // labelled ticks in the log tail
+	// minor log gridlines at a CONSISTENT 5M value step. Evenly valued, they compress toward the
+	// right on the log axis — the visual signature of a log scale (show, don't tell).
+	const logGrid = [5, 10, 15, 20, 25, 30, 35, 40, 45].map((n) => n * 1e6);
 	const fmtTick = (n) => n / 1e6 + 'M';
 	const fmtMed = (n) => (n >= 1e6 ? (n / 1e6).toFixed(1) + 'M' : Math.round(n / 1e3) + 'K');
 
@@ -112,16 +143,9 @@
 			const jv = ((i * 257 + ti * 89 + 13) % 100) / 100;
 			return yPos(v * (1 + (jv - 0.5) * 0.06));
 		});
-		const rowW = R * 2.05;
-		const order = ys.map((y, i) => ({ y, i })).sort((a, b) => a.y - b.y);
-		const rowCount = new Map();
-		const xoff = new Array(ys.length);
-		for (const o of order) {
-			const c = Math.round(o.y / rowW);
-			const k = rowCount.get(c) || 0;
-			rowCount.set(c, k + 1);
-			xoff[o.i] = (k % 2 === 1 ? 1 : -1) * Math.ceil(k / 2) * rowW;
-		}
+		// same symmetric dodge, transposed: feed the vertical (value) positions, apply the
+		// returned offsets horizontally so the swarm spreads left/right of the column centre.
+		const xoff = dodge(ys, R * 2.05);
 		let maxOff = 1;
 		for (const x of xoff) if (Math.abs(x) > maxOff) maxOff = Math.abs(x);
 		const sc = maxOff > halfW ? halfW / maxOff : 1;
@@ -137,12 +161,11 @@
 		<line class="sw-grid" x1={xPos(tk)} x2={xPos(tk)} y1={TOP} y2={H - XAX} />
 		<text class="sw-xlab" x={xPos(tk)} y={H - XAX + 17} text-anchor="middle">{fmtTick(tk)}</text>
 	{/each}
-	<!-- axis break marker -->
-	<line class="sw-break" x1={XBREAK + 5} y1={H - XAX - 5} x2={XBREAK + 11} y2={H - XAX + 5} />
-	<line class="sw-break" x1={XBREAK + 10} y1={H - XAX - 5} x2={XBREAK + 16} y2={H - XAX + 5} />
-	<!-- tail zone gridlines (compressed log 3M–46M) -->
+	<!-- tail zone: dotted minor log gridlines crowd toward each decade top → shows it's a log scale -->
+	{#each logGrid as tk (tk)}
+		<line class="sw-grid sw-grid-log" x1={xPos(tk)} x2={xPos(tk)} y1={TOP} y2={H - XAX} />
+	{/each}
 	{#each tailTicks as tk (tk)}
-		<line class="sw-grid" x1={xPos(tk)} x2={xPos(tk)} y1={TOP} y2={H - XAX} />
 		<text class="sw-xlab" x={xPos(tk)} y={H - XAX + 17} text-anchor="middle">{fmtTick(tk)}</text>
 	{/each}
 	<text class="sw-axcap" x={W - PADR} y={H - XAX + 28} text-anchor="end">views</text>
@@ -175,10 +198,10 @@
 		<line class="sw-grid" x1={LAXp} x2={Wp - PADRp} y1={yPos(tk)} y2={yPos(tk)} />
 		<text class="sw-xlab" x={LAXp - 5} y={yPos(tk) + 3} text-anchor="end">{fmtTick(tk)}</text>
 	{/each}
-	<line class="sw-break" x1={LAXp - 6} y1={YBREAKp + 5} x2={LAXp + 4} y2={YBREAKp + 11} />
-	<line class="sw-break" x1={LAXp - 6} y1={YBREAKp + 10} x2={LAXp + 4} y2={YBREAKp + 16} />
+	{#each logGrid as tk (tk)}
+		<line class="sw-grid sw-grid-log" x1={LAXp} x2={Wp - PADRp} y1={yPos(tk)} y2={yPos(tk)} />
+	{/each}
 	{#each tailTicks as tk (tk)}
-		<line class="sw-grid" x1={LAXp} x2={Wp - PADRp} y1={yPos(tk)} y2={yPos(tk)} />
 		<text class="sw-xlab" x={LAXp - 5} y={yPos(tk) + 3} text-anchor="end">{fmtTick(tk)}</text>
 	{/each}
 	<text class="sw-axcap" x={LAXp - 5} y={PADTp - 8} text-anchor="end">views</text>
@@ -212,9 +235,9 @@
 		stroke: #2a2e34;
 		stroke-width: 1;
 	}
-	.sw-break {
-		stroke: #6b7076;
-		stroke-width: 1.2;
+	.sw-grid-log {
+		stroke: #363b43;
+		stroke-dasharray: 1.5 2.5;
 	}
 	.sw-xlab,
 	.sw-axcap {
