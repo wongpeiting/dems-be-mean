@@ -133,36 +133,116 @@
 		if (bestK && bestD <= cap) return { word: bestK, ...worduse[bestK], corrected: bestK !== w };
 		return null;
 	}
-	let result = $derived(answered ? lookup(typed) : null);
-	// collapse repeated targets: group the example lines by who they were aimed at
-	const exGroups = $derived.by(() => {
-		if (!result?.ex) return [];
+	// A query can be one word ("chud") or several ("fat chud"). A multi-word query is treated
+	// as a PHRASE: a dunk line is a hit only if it contains ALL the words. Because each lexicon
+	// entry now lists every dem line that uses that word, intersecting the words' line-sets gives
+	// exactly the lines where they co-occur. If they never co-occur, we fall back to one card per
+	// word so the reader still sees each was used.
+	const tokenize = (raw) => (raw || '').toLowerCase().split(/[^a-z']+/).filter((t) => t.length >= 2);
+	// resolve a typed token to its lexicon entry, merging inflections (dictator/dictators) so a
+	// phrase like "fascist dictator" still matches "NO FASCIST DICTATORS". `lines` is the union
+	// of every dem line across those inflections, used for the co-occurrence intersection.
+	function resolveWord(t) {
+		const forms = variants(t).filter((v) => worduse[v]);
+		if (!forms.length) return null;
+		const seen = new Set();
+		const lines = [];
+		for (const v of forms)
+			for (const e of worduse[v].ex) {
+				const k = e.l.toLowerCase();
+				if (!seen.has(k)) {
+					seen.add(k);
+					lines.push(e);
+				}
+			}
+		return { word: forms[0], ...worduse[forms[0]], lines };
+	}
+	// dedupe match objects by their resolved word, preserving order
+	const byWord = (arr) => {
+		const seen = new Set();
+		return arr.filter((m) => m && !seen.has(m.word) && seen.add(m.word));
+	};
+	// lines where every one of these words co-occurs → a synthetic phrase match
+	function phraseMatch(entries) {
+		let lines = entries[0].lines ?? entries[0].ex ?? [];
+		for (let i = 1; i < entries.length; i++) {
+			const set = new Set((entries[i].lines ?? entries[i].ex ?? []).map((e) => e.l.toLowerCase()));
+			lines = lines.filter((e) => set.has(e.l.toLowerCase()));
+		}
+		if (!lines.length) return null;
+		const posts = new Set(lines.map((e) => e.u).filter(Boolean));
+		return {
+			word: entries.map((e) => e.word).join(' '),
+			isPhrase: true,
+			ex: lines,
+			n: lines.length,
+			p: posts.size || lines.length,
+			t: lines[0].t
+		};
+	}
+	// → { phrase, cards } : phrase wins when the words co-occur; otherwise one card per word
+	function resolveQuery(raw) {
+		const toks = tokenize(raw);
+		if (toks.length <= 1) {
+			const m = lookup(raw); // single word, with typo tolerance
+			return { phrase: null, cards: m ? [m] : [] };
+		}
+		const content = byWord(toks.map(resolveWord).filter(Boolean));
+		if (content.length >= 2) {
+			const phrase = phraseMatch(content);
+			return phrase ? { phrase, cards: [] } : { phrase: null, cards: content };
+		}
+		if (content.length === 1) return { phrase: null, cards: content };
+		// nothing exact → let each token try the fuzzy path
+		return { phrase: null, cards: byWord(toks.map((t) => lookup(t)).filter(Boolean)) };
+	}
+
+	// group a word's example lines by who they were aimed at
+	function groupsOf(ex) {
 		const m = new Map();
-		for (const e of result.ex) {
+		for (const e of ex ?? []) {
 			const k = e.t || '';
 			if (!m.has(k)) m.set(k, []);
 			m.get(k).push(e);
 		}
 		return [...m.entries()].map(([t, items]) => ({ t, items }));
-	});
-	// We now ship EVERY dunk line per word, so start collapsed and let the reader click
-	// "…and N more" to reveal the rest. LIMIT is a total budget of lines across all groups.
+	}
+	// dem-vs-GOP counts for the little comparison bars (single words only — a phrase has no
+	// reliable cross-account co-occurrence count, so we don't fake one)
+	function compareOf(m) {
+		const d = m.d ?? 0,
+			r = m.r ?? 0;
+		const maxC = Math.max(d, r) || 1;
+		return { d, r, demPct: (d / maxC) * 100, repPct: (r / maxC) * 100 };
+	}
+
+	// We ship EVERY dunk line per word, so each result starts collapsed and the reader clicks
+	// "…and N more" to reveal the rest. Expansion is tracked per result. LIMIT is a line budget.
 	const LIMIT = 6;
-	let expanded = $state(false);
-	const shownGroups = $derived.by(() => {
-		if (expanded) return exGroups;
+	let expanded = $state({});
+	const toggle = (key) => (expanded = { ...expanded, [key]: !expanded[key] });
+	const query = $derived(answered ? resolveQuery(typed) : { phrase: null, cards: [] });
+	const results = $derived(
+		(query.phrase ? [query.phrase] : query.cards).map((m) => ({
+			...m,
+			groups: groupsOf(m.ex),
+			compare: m.isPhrase ? null : compareOf(m)
+		}))
+	);
+	const primary = $derived(results[0] ?? null);
+	function shownGroupsOf(res) {
+		if (expanded[res.word]) return res.groups;
 		let budget = LIMIT;
 		const out = [];
-		for (const g of exGroups) {
+		for (const g of res.groups) {
 			if (budget <= 0) break;
 			const items = g.items.slice(0, budget);
 			budget -= items.length;
 			out.push({ t: g.t, items });
 		}
 		return out;
-	});
-	const shownCount = $derived(shownGroups.reduce((a, g) => a + g.items.length, 0));
-	const hiddenCount = $derived(result ? (result.n ?? 0) - shownCount : 0);
+	}
+	const hiddenOf = (res) => (expanded[res.word] ? 0 : Math.max(0, (res.n ?? 0) - LIMIT));
 	const vidOf = (u) => (u || '').match(/video\/(\d+)/)?.[1];
 	const fmtViews = (n) =>
 		n >= 1e6 ? (n / 1e6).toFixed(1) + 'M' : n >= 1e3 ? Math.round(n / 1e3) + 'K' : '' + n;
@@ -185,7 +265,7 @@
 	function askSubmit(e) {
 		e.preventDefault();
 		generated = false;
-		expanded = false; // fresh word starts collapsed
+		expanded = {}; // fresh query starts collapsed
 		if (norm(typed).length >= 2) answered = true;
 	}
 	// "generate one for me": pull a real @democrats insult (a dunk word aimed at someone)
@@ -199,33 +279,9 @@
 			pick = src[(src.indexOf(pick) + 1) % src.length]; // avoid repeating the same one
 		typed = pick;
 		generated = true;
-		expanded = false; // fresh word starts collapsed
+		expanded = {}; // fresh query starts collapsed
 		answered = true;
 	}
-	// how much more (or less) often the Democrats reach for this word than the GOP side,
-	// compared dunk-for-dunk (rate per dunk line, not raw counts, since the corpora differ)
-	const compare = $derived.by(() => {
-		if (!result) return null;
-		const d = result.d ?? 0,
-			r = result.r ?? 0;
-		// bars are proportional to the raw counts shown beside them, so the lengths match the
-		// numbers. (Rate-per-post would be a fairer cross-account comparison, but the corpora
-		// differ ~3× in size, which made a "2" bar nearly as long as a "7" — bar vs number lied.)
-		const maxC = Math.max(d, r) || 1;
-		let note;
-		if (r === 0) note = 'The Republican side hasn’t reached for it.';
-		else if (d / r >= 1.25) note = `The Democrats reach for it about ${(d / r).toFixed(1)}× as often.`;
-		else if (r / d >= 1.25)
-			note = `The Republican side reaches for it ${(r / d).toFixed(1)}× as often.`;
-		else note = 'Both sides reach for it about equally often.';
-		return {
-			d,
-			r,
-			demPct: (d / maxC) * 100,
-			repPct: (r / maxC) * 100,
-			note
-		};
-	});
 
 	// Two phases. REVEAL: the field builds over time as you scroll (with a teaching
 	// pause partway through). ANNOTATE: the field is fully revealed and each card
@@ -614,67 +670,73 @@
 				<div class="ask-a">
 					{#if niceWord}
 						<p>Ha — right, <em>“{typed.trim()}”</em> isn’t an insult.</p>
-					{:else if result}
+					{:else if primary}
 						{#if generated}
-							<p>Here’s one straight from their playbook: <em>“{result.word}”</em>.</p>
-						{:else}
-							{#if result.corrected}<p class="mut">(reading that as <em>“{result.word}”</em>)</p>{/if}
-							<p>
-								Yes. The <b>@democrats</b> have used <em>“{result.word}”</em> in <b>{result.n}</b>
-								{result.n === 1 ? 'dunk' : 'dunks'}{#if result.p}{' '}across <b>{result.p}</b>
-								{result.p === 1 ? 'post' : 'posts'}{/if}{#if result.t}, on people like <b>{result.t}</b>{/if}.
-							</p>
+							<p>Here’s one straight from their playbook: <em>“{primary.word}”</em>.</p>
 						{/if}
-						{#each shownGroups as g}
-							{#if g.t}<div class="ex-t">Used on {g.t}</div>{/if}
-							<ul class="ex-list">
-								{#each g.items as e (e.l)}
-									{@const vid = vidOf(e.u)}
-									{@const pm = vid ? postmeta[vid] : null}
-									<li>
-										<a class="ex-post" href={e.u} target="_blank" rel="noopener noreferrer">
-											<span class="ex-line">“{e.l}”{#if e.dt}<span class="ex-date">{fmtDate(e.dt)}</span>{/if}</span>
-											<span class="ex-tip">
-												{#if vid}<img
-														src="{base}/kf/{vid}.jpg"
-														alt=""
-														loading="lazy"
-														onerror={(e) => (e.currentTarget.style.display = 'none')}
-													/>{/if}
-												<span class="ex-tip-meta">
-													{#if pm?.v}<span class="tip-views">{fmtViews(pm.v)} views</span>{/if}
-													{#if pm?.emo?.length}<span class="tip-emo">{pm.emo.join(' · ')}</span>{/if}
-													{#if pm?.intent}<span class="tip-intent">{pm.intent}</span>{/if}
-													<span class="watch">▶&nbsp;watch the post&nbsp;↗</span>
-												</span>
-											</span>
-										</a>
-									</li>
+						{#each results as res, i (res.word)}
+							<div class="res-card">
+								{#if !generated}
+									{#if res.corrected}<p class="mut">(reading that as <em>“{res.word}”</em>)</p>{/if}
+									<p>
+										{#if i === 0}Yes. The <b>@democrats</b> have used{:else}They’ve also used{/if}
+										<em>“{res.word}”</em>{#if res.isPhrase} together{/if} in <b>{res.n}</b>
+										{res.n === 1 ? 'dunk' : 'dunks'}{#if res.p}{' '}across <b>{res.p}</b>
+										{res.p === 1 ? 'post' : 'posts'}{/if}{#if res.t}, on people like <b>{res.t}</b>{/if}.
+									</p>
+								{/if}
+								{#each shownGroupsOf(res) as g}
+									{#if g.t}<div class="ex-t">Used on {g.t}</div>{/if}
+									<ul class="ex-list">
+										{#each g.items as e (e.l)}
+											{@const vid = vidOf(e.u)}
+											{@const pm = vid ? postmeta[vid] : null}
+											<li>
+												<a class="ex-post" href={e.u} target="_blank" rel="noopener noreferrer">
+													<span class="ex-line">“{e.l}”{#if e.dt}<span class="ex-date">{fmtDate(e.dt)}</span>{/if}</span>
+													<span class="ex-tip">
+														{#if vid}<img
+																src="{base}/kf/{vid}.jpg"
+																alt=""
+																loading="lazy"
+																onerror={(e) => (e.currentTarget.style.display = 'none')}
+															/>{/if}
+														<span class="ex-tip-meta">
+															{#if pm?.v}<span class="tip-views">{fmtViews(pm.v)} views</span>{/if}
+															{#if pm?.emo?.length}<span class="tip-emo">{pm.emo.join(' · ')}</span>{/if}
+															{#if pm?.intent}<span class="tip-intent">{pm.intent}</span>{/if}
+															<span class="watch">▶&nbsp;watch the post&nbsp;↗</span>
+														</span>
+													</span>
+												</a>
+											</li>
+										{/each}
+									</ul>
 								{/each}
-							</ul>
-						{/each}
-						{#if hiddenCount > 0}
-							<button type="button" class="ex-more" onclick={() => (expanded = true)}>
-								…and {hiddenCount} more — <u>show all</u>
-							</button>
-						{:else if expanded && result.n > LIMIT}
-							<button type="button" class="ex-more" onclick={() => (expanded = false)}>
-								Show fewer
-							</button>
-						{/if}
-						{#if compare}
-							<div class="cmp">
-								<div class="cmp-cap">How often each side reaches for it</div>
-								<div class="cmp-row">
-									<span class="cmp-lab">@democrats</span>
-									<div class="cmp-track"><div class="cmp-fill dem" style:width="{compare.demPct}%"></div><span class="cmp-num">{compare.d}</span></div>
-								</div>
-								<div class="cmp-row">
-									<span class="cmp-lab">@whitehouse @republicans</span>
-									<div class="cmp-track"><div class="cmp-fill rep" style:width="{compare.repPct}%"></div><span class="cmp-num">{compare.r}</span></div>
-								</div>
+								{#if hiddenOf(res) > 0}
+									<button type="button" class="ex-more" onclick={() => toggle(res.word)}>
+										…and {hiddenOf(res)} more — <u>show all</u>
+									</button>
+								{:else if expanded[res.word] && res.n > LIMIT}
+									<button type="button" class="ex-more" onclick={() => toggle(res.word)}>
+										Show fewer
+									</button>
+								{/if}
+								{#if res.compare}
+									<div class="cmp">
+										<div class="cmp-cap">How often each side reaches for it</div>
+										<div class="cmp-row">
+											<span class="cmp-lab">@democrats</span>
+											<div class="cmp-track"><div class="cmp-fill dem" style:width="{res.compare.demPct}%"></div><span class="cmp-num">{res.compare.d}</span></div>
+										</div>
+										<div class="cmp-row">
+											<span class="cmp-lab">@whitehouse @republicans</span>
+											<div class="cmp-track"><div class="cmp-fill rep" style:width="{res.compare.repPct}%"></div><span class="cmp-num">{res.compare.r}</span></div>
+										</div>
+									</div>
+								{/if}
 							</div>
-						{/if}
+						{/each}
 					{:else}
 						<p>
 							<em>“{typed.trim()}”</em>? The <b>@democrats</b> haven’t gone there — not yet. But the
@@ -682,7 +744,7 @@
 						</p>
 					{/if}
 					<p class="ask-cont">
-						{#if result && !niceWord}
+						{#if primary && !niceWord}
 							This insult wasn’t an isolated dunk. Zoom out, and you can see when this brand
 							of personal attacks began to take shape.
 						{:else}
@@ -1235,6 +1297,12 @@
 		color: var(--muted);
 		max-width: 32em;
 		margin: 0.8em auto 0;
+	}
+	/* when a query resolves to more than one word, space the cards apart with a divider */
+	.res-card + .res-card {
+		margin-top: 1.6em;
+		padding-top: 1.4em;
+		border-top: 1px solid var(--line);
 	}
 	/* click to reveal every remaining dunk line (or collapse back) */
 	.ex-more {
