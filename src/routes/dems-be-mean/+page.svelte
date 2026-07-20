@@ -621,7 +621,7 @@
 							{#if result.corrected}<p class="mut">(reading that as <em>“{result.word}”</em>)</p>{/if}
 							<p>
 								Yes. The <b>@democrats</b> have used <em>“{result.word}”</em> in <b>{result.n}</b>
-								{result.n === 1 ? 'dunk' : 'dunks'}{#if result.p} across <b>{result.p}</b>
+								{result.n === 1 ? 'dunk' : 'dunks'}{#if result.p}{' '}across <b>{result.p}</b>
 								{result.p === 1 ? 'post' : 'posts'}{/if}{#if result.t}, on people like <b>{result.t}</b>{/if}.
 							</p>
 						{/if}
