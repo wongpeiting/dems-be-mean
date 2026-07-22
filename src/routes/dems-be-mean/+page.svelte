@@ -106,11 +106,79 @@
 		}
 		return d[m][n];
 	}
+	// derivational stem: collapse the -ist/-ism alternation (and its plurals) so searching
+	// "fascist" also reaches "fascism". These land as three separate tokens in the lexicon
+	// (fascist, fascism — "refusefascism" stems elsewhere and is intentionally left out).
+	// Returns the shared base, or null when the word isn't an -ist/-ism form or the base is
+	// too short to be safe — the length guard stops fist/list/twist vacuuming unrelated words.
+	function stemBase(w) {
+		for (const suf of ['isms', 'ists']) if (w.endsWith(suf) && w.length - 4 >= 3) return w.slice(0, -4);
+		for (const suf of ['ism', 'ist']) if (w.endsWith(suf) && w.length - 3 >= 3) return w.slice(0, -3);
+		return null;
+	}
+	// index the lexicon by -ist/-ism base once, so a lookup can pull a word's whole family.
+	// Only bases shared by ≥2 keys ever merge; today that's exactly {fascism,fascist},
+	// {racism,racist}, {extremist,extremists}, {journalist,journalists} — no bad merges.
+	const famIndex = (() => {
+		const m = new Map();
+		for (const k of lexKeys) {
+			const b = stemBase(k);
+			if (!b) continue;
+			if (!m.has(b)) m.set(b, []);
+			m.get(b).push(k);
+		}
+		return m;
+	})();
+	const familyOf = (word) => {
+		const b = stemBase(word);
+		const fam = b && famIndex.get(b);
+		if (!fam || !fam.length) return [word];
+		return fam.includes(word) ? fam : [word, ...fam];
+	};
+	// merge a word's entry with its -ist/-ism siblings: union the example lines (primary's
+	// meanest-first examples lead), recount distinct dunks/posts, and sum the GOP side so the
+	// comparison bar stays honest. `word` stays the primary so the copy reads back what was typed.
+	function mergeFamily(primaryWord) {
+		const prim = worduse[primaryWord];
+		if (!prim) return null;
+		const fam = familyOf(primaryWord);
+		if (fam.length <= 1) return { word: primaryWord, ...prim };
+		const ordered = [primaryWord, ...fam.filter((k) => k !== primaryWord)];
+		const ex = [];
+		const rex = [];
+		const seen = new Set();
+		let r = 0;
+		for (const k of ordered) {
+			const e = worduse[k];
+			if (!e) continue;
+			for (const line of e.ex) {
+				const key = line.l.toLowerCase();
+				if (!seen.has(key)) {
+					seen.add(key);
+					ex.push(line);
+				}
+			}
+			r += e.r ?? 0;
+			for (const rl of e.rex ?? []) rex.push(rl);
+		}
+		const posts = new Set(ex.map((e) => e.u).filter(Boolean));
+		return {
+			word: primaryWord,
+			t: prim.t,
+			l: prim.l,
+			ex,
+			rex,
+			n: ex.length, // distinct dem dunk lines across the family
+			p: posts.size || ex.length,
+			d: ex.length, // dem count == distinct dem lines
+			r
+		};
+	}
 	// exact → variant → fuzzy(typo). Returns {word, t, l, corrected} or null.
 	function lookup(raw) {
 		const w = norm(raw);
 		if (w.length < 2) return null;
-		for (const v of variants(w)) if (worduse[v]) return { word: v, ...worduse[v] };
+		for (const v of variants(w)) if (worduse[v]) return mergeFamily(v);
 		// No fuzzy match for short words: a single edit on a ≤4-letter word usually lands on
 		// an unrelated real word (cat→cut, bat→ban). Only a single typo for medium words,
 		// two for genuinely long ones (where "faggot"→"forgot" style collisions can't happen).
@@ -130,7 +198,7 @@
 				bestK = k;
 			}
 		}
-		if (bestK && bestD <= cap) return { word: bestK, ...worduse[bestK], corrected: bestK !== w };
+		if (bestK && bestD <= cap) return { ...mergeFamily(bestK), corrected: bestK !== w };
 		return null;
 	}
 	// A query can be one word ("chud") or several ("fat chud"). A multi-word query is treated
