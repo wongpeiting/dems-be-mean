@@ -1026,6 +1026,14 @@
 				Kamala Harris, lost the race. The post-loss vocabulary was then ranked against the pre-loss
 				lexicon with weighted log-odds (Monroe, Colaresi &amp; Quinn, 2008, “Fightin’ Words”).
 			</p>
+			<p class="method method-repo">
+				Read more about the data and code on
+				<a href="https://github.com/wongpeiting/dems-be-mean" target="_blank" rel="noopener noreferrer">GitHub</a>.
+			</p>
+			<p class="method method-about">
+				More about the author
+				<a href="https://wongpeiting.github.io" target="_blank" rel="noopener noreferrer">here</a>.
+			</p>
 		</div>
 	</section>
 
@@ -2317,6 +2325,20 @@
 	.after .method b {
 		color: #cfd2d6;
 		font-weight: 600;
+	}
+	.after .method-about {
+		margin-bottom: 0;
+	}
+	.after .method-repo a,
+	.after .method-about a {
+		color: #ffffff;
+		text-decoration: underline;
+		text-underline-offset: 2px;
+		text-decoration-color: rgba(255, 255, 255, 0.4);
+	}
+	.after .method-repo a:hover,
+	.after .method-about a:hover {
+		text-decoration-color: #ffffff;
 	}
 
 	@media (max-width: 620px) {
