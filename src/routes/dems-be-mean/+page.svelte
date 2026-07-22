@@ -107,18 +107,17 @@
 		return d[m][n];
 	}
 	// derivational stem: collapse the -ist/-ism alternation (and its plurals) so searching
-	// "fascist" also reaches "fascism". These land as three separate tokens in the lexicon
-	// (fascist, fascism — "refusefascism" stems elsewhere and is intentionally left out).
-	// Returns the shared base, or null when the word isn't an -ist/-ism form or the base is
-	// too short to be safe — the length guard stops fist/list/twist vacuuming unrelated words.
+	// "racist" also reaches "racism". Returns the shared base, or null when the word isn't an
+	// -ist/-ism form or the base is too short to be safe — the length guard stops fist/list/twist
+	// vacuuming unrelated words.
 	function stemBase(w) {
 		for (const suf of ['isms', 'ists']) if (w.endsWith(suf) && w.length - 4 >= 3) return w.slice(0, -4);
 		for (const suf of ['ism', 'ist']) if (w.endsWith(suf) && w.length - 3 >= 3) return w.slice(0, -3);
 		return null;
 	}
 	// index the lexicon by -ist/-ism base once, so a lookup can pull a word's whole family.
-	// Only bases shared by ≥2 keys ever merge; today that's exactly {fascism,fascist},
-	// {racism,racist}, {extremist,extremists}, {journalist,journalists} — no bad merges.
+	// Only bases shared by ≥2 keys ever merge; today that's exactly {racism,racist},
+	// {extremist,extremists}, {journalist,journalists} — no bad merges.
 	const famIndex = (() => {
 		const m = new Map();
 		for (const k of lexKeys) {
