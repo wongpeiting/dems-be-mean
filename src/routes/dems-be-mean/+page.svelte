@@ -1151,6 +1151,7 @@
 		z-index: 50;
 		line-height: 0;
 		margin-top: -20vw; /* the transparent top glow overlaps the text above (screen-blend, no box) */
+		pointer-events: none; /* decorative glow sits over the footer links — let clicks pass through */
 	}
 	.endflare img {
 		display: block;
